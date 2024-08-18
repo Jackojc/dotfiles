@@ -7,8 +7,8 @@ HOMEDIR=$(getent passwd jack | cut -d: -f6)
 export HOME="${HOME:-$HOMEDIR}"
 
 # Install nix package manager
-log "installing nix"
-logcmd curl -L https://nixos.org/nix/install | sh
+has "nix-env" || ( log "installing nix" && \
+logcmd curl -L https://nixos.org/nix/install | sh )
 
 # Install minimal shell environment
 logcmd nix-env -iA \
