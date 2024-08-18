@@ -133,6 +133,8 @@ alias ..='cd ..'
 alias ..1='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
+alias ..4='cd ../../../..'
+alias ..5='cd ../../../../..'
 
 
 # Sane flags
@@ -144,7 +146,7 @@ alias qmv="qmv -fdo"
 
 
 # Alternatives
-has "exa"   && alias ls="exa --group-directories-first"
+has "eza"   && alias ls="eza --group-directories-first"
 has "bat"   && alias cat="bat"
 has "hexyl" && alias hexdump="hexyl"
 has "dust"  && alias du="dust"

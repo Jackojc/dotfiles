@@ -8,16 +8,18 @@ export HOME="${HOME:-$HOMEDIR}"
 
 # Install nix package manager
 # We can run this even with existing install to update.
+log "install nix"
 sh <(curl -L https://nixos.org/nix/install) --no-daemon --no-modify-profile
 
 # Install minimal shell environment
-. "$HOME/.nix-profile/etc/profile.d/nix.sh"
+. "$HOME/.nix-profile/etc/profile.d/nix.sh"  # Source env vars for nix
 
+log "install shell packages"
 nix-env -iA \
 	nixpkgs.stow \
 	nixpkgs.tmux \
 	nixpkgs.ripgrep \
-	nixpkgs.exa \
+	nixpkgs.eza \
 	nixpkgs.bat \
 	nixpkgs.hexyl \
 	nixpkgs.du-dust \
@@ -33,14 +35,17 @@ nix-env -iA \
 	nixpkgs.mdsh
 
 # Make necessery directories if they don't exist
-logcmd mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"
-logcmd mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}"
-logcmd mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}"
-logcmd mkdir -p "${XDG_BIN_HOME:-$HOME/.local/bin}"
-logcmd mkdir -p "${XDG_STATE_HOME:-$HOME/.local/state}"
+log "mkdir xdg directories"
+mkdir -p "${XDG_CACHE_HOME:-$HOME/.cache}"
+mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}"
+mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}"
+mkdir -p "${XDG_BIN_HOME:-$HOME/.local/bin}"
+mkdir -p "${XDG_STATE_HOME:-$HOME/.local/state}"
 
 # Run GNU Stow
-logcmd stow --no-folding --dotfiles .
+log "symlink configs"
+stow --no-folding --dotfiles .
 
 # Link all scripts to XDG_BIN_HOME
-logcmd find scripts/ -type f | xargs -I{} -- ln -s {} "$XDG_BIN_HOME"
+log "symlink scripts"
+find scripts/ -type f | xargs -I{} -- ln -s {} "$XDG_BIN_HOME"
