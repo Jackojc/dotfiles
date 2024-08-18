@@ -16,12 +16,14 @@ export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 # Install nix package manager
 # We can run this even with existing install to update.
 log "install nix"
+sleep 2
 sh <(curl -L https://nixos.org/nix/install) --no-daemon --no-modify-profile
 
 # Install minimal shell environment
 . "${HOME}/.nix-profile/etc/profile.d/nix.sh"  # Source env vars for nix
 
 log "install shell packages"
+sleep 2
 nix-env -iA \
 	nixpkgs.stow \
 	nixpkgs.tmux \
@@ -43,6 +45,7 @@ nix-env -iA \
 
 # Make necessery directories if they don't exist
 log "mkdir xdg directories"
+sleep 2
 mkdir -p "${XDG_CACHE_HOME}"
 mkdir -p "${XDG_CONFIG_HOME}"
 mkdir -p "${XDG_DATA_HOME}"
@@ -51,8 +54,12 @@ mkdir -p "${XDG_STATE_HOME}"
 
 # Run GNU Stow
 log "symlink configs"
+sleep 2
 stow --no-folding --dotfiles .
 
 # Link all scripts to XDG_BIN_HOME
 log "symlink scripts"
+sleep 2
 find scripts/ -type f | xargs -I{} -- ln -s {} "${XDG_BIN_HOME}"
+
+log "you should log out and back in to use updated bashrc"
