@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-perf record -g $@
-perf report -g 'graph,0.5,caller'
-

@@ -1,0 +1,78 @@
+[core]
+	autocrlf = input
+	pager = delta
+[color]
+	ui = true
+[help]
+	autocorrect = prompt  # Asks to run auto-correct version of misspelled command.
+
+
+# Credentials
+[user]
+	name = Jack Clarke
+	email = jackojc@gmail.com
+	signingKey = 28981540EECCCFE2
+[credential]
+	helper = store
+[gpg]
+	program = gpg2
+
+
+# Check integrity of objects
+[transfer]
+	fsckObjects = true
+[fetch]
+	fsckObjects = true
+[receive]
+	fsckObjects = true
+
+
+# Commands
+[pull]
+	rebase = true   # Rebase when pulling if origin is ahead.
+[push]
+	default = current  # Automatically push to remote branch of same name
+[rebase]
+	autosquash = true
+	autostash = true
+[merge]
+	tool = meld
+	conflictstyle = zdiff3  # Better diffs
+[diff]
+	colorMoved = default
+	algorithm = histogram
+	submodule = log
+	tool = difftastic  # Better diffs, syntax aware
+[log]
+	abbrevCommit = true
+[init]
+	defaultBranch = main
+[status]
+	submoduleSummary = true
+[branch]
+	sort = committerdate
+[commit]
+	gpgSign = true
+	verbose = true
+
+
+# Tools
+[rerere]
+	enabled = true
+[mergetool]
+	prompt = false
+[interactive]
+	diffFilter = delta --color-only
+[add.interactive]
+	useBuiltin = false
+[delta]
+	navigate = true
+	light = false
+[format]
+	pretty = oneline
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+

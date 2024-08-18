@@ -1,0 +1,31 @@
+[language-server.clangd]
+command = "clangd"
+args = [ "-header-insertion=never" ]
+
+[language-server.clang-format]
+command = "clang-format"
+
+
+[[language]]
+name = "bash"
+auto-format = false
+indent = { tab-width = 4, unit = "\t" }
+
+[[language]]
+name = "cpp"
+language-id = "cpp"
+file-types = [ "cpp", "hpp", "cxx", "hxx", "h" ]
+roots = [ "CMakeLists.txt", "Makefile" ]
+auto-format = true
+indent = { tab-width = 4, unit = "\t" }
+language-servers = [ "clangd", "clang-format" ]
+
+[[language]]
+name = "c"
+language-id = "c"
+file-types = [ "c", "h" ]
+roots = [ "Makefile" ]
+auto-format = true
+indent = { tab-width = 4, unit = "\t" }
+language-servers = [ "clangd", "clang-format" ]
+

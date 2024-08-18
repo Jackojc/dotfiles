@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-chvt 2
-plymouth --quit
