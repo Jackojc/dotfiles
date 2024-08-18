@@ -1,0 +1,48 @@
+#!/usr/bin/env sh
+
+export WINDOWMANAGER="bspwm"
+export TERMINAL="st"
+export BROWSER="firefox"
+export READER="zathura"
+export EDITOR="hx"
+export VIEWER="sxiv"
+
+export WM="bspwm"
+
+export TODO="$HOME/notes/todo"
+export DIR_MEDIA="$HOME/media"
+export DIR_MUSIC="$DIR_MEDIA/music"
+export DIR_WALLPAPERS="$DIR_MEDIA/wallpapers"
+export DIR_NOTES="$HOME/notes"
+export DIR_STICKERS="$HOME/stickers"
+
+export SAMPLER_SAVE_DIRECTORY="$HOME/samples"
+export SAMPLER_TMP_FILE="$XDG_RUNTIME_DIR/SAMPLER"
+
+export RECORDER_SAVE_DIRECTORY="$HOME/recordings"
+export RECORDER_TMP_FILE="$XDG_RUNTIME_DIR/RECORDER"
+
+export $(dbus-launch)
+
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
+
+export BAR_FIFO="$XDG_RUNTIME_DIR/bar_fifo"
+export BAR_FONT="Terminus (TTF)"
+export BAR_NAME=bspwm_bar
+
+export HOTKEY_FIFO="$XDG_RUNTIME_DIR/hotkey_fifo"
+
+# Set PWD of `st` after every command.
+# This lets us launch other instances of `st`
+# in the same directory.
+if [ "$DISPLAY" ]; then
+	export PROMPT_COMMAND='echo -en "\033_;${PWD}\007\033]2;\007"'
+	echo -en "\033_;${PWD}\007\033]2;\007"
+fi
+
+export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
+
+exec dbus-run-session startx bspwm

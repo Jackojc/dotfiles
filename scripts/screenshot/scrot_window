@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+G=$(window_select) || exit 1
+import -window root -crop $G png:- | convert - \( +clone -background black -shadow 40x5+0+0 \) +swap -background none -layers merge +repage - | xclip -selection clipboard -t image/png
