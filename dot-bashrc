@@ -22,20 +22,22 @@ export XDG_BIN_HOME="$HOME/.local/bin"
 
 
 # Use XDG directories for configs
-export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
-export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
-export HISTFILE="$XDG_DATA_HOME/bash/history"
+mkdir -p "${XDG_DATA_HOME}/bash/" && touch "${XDG_DATA_HOME}/bash/history"
+
+export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
+export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
+export HISTFILE="${XDG_DATA_HOME}/bash/history"
 export LESSHISTFILE="-"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export GOPATH="$XDG_DATA_HOME/go"
-export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
-export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
-export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
-export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
-export GNUPGHOME="$XDG_DATA_HOME/gnupg"
-export TERMINFO="$XDG_DATA_HOME/terminfo"
-export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
+export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
+export GOPATH="${XDG_DATA_HOME}/go"
+export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
+export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
+export XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc"
+export XSERVERRC="${XDG_CONFIG_HOME}/X11/xserverrc"
+export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+export TERMINFO="${XDG_DATA_HOME}/terminfo"
+export TERMINFO_DIRS="${XDG_DATA_HOME}/terminfo:/usr/share/terminfo"
 
 
 # Password manager
@@ -114,6 +116,8 @@ bind '"\e[B": history-search-forward'
 bind '"\e[C": forward-char'
 bind '"\e[D": backward-char'
 
+# Source env vars for nix.
+. "${HOME}/.nix-profile/etc/profile.d/nix.sh"
 
 # Helpers
 function has() {  # Check if program exists
