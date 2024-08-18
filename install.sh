@@ -7,9 +7,12 @@ HOMEDIR=$(getent passwd jack | cut -d: -f6)
 export HOME="${HOME:-$HOMEDIR}"
 
 # Install nix package manager
-logcmd sh <(curl -L https://nixos.org/nix/install) --no-daemon
+# We can run this even with existing install to update.
+sh <(curl -L https://nixos.org/nix/install) --no-daemon --no-modify-profile
 
 # Install minimal shell environment
+. "$HOME/.nix-profile/etc/profile.d/nix.sh"
+
 nix-env -iA \
 	nixpkgs.stow \
 	nixpkgs.tmux \
