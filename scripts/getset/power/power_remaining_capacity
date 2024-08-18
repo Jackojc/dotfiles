@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+remain_cap=0
+
+for bat in `cat /sys/class/power_supply/BAT*/capacity`; do
+	remain_cap=$(( remain_cap + bat ))
+done
+
+echo $remain_cap
