@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 die() {
     printf 'error: %s.\n' "$1" >&2
@@ -7,6 +7,11 @@ die() {
 
 log() {
     printf 'log: %s.\n' "$1" >&2
+}
+
+logcmd() {
+    printf "$(date '+%Y-%m-%d %H:%M:%S') %s\n" "$*"
+    "$@"
 }
 
 # This is just a simple wrapper around 'command -v' to avoid
