@@ -60,6 +60,11 @@ stow --no-folding --dotfiles .
 # Link all scripts to XDG_BIN_HOME
 log "symlink scripts"
 sleep 2
-find scripts/ -type f | xargs -I{} -- ln -s {} "${XDG_BIN_HOME}"
+find scripts/ -type f | xargs -I{} -- ln -sf {} "${XDG_BIN_HOME}"
+
+# Link .bashrc and .profile so login shell uses config
+log "symlink .profile"
+sleep 2
+ln -sf "${HOME}/.bashrc" "${HOME}/.profile"
 
 log "you should log out and back in to use updated bashrc"
