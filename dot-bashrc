@@ -1,0 +1,167 @@
+#!/usr/bin/env bash
+
+[[ $- != *i* ]] && return
+
+
+# XDG directories
+export XDG_PUBLICSHARE_DIR="/dev/null"
+export XDG_TEMPLATES_DIR="/dev/null"
+export XDG_DESKTOP_DIR="$HOME/desktop"
+export XDG_DOCUMENTS_DIR="$HOME/docs"
+export XDG_DOWNLOAD_DIR="$HOME/downloads"
+export XDG_MUSIC_DIR="$HOME/music"
+export XDG_PICTURES_DIR="$HOME/pictures"
+export XDG_VIDEOS_DIR="$HOME/videos"
+
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+export XDG_BIN_HOME="$HOME/.local/bin"
+
+
+# Use XDG directories for configs
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export HISTFILE="$XDG_DATA_HOME/bash/history"
+export LESSHISTFILE="-"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export GOPATH="$XDG_DATA_HOME/go"
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export TERMINFO="$XDG_DATA_HOME/terminfo"
+export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
+
+
+# Password manager
+export PASH_LENGTH="50"
+export PASH_PATTERN="_[:alnum:][:graph:]"
+export PASH_KEYID="jackojc@gmail.com"
+export PASH_DIR="$XDG_DATA_HOME/passwords"
+export PASH_CLIP='xclip -sel c'
+export PASH_TIMEOUT="6"
+
+
+# Colours
+RESET="$(tput sgr0)"
+
+COLOUR_BLACK="$(tput setaf 0)" 
+COLOUR_RED="$(tput setaf 1)" 
+COLOUR_GREEN="$(tput setaf 2)" 
+COLOUR_YELLOW="$(tput setaf 3)" 
+COLOUR_BLUE="$(tput setaf 4)" 
+COLOUR_MAGENTA="$(tput setaf 5)" 
+COLOUR_CYAN="$(tput setaf 6)" 
+COLOUR_WHITE="$(tput setaf 7)" 
+
+
+# Prompt
+function branch() {  # Print current git branch if inside a git repo
+	git branch 2> /dev/null | rg -o '\* (.+)' --replace '$1 '
+}
+
+if [ "$EUID" -ne 0 ]; then  # User
+	export PS1='\[${COLOUR_MAGENTA}\]\W\[${COLOUR_YELLOW}\] $(branch)\[${RESET}\]$ '
+else  # Root
+	export PS1='\[${COLOUR_RED}\]\W\[${COLOUR_YELLOW}\] $(branch)\[${RESET}\]# '
+fi
+
+export PS2='| \[${COLOUR_CYAN}\]=>\[${RESET}\] '
+
+
+# Settings
+export PATH="$PATH:$XDG_BIN_HOME"
+export GPG_TTY=$(tty)
+
+export PROMPT_DIRTRIM=3
+export CDPATH="."
+
+export HISTSIZE=-1
+export HISTFILESIZE=-1
+export HISTCONTROL="erasedups:ignoreboth"
+export HISTIGNORE="&:[ ]*:exit:ls:l:la:ll:lal:lt:l.:jump:goto:z:s:bg:fg:history:clear:c"
+
+export PROMPT_COMMAND=
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND;}history -a; history -c; history -r; "  # Append history after every command.
+
+stty -ixon
+
+shopt -s checkwinsize
+shopt -s globstar
+shopt -s nocaseglob
+shopt -s histappend
+shopt -s cmdhist
+shopt -s autocd
+shopt -s dirspell
+shopt -s cdspell
+shopt -s cdable_vars
+shopt -s expand_aliases
+
+bind Space:magic-space
+
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
+bind "set mark-symlinked-directories on"
+
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
+bind '"\e[C": forward-char'
+bind '"\e[D": backward-char'
+
+
+# Helpers
+function has() {  # Check if program exists
+    _cmd=$(command -v "$1") 2> /dev/null || return 1
+    [ -x "$_cmd" ] || return 1
+}
+
+function cm() {  # Make directory and cd into it.
+	mkdir "$1" 2> /dev/null && \
+		cd "$1" 2> /dev/null
+}
+
+
+# Aliases
+alias ~='cd $HOME'
+alias ..='cd ..'
+alias ..1='cd ..'
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
+
+
+# Sane flags
+alias mkdir="mkdir -pv"
+alias cp="cp -iva"
+alias mv="mv -iv"
+alias rm="rm -vI"
+alias qmv="qmv -fdo"
+
+
+# Alternatives
+has "exa"   && alias ls="exa --group-directories-first"
+has "bat"   && alias cat="bat"
+has "hexyl" && alias hexdump="hexyl"
+has "dust"  && alias du="dust"
+has "duf"   && alias du="duf"
+has "gping" && alias ping="gping"
+
+
+# # Shortened
+alias c="clear"
+alias e="hx"
+
+
+# Git aliases
+alias gc="git commit"
+alias gca="git commit --amend"
+alias gs="git status"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias ga="git add"
+alias gl="git log"
