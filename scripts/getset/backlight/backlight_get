@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-xbacklight -get | cut -d'.' -f1

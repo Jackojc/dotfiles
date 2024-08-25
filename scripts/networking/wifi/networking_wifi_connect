@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-
-./networking_wifi_disconnect
-
-iwctl station $(networking_wifi_name) "$1" "$2"
-

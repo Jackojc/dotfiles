@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-udisksctl mount --block-device $1 || exit 1

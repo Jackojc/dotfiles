@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-autorandr horizontal
-bspwm_monitor_dist
-# launch_polybar

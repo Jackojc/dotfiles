@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-bspc query -T -n | jq -r ".client.state"
