@@ -2,52 +2,34 @@
 
 [[ $- != *i* ]] && return
 
+export LC_ALL="C"
 
-# XDG directories
-export XDG_PUBLICSHARE_DIR="/dev/null"
-export XDG_TEMPLATES_DIR="/dev/null"
-export XDG_DESKTOP_DIR="$HOME/desktop"
-export XDG_DOCUMENTS_DIR="$HOME/docs"
-export XDG_DOWNLOAD_DIR="$HOME/downloads"
-export XDG_MUSIC_DIR="$HOME/music"
-export XDG_PICTURES_DIR="$HOME/pictures"
-export XDG_VIDEOS_DIR="$HOME/videos"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_BIN_HOME="${XDG_BIN_HOME:-$HOME/.local/bin}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CONFIG_HOME="$HOME/.config"
-
-export XDG_BIN_HOME="$HOME/.local/bin"
-
+export PATH="${XDG_BIN_HOME}:${PATH}"
+export GPG_TTY=$(tty)
 
 # Use XDG directories for configs
 mkdir -p "${XDG_DATA_HOME}/bash/" && touch "${XDG_DATA_HOME}/bash/history"
 
-export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
-export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
 export HISTFILE="${XDG_DATA_HOME}/bash/history"
 export LESSHISTFILE="-"
-export CARGO_HOME="${XDG_DATA_HOME}/cargo"
-export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
-export GOPATH="${XDG_DATA_HOME}/go"
+
+export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
 export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
-export XAUTHORITY="${XDG_RUNTIME_DIR}"/Xauthority
-export XINITRC="${XDG_CONFIG_HOME}/X11/xinitrc"
-export XSERVERRC="${XDG_CONFIG_HOME}/X11/xserverrc"
-export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+
 export TERMINFO="${XDG_DATA_HOME}/terminfo"
 export TERMINFO_DIRS="${XDG_DATA_HOME}/terminfo:/usr/share/terminfo"
 
-
-# Password manager
-export PASH_LENGTH="50"
-export PASH_PATTERN="_[:alnum:][:graph:]"
-export PASH_KEYID="jackojc@gmail.com"
-export PASH_DIR="$XDG_DATA_HOME/passwords"
-export PASH_CLIP='xclip -sel c'
-export PASH_TIMEOUT="6"
-
+# Program directories
+export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
+export GOPATH="${XDG_DATA_HOME}/go"
+export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 
 # Colours
 RESET="$(tput sgr0)"
@@ -77,19 +59,15 @@ export PS2='| \[${COLOUR_CYAN}\]=>\[${RESET}\] '
 
 
 # Settings
-export PATH="$PATH:$XDG_BIN_HOME"
-export GPG_TTY=$(tty)
+PROMPT_DIRTRIM=3
+CDPATH="."
 
-export PROMPT_DIRTRIM=3
-export CDPATH="."
+HISTSIZE=-1
+HISTFILESIZE=-1
+HISTCONTROL="erasedups:ignoreboth"
+HISTIGNORE="&:[ ]*:exit:ls:l:la:ll:lal:lt:l.:jump:goto:z:s:bg:fg:history:clear:c"
 
-export HISTSIZE=-1
-export HISTFILESIZE=-1
-export HISTCONTROL="erasedups:ignoreboth"
-export HISTIGNORE="&:[ ]*:exit:ls:l:la:ll:lal:lt:l.:jump:goto:z:s:bg:fg:history:clear:c"
-
-export PROMPT_COMMAND=
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND;}history -a; history -c; history -r; "  # Append history after every command.
+PROMPT_COMMAND="history -a; history -c; history -r; "  # Append history after every command.
 
 stty -ixon
 
@@ -147,15 +125,16 @@ alias cp="cp -iva"
 alias mv="mv -iv"
 alias rm="rm -vI"
 alias qmv="qmv -fdo"
+alias ip="ip -c"
 
 
 # Alternatives
-has "eza"   && alias ls="eza --group-directories-first"
-has "bat"   && alias cat="bat"
-has "hexyl" && alias hexdump="hexyl"
-has "dust"  && alias du="dust"
-has "duf"   && alias du="duf"
-has "gping" && alias ping="gping"
+alias ls="eza --group-directories-first"
+alias cat="bat"
+alias hexdump="hexyl"
+alias du="dust"
+alias du="duf"
+alias ping="gping"
 
 
 # # Shortened
