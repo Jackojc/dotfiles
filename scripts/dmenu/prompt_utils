@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-choices="fullcharge"
-chosen=$(echo "$choices" | dmenu -p "utils")
-
-
-case "$chosen" in
-    fullcharge)  power_fullcharge;;
-esac
