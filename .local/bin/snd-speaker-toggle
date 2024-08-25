@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+VOL="$(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
+
+if printf "${VOL}" | grep -q MUTED; then
+	printf '0\n' > "${WOBSOCK}"
+else
+	wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > "${WOBSOCK}"
+fi
+

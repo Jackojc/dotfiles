@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [ ! -d "$DIR_WALLPAPERS" ]; then
+	printf 'no wallpaper directory\n'
+	exit 1
+fi
+
+WALL="$(fd . $DIR_WALLPAPERS -tf | shuf --head-count=1)"
+IDS="$(pgrep --delimiter ' ' wbg)"
+
+riverctl spawn "wbg ${WALL}" 
+sleep 1 && kill $IDS
