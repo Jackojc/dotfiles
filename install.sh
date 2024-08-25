@@ -37,6 +37,7 @@ nix-env -iA \
 	nixpkgs.helix \
 	nixpkgs.jq \
 	nixpkgs.ncdu \
+	nixpkgs.duf \
 	nixpkgs.fd \
 	nixpkgs.git \
 	nixpkgs.delta \
@@ -55,16 +56,6 @@ mkdir -p "${XDG_STATE_HOME}"
 # Run GNU Stow
 log "symlink configs"
 sleep 2
-stow --no-folding --dotfiles .
-
-# Link all scripts to XDG_BIN_HOME
-log "symlink scripts"
-sleep 2
-find scripts/ -type f | xargs -I{} -- ln -sf "${PWD}/"{} "${XDG_BIN_HOME}/"
-
-# Link .bashrc and .profile so login shell uses config
-log "symlink .profile"
-sleep 2
-ln -sf "${HOME}/.bashrc" "${HOME}/.profile"
+stow --no-folding .
 
 log "you should log out and back in to use updated bashrc"
