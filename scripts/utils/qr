@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-qrencode --type=UTF8i --margin=0 --level=H --size=10 --output -

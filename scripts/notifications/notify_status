@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-dunstify -h string:x-dunst-stack-tag:status -u low "" "$@"

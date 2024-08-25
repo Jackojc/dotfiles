@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-
-
-xprop -id "$(bspc query -N -n)" _NET_WM_PID | rg -o "[0-9]+"
-
-
