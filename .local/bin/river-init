@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+# Launch
+riverctl spawn 'dbus-update-activation-environment --all'
+
+riverctl spawn pipewire  # Automatically launches wireplumber
+riverctl spawn waybar
+riverctl spawn mako
+riverctl spawn river-wallpaper
+
+riverctl spawn "tail -f ${WOBSOCK} | wob"
+
+# Tiling
+riverctl spawn 'rivertile -view-padding 0 -outer-padding 0'
+
+# Config
+river-config
