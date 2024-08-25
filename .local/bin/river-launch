@@ -1,0 +1,112 @@
+#!/usr/bin/env sh
+
+# General
+export LC_ALL="en_IE.UTF-8"
+
+HOMEDIR=$(getent passwd $(whoami) | cut -d: -f6)
+export HOME="${HOME:-$HOMEDIR}"
+
+# XDG directories
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_BIN_HOME="${XDG_BIN_HOME:-$HOME/.local/bin}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+
+export XDG_PUBLICSHARE_DIR="/dev/null"
+export XDG_TEMPLATES_DIR="/dev/null"
+export XDG_DESKTOP_DIR="$HOME/desktop"
+export XDG_DOCUMENTS_DIR="$HOME/docs"
+export XDG_DOWNLOAD_DIR="$HOME/downloads"
+export XDG_MUSIC_DIR="$HOME/music"
+export XDG_PICTURES_DIR="$HOME/pictures"
+export XDG_VIDEOS_DIR="$HOME/videos"
+
+# Path
+export PATH="${XDG_BIN_HOME}:${PATH}"
+
+# Password manager
+export PASH_LENGTH="50"
+export PASH_PATTERN="_[:alnum:][:graph:]"
+export PASH_KEYID="jackojc@gmail.com"
+export PASH_DIR="$XDG_DATA_HOME/passwords"
+export PASH_CLIP='xclip -sel c'
+export PASH_TIMEOUT="6"
+
+# bemenu
+export BEMENU_OPTS="
+    --center
+    --prompt 'run'
+    --prefix '>'
+    --wrap
+    --line-height 30
+    --width-factor 0.2
+    --list 15
+    --ignorecase
+    --fn 'APL386 Unicode 18'
+
+    --border 1
+    --bdr '#ffffff'
+
+    --nf '#ffffff'
+    --nb '#1f2430f8'
+
+    --tf '#ffffff'
+    --tb '#1f2430f8'
+
+    --hf '#fad07b'
+    --hb '#1f2430f8'
+
+    --af '#ffffff'
+    --ab '#1f2430f8'
+
+    --cf '#ffffff'
+    --cb '#1f2430f8'
+
+    --ff '#ffffff'
+    --fb '#1f2430f8'"
+
+export BEMENU_BACKEND=wayland
+
+# Default programs
+export TERMINAL="foot"
+export BROWSER="firefox-wayland"
+export EDITOR="hx"
+export READER="zathura"
+export VIEWER="imv-wayland"
+
+# Directories
+export TODO="$HOME/notes/todo"
+export DIR_MEDIA="$HOME/media"
+export DIR_MUSIC="$HOME/music"
+export DIR_WALLPAPERS="$HOME/wallpapers"
+export DIR_NOTES="$HOME/notes"
+export DIR_STICKERS="$HOME/stickers"
+
+export SAMPLER_SAVE_DIRECTORY="$HOME/samples"
+export SAMPLER_TMP_FILE="$XDG_RUNTIME_DIR/SAMPLER"
+
+export RECORDER_SAVE_DIRECTORY="$HOME/recordings"
+export RECORDER_TMP_FILE="$XDG_RUNTIME_DIR/RECORDER"
+
+# Set PWD of terminal after every command.
+# This lets us launch other instances of 
+# the terminal in the same directory.
+# export PROMPT_COMMAND=
+# if [ "$DISPLAY" ]; then
+# 	export PROMPT_COMMAND='echo -en "\033_;${PWD}\007\033]2;\007"'
+# 	echo -en "\033_;${PWD}\007\033]2;\007"
+# fi
+
+# Wob
+export WOBSOCK="${XDG_RUNTIME_DIR}/wob.sock"
+
+rm -f "${WOBSOCK}"
+mkfifo "${WOBSOCK}"
+
+# Dbus
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
+
+dbus-run-session river

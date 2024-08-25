@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+slurp -d -F 'APL386 Unicode' -w 1 -b 000000AA -B 000000AA -c FFFFFF -s 00000000 $@
