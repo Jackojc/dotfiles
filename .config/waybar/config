@@ -1,0 +1,29 @@
+{
+    "layer": "overlay", 
+    "position": "bottom",
+    "start-hidden": true,
+    "spacing": 0,
+
+    "margin-left": 10,
+    "margin-bottom": 10,
+
+    "reload_style_on_change": true,
+
+    "passthrough": true,
+    "exclusive": false,
+    
+    "modules-left": [
+        "river/mode",
+        "river/tags",
+        "clock",
+        "battery"
+    ],
+
+    "clock": {
+        "format": "{:%I:%M %p %d/%m (%A)}"
+    },
+
+    "battery": {
+        "format": "{capacity}%"
+    }
+}
