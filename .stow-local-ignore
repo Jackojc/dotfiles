@@ -19,11 +19,12 @@ _darcs
 \#.*\#       # emacs autosave files
 
 ^/README.*
+^/TODO.*
 ^/LICENSE.*
 ^/COPYING
 
-notes/
-scripts/
+\notes
+\scripts
 
 install.sh
 lib.sh
