@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+makoctl reload
+
+notify-send -a "Test Notification" -i firefox "Here is some summary" "Test notification from Mako to check style and other configuration options. Here is a bunch of text."
