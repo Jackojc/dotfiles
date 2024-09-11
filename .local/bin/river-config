@@ -15,6 +15,8 @@ riverctl default-attach-mode above
 riverctl rule-add float                # Float all windows by default
 riverctl rule-add dimensions 1280 720  # Default dimensions
 
+riverctl set-repeat 25 250
+
 # Input
 riverctl keyboard-layout ie
 
@@ -38,6 +40,8 @@ riverctl map normal Super Down  focus-view down
 
 riverctl map normal Alt       Tab focus-view next
 riverctl map normal Alt+Shift Tab focus-view previous
+
+riverctl map normal Super Escape focus-previous-tags
 
 # Swap 
 riverctl map normal Super+Shift Left  swap left
@@ -103,6 +107,7 @@ riverctl declare-mode launch
 riverctl map normal Super l enter-mode launch
 
 riverctl map launch None w spawn 'riverctl enter-mode normal && firefox-wayland'
+riverctl map launch None f spawn 'riverctl enter-mode normal && nemo'
 riverctl map launch None c spawn 'riverctl enter-mode normal && foot calc'
 riverctl map launch None b spawn 'riverctl enter-mode normal && foot bluetuith'
 riverctl map launch None n spawn 'riverctl enter-mode normal && foot iwctl'
