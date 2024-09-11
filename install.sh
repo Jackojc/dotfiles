@@ -37,6 +37,7 @@ nix-env -iA \
 	nixpkgs.helix \
 	nixpkgs.jq \
 	nixpkgs.ncdu \
+	nixpkgs.dtrx \
 	nixpkgs.duf \
 	nixpkgs.fd \
 	nixpkgs.git \
