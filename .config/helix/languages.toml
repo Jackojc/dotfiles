@@ -1,6 +1,6 @@
 [language-server.clangd]
 command = "clangd"
-args = [ "-header-insertion=never" ]
+args = [ "-header-insertion=never", "--clang-tidy" ]
 
 [language-server.clang-format]
 command = "clang-format"
