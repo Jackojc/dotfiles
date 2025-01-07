@@ -62,6 +62,10 @@ riverctl map-pointer normal Super BTN_RIGHT resize-view
 riverctl map normal Super+Shift Space toggle-float
 riverctl map normal Super Space zoom
 
+# Multimonitor
+riverctl map normal Super+Shift bracketleft send-to-output prev
+riverctl map normal Super+Shift bracketright send-to-output next
+
 ### TODO
 # - Map screenshot tool
 # - Map launcher
