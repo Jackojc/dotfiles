@@ -67,7 +67,7 @@ HISTFILESIZE=-1
 HISTCONTROL="erasedups:ignoreboth"
 HISTIGNORE="&:[ ]*:exit:ls:l:la:ll:lal:lt:l.:jump:goto:z:s:bg:fg:history:clear:c"
 
-PROMPT_COMMAND="history -a; history -c; history -r; "  # Append history after every command.
+PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 
 stty -ixon
 
