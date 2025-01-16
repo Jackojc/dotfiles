@@ -2,6 +2,8 @@
 
 [[ $- != *i* ]] && return
 
+. "${HOME}/.bashrc-local"  # System-local configs
+
 export LC_ALL="C"
 
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"

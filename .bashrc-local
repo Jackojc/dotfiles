@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+# Set system local environment variables and such
+# here and it will be sourced by parent bashrc.
+
+
