@@ -1,9 +1,9 @@
-theme = "nightfox"
+theme = "ayu_dark"
 
 [editor]
 line-number = "relative"
 bufferline = "multiple"  # show tabs when muliple buffers
-end-of-line-diagnostics = "hint"
+end-of-line-diagnostics = "disable"
 
 text-width = 120
 rulers = [80, 120]
@@ -39,14 +39,14 @@ enable = true
 display-inlay-hints = true
 
 [editor.inline-diagnostics]
-cursor-line = "warning"
+cursor-line = "hint"
 other-lines = "error"
 
 [editor.search]
 smart-case = false
 
 [editor.statusline]
-left = ["selections", "mode", "file-modification-indicator", "read-only-indicator", "spinner"]
+left = ["selections", "mode", "spacer", "file-modification-indicator", "read-only-indicator", "spinner"]
 center = ["file-name", "read-only-indicator"]
 right = ["diagnostics", "file-type", "separator", "position", "position-percentage", "spacer"]
 
