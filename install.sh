@@ -43,7 +43,9 @@ nix-env -iA \
 	nixpkgs.git \
 	nixpkgs.delta \
 	nixpkgs.difftastic \
-	nixpkgs.mdsh
+	nixpkgs.mdsh \
+	nixpkgs.slides \
+	nixpkgs.cmake
 
 # Make necessery directories if they don't exist
 log "mkdir xdg directories"
