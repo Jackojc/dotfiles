@@ -4,6 +4,7 @@
 
 . "${HOME}/.bashrc-local"  # System-local configs
 
+export TERM="screen-256color"
 export LC_ALL="C"
 
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
