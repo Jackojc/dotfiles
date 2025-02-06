@@ -100,7 +100,7 @@ HISTCONTROL="erasedups:ignoreboth"
 HISTIGNORE="&:[ ]*:exit:ls:l:la:ll:lal:lt:l.:jump:goto:z:s:bg:fg:history:clear:c"
 HISTTIMEFORMAT='%F %T '
 
-export PROMPT_COMMAND='history -a ; ${PROMPT_COMMAND} ; echo -ne "\033]0;${PWD##*/}\007"'
+PROMPT_COMMAND='history -a; '
 
 stty -ixon
 
@@ -112,8 +112,8 @@ shopt -s cmdhist
 shopt -s autocd
 shopt -s dirspell
 shopt -s cdspell
-# shopt -s cdable_vars
 shopt -s expand_aliases
+# shopt -s cdable_vars
 
 set -o noclobber  # Don't overwrite files on redirection
 
