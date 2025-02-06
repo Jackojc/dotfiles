@@ -35,31 +35,60 @@ export GOPATH="${XDG_DATA_HOME}/go"
 export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 
 # Colours
-RESET="$(tput sgr0)"
+if tput setaf 1 &> /dev/null; then
+	tput sgr0
 
-COLOUR_BLACK="$(tput setaf 0)" 
-COLOUR_RED="$(tput setaf 1)" 
-COLOUR_GREEN="$(tput setaf 2)" 
-COLOUR_YELLOW="$(tput setaf 3)" 
-COLOUR_BLUE="$(tput setaf 4)" 
-COLOUR_MAGENTA="$(tput setaf 5)" 
-COLOUR_CYAN="$(tput setaf 6)" 
-COLOUR_WHITE="$(tput setaf 7)" 
+	if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
+		MAGENTA=$(tput setaf 9)
+		ORANGE=$(tput setaf 172)
+		GREEN=$(tput setaf 190)
+		PURPLE=$(tput setaf 141)
 
+	else
+		MAGENTA=$(tput setaf 5)
+		ORANGE=$(tput setaf 4)
+		GREEN=$(tput setaf 2)
+		PURPLE=$(tput setaf 1)
+	fi
+
+	BOLD=$(tput bold)
+	RESET=$(tput sgr0)
+
+else
+	MAGENTA="\033[1;31m"
+	ORANGE="\033[1;33m"
+	GREEN="\033[1;32m"
+	PURPLE="\033[1;35m"
+
+	BOLD=""
+	RESET="\033[m"
+fi
+
+export MAGENTA
+export ORANGE
+export GREEN
+export PURPLE
+
+export BOLD
+export RESET
 
 # Prompt
-function branch() {  # Print current git branch if inside a git repo
-	git branch 2> /dev/null | rg -o '\* (.+)' --replace '$1 '
+function parse_git_dirty() {
+	[[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+}
+
+function parse_git_branch() {
+	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
 if [ "$EUID" -ne 0 ]; then  # User
-	export PS1='\[${COLOUR_MAGENTA}\]\W\[${COLOUR_YELLOW}\] $(branch)\[${RESET}\]$ '
+	export PS1="\[${MAGENTA}\]\u\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] $\[$RESET\] "
+
 else  # Root
-	export PS1='\[${COLOUR_RED}\]\W\[${COLOUR_YELLOW}\] $(branch)\[${RESET}\]# '
+	export PS1="\[${MAGENTA}\]\u\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] #\[$RESET\] "
 fi
 
-export PS2='| \[${COLOUR_CYAN}\]=>\[${RESET}\] '
-
+export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 # Settings
 PROMPT_DIRTRIM=3
@@ -69,27 +98,34 @@ HISTSIZE=-1
 HISTFILESIZE=-1
 HISTCONTROL="erasedups:ignoreboth"
 HISTIGNORE="&:[ ]*:exit:ls:l:la:ll:lal:lt:l.:jump:goto:z:s:bg:fg:history:clear:c"
+HISTTIMEFORMAT='%F %T '
 
-PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
+export PROMPT_COMMAND='history -a ; ${PROMPT_COMMAND} ; echo -ne "\033]0;${PWD##*/}\007"'
 
 stty -ixon
 
-shopt -s checkwinsize
-shopt -s globstar
+shopt -s checkwinsize   # Update window size
+shopt -s globstar   # Recursive globbing
 shopt -s nocaseglob
 shopt -s histappend
 shopt -s cmdhist
 shopt -s autocd
 shopt -s dirspell
 shopt -s cdspell
-shopt -s cdable_vars
+# shopt -s cdable_vars
 shopt -s expand_aliases
+
+set -o noclobber  # Don't overwrite files on redirection
 
 bind Space:magic-space
 
-bind "set completion-ignore-case on"
-bind "set show-all-if-ambiguous on"
-bind "set mark-symlinked-directories on"
+bind "set completion-map-case on"    # Treat hyphens and underscore as equivalent
+bind "set completion-ignore-case on"    # Case insensitive path completion
+bind "set show-all-if-ambiguous on"   # Display matches on first tab press
+bind "set mark-symlinked-directories on"  # Add trailing slash when completing symlinks to directories
+bind "set visible-stats on"   # Add symbol to denote file type in completion
+bind "set colored-stats on"  # Colour completions based on file type
+bind "set page-completions off"   # Disable builtin pager
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
@@ -111,7 +147,6 @@ function cm() {  # Make directory and cd into it.
 		cd "$1" 2> /dev/null
 }
 
-
 # Aliases
 alias ~='cd $HOME'
 alias ..='cd ..'
@@ -121,7 +156,6 @@ alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 alias ..5='cd ../../../../..'
 
-
 # Sane flags
 alias mkdir="mkdir -pv"
 alias cp="cp -iva"
@@ -129,7 +163,6 @@ alias mv="mv -iv"
 alias rm="rm -vI"
 alias qmv="qmv -fdo"
 alias ip="ip -c"
-
 
 # Alternatives
 alias ls="eza --group-directories-first"
@@ -139,11 +172,9 @@ alias du="dust"
 alias du="duf"
 alias ping="gping"
 
-
 # # Shortened
 alias c="clear"
 alias e="hx"
-
 
 # Git aliases
 alias gc="git commit"
