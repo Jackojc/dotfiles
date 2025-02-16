@@ -3,6 +3,7 @@
 [[ $- != *i* ]] && return
 
 . "${HOME}/.bashrc-local"  # System-local configs
+. "git-prompt"  # System-local configs
 
 export TERM="screen-256color"
 export LC_ALL="C"
@@ -38,18 +39,10 @@ export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 if tput setaf 1 &> /dev/null; then
 	tput sgr0
 
-	if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-		MAGENTA=$(tput setaf 9)
-		ORANGE=$(tput setaf 172)
-		GREEN=$(tput setaf 190)
-		PURPLE=$(tput setaf 141)
-
-	else
-		MAGENTA=$(tput setaf 5)
-		ORANGE=$(tput setaf 4)
-		GREEN=$(tput setaf 2)
-		PURPLE=$(tput setaf 1)
-	fi
+	MAGENTA=$(tput setaf 5)
+	ORANGE=$(tput setaf 4)
+	GREEN=$(tput setaf 2)
+	PURPLE=$(tput setaf 1)
 
 	BOLD=$(tput bold)
 	RESET=$(tput sgr0)
@@ -73,21 +66,25 @@ export BOLD
 export RESET
 
 # Prompt
-function parse_git_dirty() {
-	[[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
-}
+# function parse_git_dirty() {
+# 	[[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
+# }
 
-function parse_git_branch() {
-	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
-}
+# function parse_git_branch() {
+# 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
+# }
 
-if [ "$EUID" -ne 0 ]; then  # User
-	export PS1="\[${MAGENTA}\]\u@\h\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] $\[$RESET\] "
+# if [ "$EUID" -ne 0 ]; then  # User
+# 	export PS1="\[${MAGENTA}\]\u@\h\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] $\[$RESET\] "
 
-else  # Root
-	export PS1="\[${MAGENTA}\]\u@\h\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] #\[$RESET\] "
-fi
+# else  # Root
+# 	export PS1="\[${MAGENTA}\]\u@\h\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] #\[$RESET\] "
+# fi
 
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_STATESEPARATOR=''
+
+export PS1="\[$BOLD\]\[$MAGENTA\]\u@\h\[$RESET\] \[$GREEN\]\w\[$PURPLE\]\$(__git_ps1 ' %s')\[$RESET\] $\[$RESET\] "
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 # Settings
