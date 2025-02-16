@@ -82,10 +82,10 @@ function parse_git_branch() {
 }
 
 if [ "$EUID" -ne 0 ]; then  # User
-	export PS1="\[${MAGENTA}\]\u\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] $\[$RESET\] "
+	export PS1="\[${MAGENTA}\]\u@\h\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] $\[$RESET\] "
 
 else  # Root
-	export PS1="\[${MAGENTA}\]\u\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] #\[$RESET\] "
+	export PS1="\[${MAGENTA}\]\u@\h\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] #\[$RESET\] "
 fi
 
 export PS2="\[$ORANGE\]→ \[$RESET\]"
