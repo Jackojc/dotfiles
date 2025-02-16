@@ -1,3 +1,6 @@
+[include]
+	path = ~/.gitconfig-local
+
 [core]
 	autocrlf = input
 	pager = delta
@@ -8,10 +11,6 @@
 
 
 # Credentials
-[user]
-	name = Jack Clarke
-	email = jackojc@gmail.com
-	signingKey = 28981540EECCCFE2
 [credential]
 	helper = store
 [gpg]
@@ -30,6 +29,7 @@
 # Commands
 [pull]
 	rebase = true   # Rebase when pulling if origin is ahead.
+	default = current
 [push]
 	default = current  # Automatically push to remote branch of same name
 [rebase]
@@ -54,6 +54,8 @@
 [commit]
 	gpgSign = true
 	verbose = true
+[submodule]
+	recurse = true
 
 
 # Tools
@@ -72,7 +74,7 @@
 	pretty = oneline
 [filter "lfs"]
 	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+	smudge = git-lfs smudge --skip -- %f
+	process = git-lfs filter-process --skip
 	required = true
 
