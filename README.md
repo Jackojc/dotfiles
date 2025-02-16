@@ -15,8 +15,8 @@ It is probably best to untrack these files after making local
 alterations.
 
 ```
-$ git update-index --no-assume-unchanged ~/.gitconfig-local 
-$ git update-index --no-assume-unchanged ~/.bashrc-local 
+$ git update-index --skip-worktree ~/.gitconfig-local 
+$ git update-index --skip-worktree ~/.bashrc-local 
 ```
 
 # requirements
