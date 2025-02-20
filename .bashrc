@@ -2,9 +2,6 @@
 
 [[ $- != *i* ]] && return
 
-. "${HOME}/.bashrc-local"  # System-local configs
-. "git-prompt"  # System-local configs
-
 export TERM="screen-256color"
 export LC_ALL="C"
 
@@ -83,6 +80,8 @@ export RESET
 # else  # Root
 # 	export PS1="\[${MAGENTA}\]\u@\h\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] #\[$RESET\] "
 # fi
+
+. "git-prompt"  # System-local configs
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_STATESEPARATOR=''
@@ -184,3 +183,5 @@ alias gd="git diff"
 alias gds="git diff --staged"
 alias ga="git add"
 alias gl="git log"
+
+. "${HOME}/.bashrc-local"  # System-local configs
