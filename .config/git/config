@@ -4,10 +4,21 @@
 [core]
 	autocrlf = input
 	pager = delta
+	fsmonitor = true
+	untrackedCache = true
 [color]
 	ui = true
 [help]
 	autocorrect = prompt  # Asks to run auto-correct version of misspelled command.
+[column]
+	ui = auto   # Break lists into multiple columns
+
+
+# Difftastic
+[difftool "difftastic"]
+	cmd = difft "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"
+[difftool]
+	prompt = false
 
 
 # Credentials
@@ -32,17 +43,22 @@
 	default = current
 [push]
 	default = current  # Automatically push to remote branch of same name
+	autoSetupRemote = true
+	followTags = true
 [rebase]
-	autosquash = true
-	autostash = true
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [merge]
-	tool = meld
+	tool = difftastic
 	conflictstyle = zdiff3  # Better diffs
 [diff]
-	colorMoved = default
+	colorMoved = plain    # Show moved lines in a different colour
 	algorithm = histogram
 	submodule = log
 	tool = difftastic  # Better diffs, syntax aware
+	renames = true
+	mnemonicPrefix = true
 [log]
 	abbrevCommit = true
 [init]
@@ -50,7 +66,9 @@
 [status]
 	submoduleSummary = true
 [branch]
-	sort = committerdate
+	sort = -committerdate   # Order branches by most recent commit date
+[tag]
+	sort = version:refname   # Order tags by version rather than by alpha
 [commit]
 	gpgSign = true
 	verbose = true
@@ -59,8 +77,11 @@
 
 
 # Tools
+[pager]
+	difftool = true
 [rerere]
 	enabled = true
+	autoupdate = true
 [mergetool]
 	prompt = false
 [interactive]
