@@ -1,5 +1,41 @@
 #!/usr/bin/env sh
 
-# requires aspell and english dictionary
+MAX_WORD_LENGTH=6
+MIN_WORD_LENGTH=1
 
-aspell -d en dump master | aspell -l en expand | python3 -c "import random, sys; print(*(x.strip() for x in random.sample(list(sys.stdin), ${1:-10})))"
+MAX_SENTENCE_LENGTH=13
+MIN_SENTENCE_LENGTH=3
+
+SENTENCES=${1:-3}
+
+aspell -d en dump master | aspell -l en expand | python3 -c "
+import random
+import sys
+
+def is_valid(s):
+	 return ${MIN_WORD_LENGTH} <= len(s) <= ${MAX_WORD_LENGTH}
+
+words = list((x.strip().lower() for x in sys.stdin if is_valid(x)))
+
+def make_sentence(words):
+	count = random.randint(
+		${MIN_SENTENCE_LENGTH},
+		${MAX_SENTENCE_LENGTH})
+
+	sentence = random.choices(words, k = count)
+	punct = random.choice('!?.')
+
+	if random.getrandbits(1):  # Add comma
+		index = random.randint(1, len(sentence) - 1)
+
+		before = ' '.join(sentence[:index])
+		after = ' '.join(sentence[index:])
+
+		return before + ', ' + after + punct
+
+	return ' '.join(sentence) + punct
+
+print(' '.join(
+	(make_sentence(words).capitalize() for _ in range(${SENTENCES}))))
+
+"
