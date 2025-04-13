@@ -14,13 +14,13 @@ settings and variables.
 It is probably best to untrack these files after making local
 alterations.
 
-```
-$ git update-index --skip-worktree ~/.gitconfig-local 
-$ git update-index --skip-worktree ~/.bashrc-local 
+```sh
+$ git update-index --skip-worktree .gitconfig-local   # From project root
+$ git update-index --skip-worktree .bashrc-local 
 ```
 
 # requirements
-```
+```sh
 xz   # To unpack nixos tarball
 wget/curl
 shasum/sha256sum/openssl
