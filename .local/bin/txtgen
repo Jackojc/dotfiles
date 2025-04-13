@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+# requires aspell and english dictionary
+
+aspell -d en dump master | aspell -l en expand | python3 -c "import random, sys; print(*(x.strip() for x in random.sample(list(sys.stdin), ${1:-10})))"
