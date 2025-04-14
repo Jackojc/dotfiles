@@ -28,7 +28,7 @@ export TERMINFO_DIRS="${XDG_DATA_HOME}/terminfo:/usr/share/terminfo"
 
 export MANROFFOPT='-c'
 export PAGER='less'
-export MANPAGER="batpager"
+export MANPAGER="tool-batpager"
 
 # Program directories
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
@@ -67,22 +67,7 @@ export BOLD
 export RESET
 
 # Prompt
-# function parse_git_dirty() {
-# 	[[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "*"
-# }
-
-# function parse_git_branch() {
-# 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
-# }
-
-# if [ "$EUID" -ne 0 ]; then  # User
-# 	export PS1="\[${MAGENTA}\]\u@\h\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] $\[$RESET\] "
-
-# else  # Root
-# 	export PS1="\[${MAGENTA}\]\u@\h\[$RESET\] \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\] #\[$RESET\] "
-# fi
-
-. "git-prompt"  # System-local configs
+. "tool-git-prompt"  # System-local configs
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_STATESEPARATOR=''
@@ -113,7 +98,6 @@ shopt -s autocd
 shopt -s dirspell
 shopt -s cdspell
 shopt -s expand_aliases
-# shopt -s cdable_vars
 
 set -o noclobber  # Don't overwrite files on redirection
 
@@ -145,6 +129,14 @@ function has() {  # Check if program exists
 function cm() {  # Make directory and cd into it.
 	mkdir "$1" 2> /dev/null && \
 		cd "$1" 2> /dev/null
+}
+
+function goto() {
+	cd "$(tool-goto-dir)"
+}
+
+function fe() {
+	cd "$(tool-find-edit)"
 }
 
 # Aliases
