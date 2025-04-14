@@ -32,6 +32,12 @@ riverctl input '*' pointer-accel 0
 riverctl input '*' natural-scroll disabled
 riverctl input '*' scroll-factor 1
 
+riverctl input '*TrackPad*' tap enabled
+riverctl input '*TrackPad*' disable-while-typing enabled
+
+riverctl input '*TrackPoint*' pointer-accel 2
+riverctl input '*TrackPoint*' flat
+
 # Focus
 riverctl map normal Super Left  focus-view left
 riverctl map normal Super Right focus-view right
