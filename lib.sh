@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Constants
 HOMEDIR=$(getent passwd jack | cut -d: -f6)
