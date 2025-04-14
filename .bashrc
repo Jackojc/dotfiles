@@ -14,6 +14,8 @@ export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 export PATH="${XDG_BIN_HOME}:${PATH}"
 export GPG_TTY=$(tty)
 
+# eval "$(ssh-agent -s)"
+
 # Use XDG directories for configs
 mkdir -p "${XDG_DATA_HOME}/bash/" && touch "${XDG_DATA_HOME}/bash/history"
 
