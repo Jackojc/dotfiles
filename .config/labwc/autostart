@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+dbus-update-activation-environment --all >/dev/null 2>&1 &
+
+pipewire         >/dev/null 2>&1 &
+waybar           >/dev/null 2>&1 &
+mako             >/dev/null 2>&1 &
+river-wallpaper  >/dev/null 2>&1 &
+
+$(tail -f "${WOBSOCK}" | wob)  >/dev/null 2>&1 &
+
+swayidle -w \
+	timeout 600 'wlopm --off \*' \
+	resume      'wlopm --on  \*'  >/dev/null 2>&1 &
