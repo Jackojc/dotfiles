@@ -6,6 +6,14 @@ An attempt to manage my dotfiles across an axis of multiple machines and multipl
 Setup system local configuration in `~/.gitconfig-local` such as
 user credentials or proxy configs on corporate networks.
 
+### ssh (with git)
+> Make sure to add public key to GitHub to allow pushing/pulling etc.
+```sh
+$ ssh-keygen -t ed25519 -C "me@mail.com"
+$ eval "$(ssh-agent -s)"      # Optionally add to ssh-agent or just add to ssh config.
+$ ssh-add ~/.ssh/id_ed25519
+```
+
 ### bash
 There is a file `~/.bashrc-local` for setting up system local
 settings and variables.
