@@ -57,6 +57,9 @@ mode.select = "select"
 [keys.normal."space"]  # Usermode
 x = ":buffer-close"
 
+F = "file_picker_in_current_directory"
+f = "file_picker"
+
 [keys.insert]
 S-tab = "move_parent_node_start"
 
