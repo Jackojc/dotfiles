@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
 # General
-export LC_ALL="en_IE.UTF-8"
+# export LC_ALL="en_IE.UTF-8"
+export LC_ALL="C.UTF-8"
 
 HOMEDIR=$(getent passwd $(whoami) | cut -d: -f6)
 export HOME="${HOME:-$HOMEDIR}"
