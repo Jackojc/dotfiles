@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Tiling
-riverctl output-layout rivertile
+# riverctl output-layout rivertile
 
 # General
 riverctl border-width 1
