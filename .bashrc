@@ -3,7 +3,7 @@
 [[ $- != *i* ]] && return
 
 export TERM="screen-256color"
-export LC_ALL="C"
+export LC_ALL="C.UTF-8"
 
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -159,7 +159,7 @@ alias qmv="qmv -fdo"
 alias ip="ip -c"
 
 # Alternatives
-alias ls="eza --group-directories-first"
+alias ls="eza --group-directories-first -X"
 alias cat="bat"
 alias hexdump="hexyl"
 alias du="dust"
