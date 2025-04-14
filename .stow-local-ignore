@@ -26,5 +26,7 @@ _darcs
 \notes
 \scripts
 
-install.sh
+nix.sh
+stow.sh
+mkdirs.sh
 lib.sh
