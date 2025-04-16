@@ -152,14 +152,14 @@ alias ..5='cd ../../../../..'
 
 # Sane flags
 alias mkdir="mkdir -pv"
-alias cp="cp -iva"
+alias cp="cp -ivaL"
 alias mv="mv -iv"
 alias rm="rm -vI"
 alias qmv="qmv -fdo"
 alias ip="ip -c"
 
 # Alternatives
-alias ls="eza --group-directories-first -X"
+alias ls="eza --group-directories-first --dereference --classify"
 alias cat="bat"
 alias hexdump="hexyl"
 alias du="dust"
@@ -169,6 +169,7 @@ alias ping="gping"
 # # Shortened
 alias c="clear"
 alias e="hx"
+alias chux="chmod u+x"
 
 # Git aliases
 alias gc="git commit"
