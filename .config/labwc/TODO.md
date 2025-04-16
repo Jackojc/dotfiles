@@ -1,0 +1,22 @@
+# TODO
+- differences between frame/client
+- differences between title/titlebar
+- differences between action=press action=click
+- pipe menus
+- how to authenticate to run tasks as root from menu
+- menu separators
+- menu labels (without function)
+- window rules
+- more ways to tile (?)
+- better navigation between windows
+
+- restrict alt-tab to current display if possible
+- keybinds to shrink size
+- moving window to smaller display makes it go off screen edges (can we set an action to set its size?)
+- xfce panel
+- keep-running script which checks if something is running and then loops
+- vertically/horizontally locked resize with mouse
+- fix pass through of w-tab for w-s-tab
+- snap-to-edge, can we make it snap to remaining space instead of always 50% (maybe we can also highlight this way too)
+- fix snapping to window edge across displays
+- mouse scroll resize

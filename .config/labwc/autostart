@@ -1,14 +1,18 @@
 #!/usr/bin/env sh
 
-dbus-update-activation-environment --all >/dev/null 2>&1 &
+# Launch daemons
+
+dbus-update-activation-environment --all
 
 pipewire         >/dev/null 2>&1 &
-waybar           >/dev/null 2>&1 &
+# waybar           >/dev/null 2>&1 &
+xfce4-panel      >/dev/null 2>&1 &
 mako             >/dev/null 2>&1 &
-river-wallpaper  >/dev/null 2>&1 &
+tool-wallpaper   >/dev/null 2>&1 &
 
 $(tail -f "${WOBSOCK}" | wob)  >/dev/null 2>&1 &
 
-swayidle -w \
-	timeout 600 'wlopm --off \*' \
-	resume      'wlopm --on  \*'  >/dev/null 2>&1 &
+# causes issues with display port monitors
+# swayidle -w \
+# 	timeout 600 'wlopm --off \*' \
+# 	resume      'wlopm --on  \*'  >/dev/null 2>&1 &
