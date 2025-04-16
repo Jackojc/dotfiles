@@ -6,7 +6,7 @@ riverctl spawn 'dbus-update-activation-environment --all'
 riverctl spawn pipewire  # Automatically launches wireplumber
 riverctl spawn waybar
 riverctl spawn mako
-riverctl spawn river-wallpaper
+riverctl spawn tool-wallpaper
 
 riverctl spawn "tail -f ${WOBSOCK} | wob"
 

@@ -8,7 +8,7 @@ fi
 WALL="$(fd . $DIR_WALLPAPERS -tf | shuf --head-count=1)"
 IDS="$(pgrep --delimiter ' ' wbg)"
 
-riverctl spawn "wbg ${WALL}"
+wbg "${WALL}" &
 
 if [ ! -z "$IDS" ]; then
 	sleep 1 && kill $IDS

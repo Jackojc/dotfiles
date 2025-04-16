@@ -131,7 +131,7 @@ riverctl map normal Super t enter-mode tool
 riverctl map tool None n spawn 'riverctl enter-mode normal && prompt_notes'
 riverctl map tool None s spawn 'riverctl enter-mode normal && prompt_stickers'
 riverctl map tool None u spawn 'riverctl enter-mode normal && prompt_usb'
-riverctl map tool None w spawn river-wallpaper
+riverctl map tool None w spawn tool-wallpaper
 
 riverctl map tool None Escape enter-mode normal
 
