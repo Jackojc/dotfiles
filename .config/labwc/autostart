@@ -9,6 +9,7 @@ pipewire         >/dev/null 2>&1 &
 xfce4-panel      >/dev/null 2>&1 &
 mako             >/dev/null 2>&1 &
 tool-wallpaper   >/dev/null 2>&1 &
+lxqt-policykit-agent >/dev/null 2>&1 &
 
 $(tail -f "${WOBSOCK}" | wob)  >/dev/null 2>&1 &
 

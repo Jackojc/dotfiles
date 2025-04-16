@@ -5,14 +5,28 @@
     <item label="minimize">
       <action name="Iconify" />
     </item>
+
     <item label="maximize">
       <action name="ToggleMaximize" />
     </item>
+
     <item label="fullscreen">
       <action name="ToggleFullscreen" />
     </item>
 
-    <separator/>
+    <separator />
+
+    <menu id="decorations-menu" label="decorations">
+      <item label="on">
+        <action name="SetDecorations" decorations="all" />
+      </item>
+
+      <item label="off">
+        <action name="SetDecorations" decorations="border" />
+      </item>
+    </menu>
+
+    <seperator />
 
     <item label="always on top">
       <action name="ToggleAlwaysOnTop" />
@@ -22,7 +36,7 @@
       <action name="ToggleOmnipresent" />
     </item>
 
-    <separator/>
+    <separator />
 
     <item label="quit">
       <action name="Close" />
@@ -33,24 +47,76 @@
     <item label="reconfigure">
       <action name="execute" command="labwc-reload" />
     </item>
-    <item label="quit">
-      <action name="execute" command="labwc-quit" />
+
+    <item label="wallpaper">
+      <action name="execute" command="tool-wallpaper" />
     </item>
 
-    <separator/>
+    <seperator />
+
+    <!-- <menu id="tools-menu"      label="tools"      execute="menu-tools" /> -->
+    <!-- <menu id="notes-menu"      label="notes"      execute="menu-notes" /> -->
+    <!-- <menu id="stickers-menu"   label="stickers"   execute="menu-stickers" /> -->
+    <!-- <menu id="usb-menu"        label="usb"        execute="menu-usb" /> -->
+    <!-- <menu id="screenshot-menu" label="screenshot" execute="menu-screenshot" /> -->
+
+    <separator />
 
     <item label="suspend">
       <action name="execute" command="loginctl suspend" />
     </item>
-    <item label="reboot">
-      <action name="execute" command="loginctl reboot" />
+
+    <menu id="power-menu" label="power">
+      <item label="reboot">
+        <action name="execute" command="loginctl reboot" />
+      </item>
+
+      <item label="reboot (to windows)">
+        <action name="execute" command="tool-rbwin" />
+      </item>
+
+      <item label="reboot (setup/uefi)">
+        <action name="execute" command="loginctl reboot --firmware-setup" />
+      </item>
+
+      <item label="poweroff">
+        <action name="execute" command="loginctl poweroff" />
+      </item>
+    </menu>
+
+    <separator />
+
+    <item label="quit">
+      <action name="execute" command="labwc-quit" />
     </item>
-    <item label="reboot (setup)">
-      <action name="execute" command="loginctl reboot --firmware-setup" />
-    </item>
-    <item label="poweroff">
-      <action name="execute" command="loginctl poweroff" />
-    </item>
+  </menu>
+
+  <menu id="launcher-menu">
+      <seperator label="graphical" />
+      
+      <item label="web">
+        <action name="execute" command="firefox-wayland" />
+      </item>
+
+      <item label="files">
+        <action name="execute" command="nemo" />
+      </item>
+
+      <seperator label="terminal" />
+
+      <item label="calc">
+        <action name="execute" command="foot tool-calc" />
+      </item>
+
+      <seperator label="utils" />
+
+      <item label="wifi">
+        <action name="execute" command="foot iwctl" />
+      </item>
+
+      <item label="bluetooth">
+        <action name="execute" command="foot bluetuith" />
+      </item>
   </menu>
 
 </openbox_menu>

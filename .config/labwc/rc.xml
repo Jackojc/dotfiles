@@ -36,6 +36,12 @@
     </overlay>
   </snapping>
 
+  <windowRules>
+    <windowRule identifier="firefox">
+      <action name="SetDecorations" decorations="border" />
+    </windowRule>
+  </windowRules>
+
   <regions>
     <!-- CENTRE -->
     <region name="center" x="9%" y="16%" height="68%" width="82%" />
@@ -76,10 +82,13 @@
     <repeatRate>25</repeatRate>
     <repeatDelay>250</repeatDelay>
 
-    <!-- SHOW ROOT MENU -->
+    <!-- SHOW MENUS -->
     <keybind key="W-S-Tab">
-        <action name="Execute" command="bemenu-run" />
         <action name="ShowMenu" menu="root-menu" />
+    </keybind>
+
+    <keybind key="W-l">
+        <action name="ShowMenu" menu="launcher-menu" />
     </keybind>
 
     <!-- BEMENU -->
@@ -154,18 +163,22 @@
     <!-- WINDOW SNAPPING TO CORNERS -->
     <keybind key="W-S-1">
       <action name="ToggleSnapToRegion" region="top-left-corner" />
+      <action name="ToggleAlwaysOnTop" />
     </keybind>
 
     <keybind key="W-S-2">
       <action name="ToggleSnapToRegion" region="top-right-corner" />
+      <action name="ToggleAlwaysOnTop" />
     </keybind>
 
     <keybind key="W-S-3">
       <action name="ToggleSnapToRegion" region="bottom-left-corner" />
+      <action name="ToggleAlwaysOnTop" />
     </keybind>
 
     <keybind key="W-S-4">
       <action name="ToggleSnapToRegion" region="bottom-right-corner" />
+      <action name="ToggleAlwaysOnTop" />
     </keybind>
 
     <!-- WINDOW MOVE TO EDGES -->
@@ -283,11 +296,11 @@
 
       <!-- SCROLL RESIZE -->
 			<mousebind direction="W-Down" action="Scroll">
-				<action name="ResizeRelative" left="-8%" right="-8%" top="-8%" bottom="-8%" />
+				<action name="ResizeRelative" left="-16%" right="-16%" top="-9%" bottom="-9%" />
 			</mousebind>
 
 			<mousebind direction="W-Up" action="Scroll">
-				<action name="ResizeRelative" left="8%" right="8%" top="8%" bottom="8%" />
+				<action name="ResizeRelative" left="16%" right="16%" top="9%" bottom="9%" />
 			</mousebind>
     </context>
 
@@ -324,10 +337,6 @@
       <mousebind button="Left" action="Drag">
         <action name="Move" />
       </mousebind>
-
-      <!-- <mousebind button="Left" action="DoubleClick"> -->
-        <!-- <action name="ToggleMaximize" /> -->
-      <!-- </mousebind> -->
 
       <mousebind button="Right" action="Click">
         <action name="ShowMenu" menu="client-menu" />
