@@ -102,6 +102,14 @@
         <action name="execute" command="nemo" />
       </item>
 
+      <item label="pavucontrol">
+        <action name="execute" command="pavucontrol" />
+      </item>
+
+      <item label="qpwgraph">
+        <action name="execute" command="qpwgraph" />
+      </item>
+
       <seperator label="terminal" />
 
       <item label="calc">
