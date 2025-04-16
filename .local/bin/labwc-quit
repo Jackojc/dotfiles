@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+# kill -s SIGTERM "${LABWC_PID}"
+labwc --exit
