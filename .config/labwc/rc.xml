@@ -1,29 +1,17 @@
 <?xml version="1.0"?>
 <labwc_config>
 
-  <core>
-    <adaptiveSync>yes</adaptiveSync>  <!-- FreeSync/GSync -->
-    <allowTearing>fullscreen</allowTearing>  <!-- Allow tearing if fullscreen and client requests it -->
-    <reuseOutputMode>yes</reuseOutputMode>  <!-- Try to reuse existing output mode when launching labwc -->
-  </core>
-
-  <libinput>
-    <device category="default">
-      <accelProfile>flat</accelProfile>
-    </device>
-  </libinput>
-
+  <core adaptiveSync="yes" allowTearing="fullscreen" reuseOutputMode="yes" />
   <focus raiseOnFocus="yes" />
   <resize popupShow="Always" />
   <placement policy="automatic" />
 
-  <theme>
-    <name></name>
+  <libinput>
+    <device category="default" accelProfile="flat" />
+  </libinput>
 
-    <cornerRadius>0</cornerRadius>
-    <keepBorder>yes</keepBorder>
-    <dropShadows>yes</dropShadows>
-
+  <theme cornerRadius="0" keepBorder="yes" dropShadows="yes">
+    <name>gnoblin-labwc</name>
     <font name="APL386 Unicode" size="12" />
     <titlebar layout="icon,shade:iconify,max,close" />
   </theme>
@@ -39,6 +27,12 @@
   <windowRules>
     <windowRule identifier="firefox">
       <action name="SetDecorations" decorations="border" />
+    </windowRule>
+
+    <windowRule identifier="lxqt-policykit-agent">
+      <action name="SetDecorations" decorations="border" />
+      <action name="ToggleAlwaysOnTop" />
+      <action name="AutoPlace" policy="center" />
     </windowRule>
   </windowRules>
 
@@ -65,8 +59,9 @@
 
   <windowSwitcher show="yes" preview="yes" outlines="yes" allWorkspaces="no">
     <fields>
-      <field content="desktop_entry_name" width="30%" />
-      <field content="title" width="65%" />
+      <field content="custom" format="%b %s" width="10%" />
+      <field content="trimmed_identifier" width="20%" />
+      <field content="title" width="70%" />
     </fields>
   </windowSwitcher>
 
@@ -233,46 +228,46 @@
     </keybind>
 
     <!-- VOLUME KEYS -->
-    <keybind key="XF86_AudioLowerVolume">
-      <action name="Execute" command="snd-volume-decr" allowWhenLocked="yes" />
+    <keybind key="XF86_AudioLowerVolume" allowWhenLocked="yes">
+      <action name="Execute" command="snd-volume-decr" />
     </keybind>
 
-    <keybind key="XF86_AudioRaiseVolume">
-      <action name="Execute" command="snd-volume-incr" allowWhenLocked="yes" />
+    <keybind key="XF86_AudioRaiseVolume" allowWhenLocked="yes">
+      <action name="Execute" command="snd-volume-incr" />
     </keybind>
 
-    <keybind key="XF86_AudioMute">
-      <action name="Execute" command="snd-speaker-toggle" allowWhenLocked="yes" />
+    <keybind key="XF86_AudioMute" allowWhenLocked="yes">
+      <action name="Execute" command="snd-speaker-toggle" />
     </keybind>
 
-    <keybind key="XF86_AudioMicMute">
-      <action name="Execute" command="snd-mic-toggle" allowWhenLocked="yes" />
+    <keybind key="XF86_AudioMicMute" allowWhenLocked="yes">
+      <action name="Execute" command="snd-mic-toggle" />
     </keybind>
 
     <!-- BRIGHTNESS KEYS -->
-    <keybind key="XF86_MonBrightnessUp">
-      <action name="Execute" command="brightnessctl set +5%" allowWhenLocked="yes" />
+    <keybind key="XF86_MonBrightnessUp" allowWhenLocked="yes">
+      <action name="Execute" command="brightnessctl set +5%" />
     </keybind>
 
-    <keybind key="XF86_MonBrightnessDown">
-      <action name="Execute" command="brightnessctl set 5%-" allowWhenLocked="yes" />
+    <keybind key="XF86_MonBrightnessDown" allowWhenLocked="yes">
+      <action name="Execute" command="brightnessctl set 5%-" />
     </keybind>
 
     <!-- MEDIA KEYS -->
-    <keybind key="XF86_AudioMedia">
-      <action name="Execute" command="playerctl play-pause" allowWhenLocked="yes" />
+    <keybind key="XF86_AudioMedia" allowWhenLocked="yes">
+      <action name="Execute" command="playerctl play-pause" />
     </keybind>
 
-    <keybind key="XF86_AudioPlay">
-      <action name="Execute" command="playerctl play-pause" allowWhenLocked="yes" />
+    <keybind key="XF86_AudioPlay" allowWhenLocked="yes">
+      <action name="Execute" command="playerctl play-pause" />
     </keybind>
 
-    <keybind key="XF86_AudioNext">
-      <action name="Execute" command="playerctl next" allowWhenLocked="yes" />
+    <keybind key="XF86_AudioNext" allowWhenLocked="yes">
+      <action name="Execute" command="playerctl next" />
     </keybind>
 
-    <keybind key="XF86_AudioPrev">
-      <action name="Execute" command="playerctl previous" allowWhenLocked="yes" />
+    <keybind key="XF86_AudioPrev" allowWhenLocked="yes">
+      <action name="Execute" command="playerctl previous" />
     </keybind>
 
   </keyboard>
@@ -296,10 +291,14 @@
 
       <!-- SCROLL RESIZE -->
 			<mousebind direction="W-Down" action="Scroll">
+        <action name="Focus" />
+        <action name="Raise" />
 				<action name="ResizeRelative" left="-16%" right="-16%" top="-9%" bottom="-9%" />
 			</mousebind>
 
 			<mousebind direction="W-Up" action="Scroll">
+        <action name="Focus" />
+        <action name="Raise" />
 				<action name="ResizeRelative" left="16%" right="16%" top="9%" bottom="9%" />
 			</mousebind>
     </context>
@@ -309,36 +308,43 @@
         <action name="Focus" />
         <action name="Raise" />
       </mousebind>
+
       <mousebind button="Middle" action="Press">
         <action name="Focus" />
         <action name="Raise" />
       </mousebind>
+
       <mousebind button="Right" action="Press">
         <action name="Focus" />
         <action name="Raise" />
       </mousebind>
     </context>
 
-
     <context name="TitleBar">  <!-- ENTIRE WINDOW DECORATION -->
       <!-- SHADE -->
       <mousebind direction="Up" action="Scroll">
+        <action name="Focus" />
+        <action name="Raise" />
         <action name="Shade" />
-        <action name="Unfocus" />
       </mousebind>
 
       <mousebind direction="Down" action="Scroll">
         <action name="Focus" />
+        <action name="Raise" />
         <action name="Unshade" />
       </mousebind>
     </context>
 
     <context name="Title">  <!-- WINDOW TITLE + BLANK SPACE (NOT INCLUDING BUTTONS) -->
       <mousebind button="Left" action="Drag">
+        <action name="Focus" />
+        <action name="Raise" />
         <action name="Move" />
       </mousebind>
 
       <mousebind button="Right" action="Click">
+        <action name="Focus" />
+        <action name="Raise" />
         <action name="ShowMenu" menu="client-menu" />
       </mousebind>
     </context>
@@ -346,6 +352,7 @@
     <context name="Desktop">  <!-- AKA ROOT -->
       <!-- SHOW ROOT MENU -->
       <mousebind button="Right" action="Click">
+        <action name="Unfocus" />
         <action name="ShowMenu" menu="root-menu" />
       </mousebind>
 
@@ -424,42 +431,56 @@
     <!-- WINDOW BUTTONS -->
     <context name="Maximize">
       <mousebind button="Left" action="Click">
+        <action name="Focus" />
+        <action name="Raise" />
         <action name="ToggleMaximize" />
       </mousebind>
     </context>
 
     <context name="WindowMenu">
       <mousebind button="Left" action="Click">
+        <action name="Focus" />
+        <action name="Raise" />
         <action name="ShowMenu" menu="client-menu" atCursor="no" />
       </mousebind>
     </context>
 
     <context name="Icon">
       <mousebind button="Right" action="Click">
+        <action name="Focus" />
+        <action name="Raise" />
         <action name="ShowMenu" menu="client-menu" atCursor="no" />
       </mousebind>
     </context>
 
     <context name="Shade">
       <mousebind button="Left" action="Click">
+        <action name="Focus" />
+        <action name="Raise" />
         <action name="ToggleShade" />
       </mousebind>
     </context>
 
     <context name="AllDesktops">
       <mousebind button="Left" action="Click">
+        <action name="Focus" />
+        <action name="Raise" />
         <action name="ToggleOmnipresent" />
       </mousebind>
     </context>
 
     <context name="Iconify">
       <mousebind button="Left" action="Click">
+        <action name="Focus" />
+        <action name="Raise" />
         <action name="Iconify" />
       </mousebind>
     </context>
 
     <context name="Close">
       <mousebind button="Left" action="Click">
+        <action name="Focus" />
+        <action name="Raise" />
         <action name="Close" />
       </mousebind>
     </context>
