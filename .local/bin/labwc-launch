@@ -77,12 +77,24 @@ export EZA_ICONS_AUTO=1
 
 # Fix wayland
 export MOZ_ENABLE_WAYLAND=1
-export QP_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORM=wayland   # Force Qt to use wayland
 export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+# theming
+export QT_QPA_PLATFORMTHEME=adwaita-dark
+export QT_STYLE_OVERRIDE=adwaita-dark
+export GTK_THEME=Adwaita:dark
+
 # wlroots config
 # see: https://github.com/swaywm/wlroots/blob/master/docs/env_vars.md
+# export WLR_BACKENDS=
+# export WLR_RENDER_DRM_DEVICE=
+export WLR_RENDERER=vulkan
+export WLR_RENDER_NO_EXPLICIT_SYNC=1
+export WLR_RENDERER_FORCE_SOFTWARE=0
+export WLR_EGL_NO_MODIFIERS=0
+export WLR_RENDERER_ALLOW_SOFTWARE=0
 export WLR_NO_HARDWARE_CURSORS=0
 export WLR_DRM_NO_ATOMIC=0
 export WLR_DRM_NO_MODIFIERS=0
@@ -98,11 +110,11 @@ export XKB_DEFAULT_LAYOUT=ie
 # export XCURSOR_THEME=capitaine-cursors-dark  # find /usr/share/icons/ -type d -name "cursors"
 
 # labwc debug
-export LABWC_DEBUG_LIBSFDO=0  # Looking up .desktop entries and such
-export LABWC_DEBUG_DIR_CONFIG_AND_THEME=0
-export LABWC_DEBUG_CONFIG_NODENAMES=0
-export LABWC_DEBUG_MENU_NODENAMES=0
-export LABWC_DEBUG_KEY_STATE=0
+# export LABWC_DEBUG_LIBSFDO=0  # Looking up .desktop entries and such
+# export LABWC_DEBUG_DIR_CONFIG_AND_THEME=0
+# export LABWC_DEBUG_CONFIG_NODENAMES=0
+# export LABWC_DEBUG_MENU_NODENAMES=0
+# export LABWC_DEBUG_KEY_STATE=0
 
 # Setup wob fifo
 export WOBSOCK="${XDG_RUNTIME_DIR}/wob.sock"
