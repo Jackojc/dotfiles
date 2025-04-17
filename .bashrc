@@ -138,7 +138,7 @@ function goto() {
 }
 
 function fe() {
-	cd "$(tool-find-edit)"
+	tool-find-edit
 }
 
 # Aliases
