@@ -5,10 +5,10 @@ args="$(echo "$@" | tr ' ' '|')"
 
 
 if [ -z "$args" ]; then
-	dir="$(fd -td | fzf)"
+	dir="$(fd --hidden -td | fzf)"
 
 else
-	dir="$(fd -td "($args)" | fzf)"
+	dir="$(fd --hidden -td "($args)" | fzf)"
 fi
 
 
