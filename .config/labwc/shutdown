@@ -2,11 +2,12 @@
 
 # Kill daemons on exit
 
-pkill pipewire
-pkill wireplumber
-pkill mako
-pkill wob
-pkill wbg
-pkill swayidle
-pkill waybar
+# pkill pipewire
+# pkill wireplumber
+# pkill mako
+# pkill wob
+# pkill wbg
+# pkill swayidle
+# pkill waybar
 
+pkill -f "${KILLME}"
