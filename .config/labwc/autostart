@@ -1,19 +1,12 @@
 #!/usr/bin/env sh
 
-# Launch daemons
-
 dbus-update-activation-environment --all
-
-pipewire         >/dev/null 2>&1 &
-# waybar           >/dev/null 2>&1 &
-xfce4-panel      >/dev/null 2>&1 &
-mako             >/dev/null 2>&1 &
-tool-wallpaper   >/dev/null 2>&1 &
-lxqt-policykit-agent >/dev/null 2>&1 &
 
 $(tail -f "${WOBSOCK}" | wob)  >/dev/null 2>&1 &
 
-# causes issues with display port monitors
-# swayidle -w \
-# 	timeout 600 'wlopm --off \*' \
-# 	resume      'wlopm --on  \*'  >/dev/null 2>&1 &
+exec -a "${KILLME}" "tool-keeprunning" \
+	'pipewire' \
+	'xfce4-panel' \
+	'mako' \
+	'tool-wallpaper' \
+	'lxqt-policykit-agent'
