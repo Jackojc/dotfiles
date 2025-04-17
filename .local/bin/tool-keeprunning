@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+[ "$#" -eq 0 ] && echo "usage: $(basename $0) <programs>" && exit 1
+
+# trap 'kill $(jobs -p)' EXIT
+trap 'trap - SIGTERM && kill 0' SIGINT SIGTERM EXIT
+
+keep-running() {
+	until $@; do
+	    echo "'$@' crashed ($?). restarting" >&2
+	    sleep 1
+	done
+}
+
+while [ $# -gt 0 ]; do
+    echo "launching '$1'" >&2
+	keep-running "$1" &
+	shift
+done
+
+echo "waiting" >&2
+
+wait

@@ -70,6 +70,9 @@ export BEMENU_OPTS="
 
 export BEMENU_BACKEND=wayland
 
+# KILLME name (daemon manager to kill on labwc exit)
+export KILLME="__KILLME"
+
 # eza/exa
 # export EZA_STRICT=0      # Error on conflicting options (same option specified multiple times)
 export EZA_GRID_ROWS=3   # For long grid view, have a minimum number of columns to activate

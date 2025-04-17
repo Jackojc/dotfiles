@@ -3,9 +3,9 @@
 args="$@"
 
 if [ -z "$args" ]; then
-	file="$(fd -tf | fzf)"
+	file="$(fd --hidden -tf | fzf)"
 else
-	file="$(fd -tf | fzf -q "$@")"
+	file="$(fd --hidden -tf | fzf -q "$@")"
 fi
 
 if [ -z "$file" ]; then
