@@ -38,6 +38,14 @@ export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 export GOPATH="${XDG_DATA_HOME}/go"
 export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 
+# Password manager
+export PASH_LENGTH="50"
+export PASH_PATTERN="_[:alnum:][:graph:]"
+export PASH_KEYID="jackojc@gmail.com"
+export PASH_DIR="$XDG_DATA_HOME/passwords"
+export PASH_CLIP='wl-copy'
+export PASH_TIMEOUT="6"
+
 # Colours
 if tput setaf 1 &> /dev/null; then
 	tput sgr0
