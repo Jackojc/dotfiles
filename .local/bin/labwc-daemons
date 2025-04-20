@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+dbus-update-activation-environment --all
+
+exec -a "${KILLME}" "tool-keeprunning" \
+	'swww-daemon' \
+	'xfce4-panel' \
+	'mako' \
+	'pipewire' \
+	'lxqt-policykit-agent'

@@ -2,13 +2,13 @@
 
 [ "$#" -eq 0 ] && echo "usage: $(basename $0) <programs>" && exit 1
 
-# trap 'kill $(jobs -p)' EXIT
-trap 'trap - SIGTERM && kill 0' SIGINT SIGTERM EXIT
+trap 'kill $(jobs -p)' EXIT
+# trap 'trap - SIGTERM && kill 0' SIGINT SIGTERM EXIT
 
 keep-running() {
 	until $@; do
 	    echo "'$@' crashed ($?). restarting" >&2
-	    sleep 1
+	    sleep 3
 	done
 }
 
