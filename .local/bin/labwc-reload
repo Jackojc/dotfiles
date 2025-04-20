@@ -1,4 +1,3 @@
 #!/usr/bin/env sh
 
-# kill -s SIGHUP "${LABWC_PID}"
 labwc --reconfigure

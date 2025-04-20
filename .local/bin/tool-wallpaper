@@ -5,4 +5,5 @@ if [ ! -d "$DIR_WALLPAPERS" ]; then
 	exit 1
 fi
 
-wbg "$(fd . $DIR_WALLPAPERS -tf | shuf --head-count=1)"
+# wbg "$(fd . $DIR_WALLPAPERS -tf | shuf --head-count=1)"
+swww img "$(fd . $DIR_WALLPAPERS -tf | shuf --head-count=1)"

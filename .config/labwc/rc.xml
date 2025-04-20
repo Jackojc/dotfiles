@@ -3,28 +3,41 @@
 
   <core adaptiveSync="yes" allowTearing="fullscreen" reuseOutputMode="yes" />
   <focus raiseOnFocus="yes" />
-  <resize popupShow="Always" />
   <placement policy="automatic" />
+
+  <resize popupShow="Always" minimumArea="20" />
 
   <libinput>
     <device category="default" accelProfile="flat" />
+
+    <!-- TRACKPADS -->
+    <device category="touchpad">
+      <accelProfile>flat</accelProfile>
+      <disableWhileTyping>yes</disableWhileTyping>
+      <sendEventsMode>disabledOnExternalMouse</sendEventsMode>
+    </device>
+
+    <device category="touch" accelProfile="flat" disableWhileTyping="yes"  />  <!-- TABLETS -->
+    <device category="non-touch" accelProfile="flat" />  <!-- MICE -->
   </libinput>
 
   <theme cornerRadius="0" keepBorder="yes" dropShadows="yes">
     <name>gnoblin-labwc</name>
-    <font name="APL386 Unicode" size="12" />
-    <titlebar layout="icon,shade:iconify,max,close" />
+    <font name="APL386 Unicode" size="10" />
+    <titlebar layout="icon:iconify,max,close" />
   </theme>
 
-  <snapping>
-    <range>50</range>
-
+  <snapping range="50">
     <overlay enabled="yes">
       <delay inner="0" outer="0" />
     </overlay>
   </snapping>
 
   <windowRules>
+    <windowRule identifier="*" type="normal">
+      <action name="FitToOutput" />
+    </windowRule>
+
     <windowRule identifier="firefox">
       <action name="SetDecorations" decorations="border" />
     </windowRule>
@@ -126,13 +139,59 @@
       <action name="SnapToRegion" region="center" />
     </keybind>
 
-    <keybind key="W-t">
-      <action name="AutoPlace" policy="automatic" />
+    <!-- <keybind key="W-t"> -->
+      <!-- <action name="AutoPlace" policy="automatic" /> -->
 
-      <action name="GrowToEdge" direction="left" />
-      <action name="GrowToEdge" direction="right" />
-      <action name="GrowToEdge" direction="up" />
-      <action name="GrowToEdge" direction="down" />
+      <!-- <action name="GrowToEdge" direction="left" /> -->
+      <!-- <action name="GrowToEdge" direction="right" /> -->
+      <!-- <action name="GrowToEdge" direction="up" /> -->
+      <!-- <action name="GrowToEdge" direction="down" /> -->
+    <!-- </keybind> -->
+
+    <keybind key="W-t">
+      <action name="ForEach">
+        <query />
+        <then>
+          <action name="AutoPlace" policy="automatic" />
+        </then>
+      </action>
+
+      <!-- <action name="ForEach"> -->
+        <!-- <query /> -->
+        <!-- <then> -->
+          <!-- <action name="GrowToEdge" direction="left" /> -->
+          <!-- <action name="GrowToEdge" direction="right" /> -->
+          <!-- <action name="GrowToEdge" direction="up" /> -->
+          <!-- <action name="GrowToEdge" direction="down" /> -->
+
+          <!-- <action name="Maximize" /> -->
+  				<!-- <action name="ResizeRelative" left="-50%" right="-50%" top="-50%" bottom="-50%" /> -->
+        <!-- </then> -->
+      <!-- </action> -->
+
+      <action name="ForEach">
+        <query monitor="current" />
+        <then>
+          <action name="MoveToEdge" direction="left" />
+          <action name="GrowToEdge" direction="right" />
+        </then>
+      </action>
+
+      <action name="ForEach">
+        <query monitor="current" />
+        <then>
+          <action name="MoveToEdge" direction="up" />
+          <action name="GrowToEdge" direction="down" />
+        </then>
+      </action>
+
+      <!-- <action name="ForEach"> -->
+        <!-- <query monitor="current" /> -->
+        <!-- <then> -->
+          <!-- <action name="GrowToEdge" direction="right" /> -->
+          <!-- <action name="GrowToEdge" direction="down" /> -->
+        <!-- </then> -->
+      <!-- </action> -->
     </keybind>
 
     <!-- WINDOW FOCUS NEXT/PREV -->

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 export LC_ALL="en_IE.UTF-8"  # Set locale
 
@@ -39,14 +39,6 @@ export DIR_WALLPAPERS="$HOME/wallpapers"
 export DIR_NOTES="$HOME/notes"
 export DIR_STICKERS="$HOME/stickers"
  
-# Password manager
-export PASH_LENGTH="50"
-export PASH_PATTERN="_[:alnum:][:graph:]"
-export PASH_KEYID="jackojc@gmail.com"
-export PASH_DIR="$XDG_DATA_HOME/passwords"
-export PASH_CLIP='wl-copy'
-export PASH_TIMEOUT="6"
-
 # bemenu
 export BEMENU_OPTS="
     --center
@@ -70,19 +62,25 @@ export BEMENU_OPTS="
 
 export BEMENU_BACKEND=wayland
 
+# SWWW (wallpapers)
+export SWWW_TRANSITION="any"
+export SWWW_TRANSITION_FPS="60"
+export SWWW_TRANSITION_STEP="90"
+export SWWW_TRANSITION_DURATION="3"
+
 # KILLME name (daemon manager to kill on labwc exit)
-export KILLME="__KILLME"
+export KILLME="DESKTOP-DAEMONS"
 
-# eza/exa
-# export EZA_STRICT=0      # Error on conflicting options (same option specified multiple times)
-export EZA_GRID_ROWS=3   # For long grid view, have a minimum number of columns to activate
-export EZA_ICONS_AUTO=1
-
-# Fix wayland
+# fix wayland
+export GDK_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORM=wayland   # Force Qt to use wayland
+export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor
 export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_ENABLE_HIGHDPI_SCALING=1
 
 # theming
 export QT_QPA_PLATFORMTHEME=adwaita-dark
@@ -98,7 +96,7 @@ export WLR_RENDER_NO_EXPLICIT_SYNC=1
 export WLR_RENDERER_FORCE_SOFTWARE=0
 export WLR_EGL_NO_MODIFIERS=0
 export WLR_RENDERER_ALLOW_SOFTWARE=0
-export WLR_NO_HARDWARE_CURSORS=0
+# export WLR_NO_HARDWARE_CURSORS=0
 export WLR_DRM_NO_ATOMIC=0
 export WLR_DRM_NO_MODIFIERS=0
 export WLR_LIBINPUT_NO_DEVICES=0
@@ -109,8 +107,9 @@ export WLR_LIBINPUT_NO_DEVICES=0
 # export LABWC_FALLBACK_OUTPUT=NOOP-fallback
 export XKB_DEFAULT_LAYOUT=ie
 # export XKB_DEFAULT_OPTIONS=caps:none,grp:rctrl_toggle
-# export XCURSOR_SIZE=48
-# export XCURSOR_THEME=capitaine-cursors-dark  # find /usr/share/icons/ -type d -name "cursors"
+
+export XCURSOR_SIZE=28
+export XCURSOR_THEME=Adwaita  # find /usr/share/icons/ -type d -name "cursors"
 
 # labwc debug
 # export LABWC_DEBUG_LIBSFDO=0  # Looking up .desktop entries and such
@@ -119,12 +118,6 @@ export XKB_DEFAULT_LAYOUT=ie
 # export LABWC_DEBUG_MENU_NODENAMES=0
 # export LABWC_DEBUG_KEY_STATE=0
 
-# Setup wob fifo
-export WOBSOCK="${XDG_RUNTIME_DIR}/wob.sock"
-
-rm -f "${WOBSOCK}"
-mkfifo "${WOBSOCK}"
-
 # Makes DBUS_SESSION_BUS_ADDRESS available to labwc
 # see: https://labwc.github.io/labwc.1.html#session_management
-dbus-run-session labwc
+exec dbus-run-session labwc

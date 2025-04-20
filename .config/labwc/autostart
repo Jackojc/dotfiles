@@ -1,12 +1,3 @@
 #!/usr/bin/env sh
 
-dbus-update-activation-environment --all
-
-$(tail -f "${WOBSOCK}" | wob)  >/dev/null 2>&1 &
-
-exec -a "${KILLME}" "tool-keeprunning" \
-	'pipewire' \
-	'xfce4-panel' \
-	'mako' \
-	'tool-wallpaper' \
-	'lxqt-policykit-agent'
+labwc-daemons &
