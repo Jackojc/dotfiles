@@ -2,9 +2,9 @@
 
 [[ $- != *i* ]] && return
 
-# CAREFUL! These fuck up tmux
+# CAREFUL! These can fuck up tmux
 # export TERM="screen-256color"
-# export LC_ALL="C"
+export LC_ALL="C.UTF-8"
 
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -87,16 +87,44 @@ export PS1="\[$BOLD\]\[$MAGENTA\]\u@\h\[$RESET\] \[$GREEN\]\w\[$PURPLE\]\$(__git
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 # Settings
-PROMPT_DIRTRIM=3
-CDPATH="."
+export PROMPT_DIRTRIM=3
+export CDPATH="."
 
-HISTSIZE=-1
-HISTFILESIZE=-1
-HISTCONTROL="erasedups:ignoreboth"
-HISTIGNORE="&:[ ]*:exit:ls:l:la:ll:lal:lt:l.:jump:goto:z:s:bg:fg:history:clear:c"
-HISTTIMEFORMAT='%F %T '
+export HISTSIZE=-1
+export HISTFILESIZE=-1
+export HISTCONTROL="erasedups:ignoreboth"
+export HISTIGNORE="&:[ ]*:exit:ls:l:la:ll:lal:lt:l.:jump:goto:z:s:bg:fg:history:clear:c"
+export HISTTIMEFORMAT='%F %T '
 
-PROMPT_COMMAND='history -a; '
+# Setting OSC0 and OSC7 for terminal title and PWD
+# Taken from vte.sh
+__urlencode() (
+  # This is important to make sure string manipulation is handled
+  # byte-by-byte.
+  LC_ALL=C
+  str="$1"
+  while [ -n "$str" ]; do
+    safe="${str%%[!a-zA-Z0-9/:_\.\-\!\'\(\)~]*}"
+    printf "%s" "$safe"
+    str="${str#"$safe"}"
+    if [ -n "$str" ]; then
+      printf "%%%02X" "'$str"
+      str="${str#?}"
+    fi
+  done
+)
+
+__osc7 () {
+  printf "\033]7;file://%s%s\a" "${HOSTNAME:-}" "$(__urlencode "${PWD}")"
+}
+
+__osc_prompt_command() {
+  local pwd='~'
+  [ "$PWD" != "$HOME" ] && pwd=${PWD/#$HOME\//\~\/}
+  printf "\033]0;%s@%s:%s\007%s" "${USER}" "${HOSTNAME%%.*}" "${pwd}" "$(__osc7)"
+}
+
+export PROMPT_COMMAND='__osc_prompt_command ; history -a; '
 
 stty -ixon
 
@@ -166,6 +194,7 @@ alias mv="mv -iv"
 alias rm="rm -vI"
 alias qmv="qmv -fdo"
 alias ip="ip -c"
+alias tmux="tmux -u2"
 
 # Alternatives
 alias ls="eza --group-directories-first --dereference --classify"
