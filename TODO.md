@@ -16,6 +16,7 @@
 - Deduplicate root volume
 
 ### Dotfiles
+- Add useful notes directory to dotfiles repo (system management, volumes/lvm2 etc etc)
 - Split configs/bin into shell and desktop components
 - Dependency checks for scripts
 - Cleanup unused dotfiles
