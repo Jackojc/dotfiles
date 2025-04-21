@@ -33,6 +33,7 @@ export VIEWER="imv-wayland"
 
 # Directories
 export TODO="$HOME/notes/todo"
+
 export DIR_MEDIA="$HOME/media"
 export DIR_MUSIC="$HOME/music"
 export DIR_WALLPAPERS="$HOME/wallpapers"

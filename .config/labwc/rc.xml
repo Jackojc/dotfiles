@@ -90,6 +90,15 @@
     <repeatRate>25</repeatRate>
     <repeatDelay>250</repeatDelay>
 
+    <!-- MISC -->
+    <keybind key="Print">
+      <action name="Execute" command="tool-scap area" />
+    </keybind>
+
+    <keybind key="W-Print">
+      <action name="Execute" command="tool-scap all" />
+    </keybind>
+
     <!-- SHOW MENUS -->
     <keybind key="W-S-Tab">
         <action name="ShowMenu" menu="root-menu" />
