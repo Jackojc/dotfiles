@@ -4,7 +4,7 @@
 
 # CAREFUL! These can fuck up tmux
 # export TERM="screen-256color"
-export LC_ALL="C.UTF-8"
+# export LC_ALL="C.UTF-8"
 
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
