@@ -23,8 +23,13 @@
 
   <theme cornerRadius="0" keepBorder="yes" dropShadows="yes">
     <name>gnoblin-labwc</name>
-    <font name="APL386 Unicode" size="10" />
     <titlebar layout="icon:iconify,max,close" />
+
+    <font place="ActiveWindow"    name="APL386 Unicode" size="12" />
+    <font place="InactiveWindow"  name="APL386 Unicode" size="12" />
+    <font place="MenuHeader"      name="APL386 Unicode" size="12" />
+    <font place="MenuItem"        name="APL386 Unicode" size="12" />
+    <font place="OnScreenDisplay" name="APL386 Unicode" size="20" />
   </theme>
 
   <snapping range="50">
@@ -32,6 +37,12 @@
       <delay inner="0" outer="0" />
     </overlay>
   </snapping>
+
+  <windowSwitcher show="yes" preview="yes" outlines="yes" allWorkspaces="no">
+    <fields>
+      <field content="custom" format="%b [%s] %-10O %-10i %T" width="100%" />
+    </fields>
+  </windowSwitcher>
 
   <windowRules>
     <windowRule identifier="*" type="normal">
@@ -69,14 +80,6 @@
     <region name="bottom-left-corner"  x="2%" y="68%" height="30%" width="30%" />
     <region name="bottom-right-corner" x="68%" y="68%" height="30%" width="30%" />
   </regions>
-
-  <windowSwitcher show="yes" preview="yes" outlines="yes" allWorkspaces="no">
-    <fields>
-      <field content="custom" format="%b %s" width="10%" />
-      <field content="trimmed_identifier" width="20%" />
-      <field content="title" width="70%" />
-    </fields>
-  </windowSwitcher>
 
   <!--
     W - window/super/logo
@@ -389,6 +392,22 @@
     </context>
 
     <context name="TitleBar">  <!-- ENTIRE WINDOW DECORATION -->
+      <!-- FOCUS -->
+      <mousebind button="Left" action="Press">
+        <action name="Focus" />
+        <action name="Raise" />
+      </mousebind>
+
+      <mousebind button="Middle" action="Press">
+        <action name="Focus" />
+        <action name="Raise" />
+      </mousebind>
+
+      <mousebind button="Right" action="Press">
+        <action name="Focus" />
+        <action name="Raise" />
+      </mousebind>
+
       <!-- SHADE -->
       <mousebind direction="Up" action="Scroll">
         <action name="Focus" />

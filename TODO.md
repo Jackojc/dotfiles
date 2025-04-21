@@ -14,6 +14,7 @@
 
 ### System
 - Deduplicate root volume
+- runit user services
 
 ### Dotfiles
 - Add useful notes directory to dotfiles repo (system management, volumes/lvm2 etc etc)
