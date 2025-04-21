@@ -1,6 +1,22 @@
 # dotfiles
 An attempt to manage my dotfiles across an axis of multiple machines and multiple distros.
 
+# requirements
+```sh
+xz   # To unpack nixos tarball
+wget/curl
+shasum/sha256sum/openssl
+```
+
+# nix
+- `nix-channel --update` update repos
+- `nix-env -u '*'` update packages
+
+# tmux
+Tmux usually has fucked up colours unless you compile the tmux-256color
+terminfo file in `~/.local/share/terminfo/t/tmux-256color.terminfo` using
+`tic <file>`.
+
 # local config
 ### git
 Setup system local configuration in `~/.gitconfig-local` such as
@@ -26,14 +42,3 @@ alterations.
 $ git update-index --skip-worktree .gitconfig-local   # From project root
 $ git update-index --skip-worktree .bashrc-local 
 ```
-
-# requirements
-```sh
-xz   # To unpack nixos tarball
-wget/curl
-shasum/sha256sum/openssl
-```
-
-# notes
-- `nix-channel --update` update repos
-- `nix-env -u '*'` update packages
