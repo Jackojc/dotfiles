@@ -1,3 +1,4 @@
+# LSPs
 [language-server.clangd]
 command = "clangd"
 args = [ "-header-insertion=never", "--clang-tidy" ]
@@ -5,7 +6,11 @@ args = [ "-header-insertion=never", "--clang-tidy" ]
 [language-server.clang-format]
 command = "clang-format"
 
+[language-server.tinymist]  # Typst
+command = "tinymist"
+config = { exportPdf = "never" }
 
+# Languages
 [[language]]
 name = "bash"
 auto-format = false
@@ -29,3 +34,19 @@ auto-format = true
 indent = { tab-width = 4, unit = "\t" }
 language-servers = [ "clangd", "clang-format" ]
 
+[[language]]
+name = "typst"
+scope = "source.typst"
+file-types = ["typst", "typ"]
+# indent = { tab-width = 2, unit = "  " }
+comment-token = "//"
+injection-regex = "typ(st)?"
+roots = ["typst.toml"]
+language-servers = ["tinymist"]
+
+[language.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'$' = '$'
+'"' = '"'
