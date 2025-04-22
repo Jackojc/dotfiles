@@ -1,78 +1,12 @@
 #!/usr/bin/env bash
 
-export LC_ALL="en_IE.UTF-8"  # Set locale
-
-HOMEDIR=$(getent passwd $(whoami) | cut -d: -f6)  # Home of current user
-export HOME="${HOME:-$HOMEDIR}"
-
-# Path
-export PATH="${XDG_BIN_HOME}:${PATH}"
-
-# XDG directories
-export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
-export XDG_BIN_HOME="${XDG_BIN_HOME:-$HOME/.local/bin}"
-export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
-
-export XDG_PUBLICSHARE_DIR="/dev/null"
-export XDG_TEMPLATES_DIR="/dev/null"
-export XDG_DESKTOP_DIR="$HOME/desktop"
-export XDG_DOCUMENTS_DIR="$HOME/docs"
-export XDG_DOWNLOAD_DIR="$HOME/downloads"
-export XDG_MUSIC_DIR="$HOME/music"
-export XDG_PICTURES_DIR="$HOME/pictures"
-export XDG_VIDEOS_DIR="$HOME/videos"
-
-# Default programs
-export TERMINAL="foot"
-export BROWSER="firefox-wayland"
-export EDITOR="hx"
-export READER="zathura"
-export VIEWER="imv-wayland"
-
-# Directories
-export TODO="$HOME/notes/todo"
-
-export DIR_MEDIA="$HOME/media"
-export DIR_MUSIC="$HOME/music"
-export DIR_WALLPAPERS="$HOME/wallpapers"
-export DIR_NOTES="$HOME/notes"
-export DIR_STICKERS="$HOME/stickers"
- 
-# bemenu
-export BEMENU_OPTS="
-    --center
-    --prompt 'run'
-    --prefix '>'
-    --wrap
-    --line-height 30
-    --width-factor 0.2
-    --list 15
-    --ignorecase
-    --fn 'APL386 Unicode 12'
-
-    --border 1 --bdr '#ffffff'
-
-    --nf '#ffffff' --nb '#1f2430f8'
-    --tf '#ffffff' --tb '#1f2430f8'
-    --hf '#fad07b' --hb '#1f2430f8'
-    --af '#ffffff' --ab '#1f2430f8'
-    --cf '#ffffff' --cb '#1f2430f8'
-    --ff '#ffffff' --fb '#1f2430f8'"
-
-export BEMENU_BACKEND=wayland
-
-# SWWW (wallpapers)
-export SWWW_TRANSITION="any"
-export SWWW_TRANSITION_FPS="60"
-export SWWW_TRANSITION_STEP="90"
-export SWWW_TRANSITION_DURATION="3"
+# Environment vars
+. "${HOME}/.bashrc-env"
 
 # KILLME name (daemon manager to kill on labwc exit)
 export KILLME="DESKTOP-DAEMONS"
 
-# fix wayland
+# Fix Wayland
 export GDK_BACKEND=wayland
 export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORM=wayland   # Force Qt to use wayland
@@ -83,7 +17,7 @@ export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_ENABLE_HIGHDPI_SCALING=1
 
-# theming
+# Theming
 export QT_QPA_PLATFORMTHEME=adwaita-dark
 export QT_STYLE_OVERRIDE=adwaita-dark
 export GTK_THEME=Adwaita:dark
@@ -102,16 +36,17 @@ export WLR_DRM_NO_ATOMIC=0
 export WLR_DRM_NO_MODIFIERS=0
 export WLR_LIBINPUT_NO_DEVICES=0
 
-# labwc config
-# export XDG_CURRENT_DESKTOP=labwc:wlroots
-# export LABWC_UPDATE_ACTIVATION_ENV=1  # Force setting of wayland/dbus environment vars
-# export LABWC_FALLBACK_OUTPUT=NOOP-fallback
+# Keyboard/Cursor
 export XKB_DEFAULT_LAYOUT=ie
 # export XKB_DEFAULT_OPTIONS=caps:none,grp:rctrl_toggle
 
 export XCURSOR_SIZE=28
 export XCURSOR_THEME=Adwaita  # find /usr/share/icons/ -type d -name "cursors"
 
+# labwc config
+# export XDG_CURRENT_DESKTOP=labwc:wlroots
+# export LABWC_UPDATE_ACTIVATION_ENV=1  # Force setting of wayland/dbus environment vars
+# export LABWC_FALLBACK_OUTPUT=NOOP-fallback
 # labwc debug
 # export LABWC_DEBUG_LIBSFDO=0  # Looking up .desktop entries and such
 # export LABWC_DEBUG_DIR_CONFIG_AND_THEME=0
