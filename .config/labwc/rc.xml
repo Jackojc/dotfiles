@@ -45,9 +45,9 @@
   </windowSwitcher>
 
   <windowRules>
-    <windowRule identifier="*" type="normal">
-      <action name="FitToOutput" />
-    </windowRule>
+    <!-- <windowRule identifier="*" type="normal"> -->
+      <!-- <action name="FitToOutput" /> -->
+    <!-- </windowRule> -->
 
     <windowRule identifier="firefox">
       <action name="SetDecorations" decorations="border" />
@@ -58,6 +58,16 @@
       <action name="ToggleAlwaysOnTop" />
       <action name="AutoPlace" policy="center" />
     </windowRule>
+
+    <windowRule identifier="org.gnupg.pinentry-qt">
+      <action name="SetDecorations" decorations="border" />
+      <action name="AutoPlace" policy="center" />
+      <action name="ToggleAlwaysOnTop" />
+    </windowRule>
+
+    <!-- <windowRule identifier="org.keepassxc.KeePassXC"> -->
+        <!-- <action name="SnapToRegion" region="center" /> -->      
+    <!-- </windowRule> -->
   </windowRules>
 
   <regions>
@@ -160,13 +170,13 @@
       <!-- <action name="GrowToEdge" direction="down" /> -->
     <!-- </keybind> -->
 
-    <keybind key="W-t">
-      <action name="ForEach">
-        <query />
-        <then>
-          <action name="AutoPlace" policy="automatic" />
-        </then>
-      </action>
+    <!-- <keybind key="W-t"> -->
+      <!-- <action name="ForEach"> -->
+        <!-- <query monitor="current" /> -->
+        <!-- <then> -->
+          <!-- <action name="AutoPlace" policy="automatic" /> -->
+        <!-- </then> -->
+      <!-- </action> -->
 
       <!-- <action name="ForEach"> -->
         <!-- <query /> -->
@@ -181,21 +191,21 @@
         <!-- </then> -->
       <!-- </action> -->
 
-      <action name="ForEach">
-        <query monitor="current" />
-        <then>
-          <action name="MoveToEdge" direction="left" />
-          <action name="GrowToEdge" direction="right" />
-        </then>
-      </action>
+      <!-- <action name="ForEach"> -->
+        <!-- <query monitor="current" /> -->
+        <!-- <then> -->
+          <!-- <action name="MoveToEdge" direction="left" /> -->
+          <!-- <action name="GrowToEdge" direction="right" /> -->
+        <!-- </then> -->
+      <!-- </action> -->
 
-      <action name="ForEach">
-        <query monitor="current" />
-        <then>
-          <action name="MoveToEdge" direction="up" />
-          <action name="GrowToEdge" direction="down" />
-        </then>
-      </action>
+      <!-- <action name="ForEach"> -->
+        <!-- <query monitor="current" /> -->
+        <!-- <then> -->
+          <!-- <action name="MoveToEdge" direction="up" /> -->
+          <!-- <action name="GrowToEdge" direction="down" /> -->
+        <!-- </then> -->
+      <!-- </action> -->
 
       <!-- <action name="ForEach"> -->
         <!-- <query monitor="current" /> -->
@@ -204,7 +214,7 @@
           <!-- <action name="GrowToEdge" direction="down" /> -->
         <!-- </then> -->
       <!-- </action> -->
-    </keybind>
+    <!-- </keybind> -->
 
     <!-- WINDOW FOCUS NEXT/PREV -->
     <keybind key="A-Tab">
