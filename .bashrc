@@ -5,17 +5,13 @@
 # CAREFUL! These can fuck up tmux
 # export TERM="screen-256color"
 # export LC_ALL="C.UTF-8"
-
-export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
-export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
-export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
-export XDG_BIN_HOME="${XDG_BIN_HOME:-$HOME/.local/bin}"
-export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
-
-export PATH="${XDG_BIN_HOME}:${PATH}"
-export GPG_TTY=$(tty)
-
+# 
 # eval "$(ssh-agent -s)"
+
+# Environment vars
+. "${HOME}/.bashrc-env"
+
+export GPG_TTY=$(tty)
 
 # Use XDG directories for configs
 mkdir -p "${XDG_DATA_HOME}/bash/" && touch "${XDG_DATA_HOME}/bash/history"
@@ -23,29 +19,10 @@ mkdir -p "${XDG_DATA_HOME}/bash/" && touch "${XDG_DATA_HOME}/bash/history"
 export HISTFILE="${XDG_DATA_HOME}/bash/history"
 export LESSHISTFILE="-"
 
-export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
 export INPUTRC="${XDG_CONFIG_HOME}/readline/inputrc"
 
 export TERMINFO="${XDG_DATA_HOME}/terminfo"
 export TERMINFO_DIRS="${XDG_DATA_HOME}/terminfo:/usr/share/terminfo"
-
-export MANROFFOPT='-c'
-export PAGER='less'
-export MANPAGER="tool-batpager"
-
-# Program directories
-export CARGO_HOME="${XDG_DATA_HOME}/cargo"
-export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
-export GOPATH="${XDG_DATA_HOME}/go"
-export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
-
-# Password manager
-export PASH_LENGTH="50"
-export PASH_PATTERN="_[:alnum:][:graph:]"
-export PASH_KEYID="jackojc@gmail.com"
-export PASH_DIR="$XDG_DATA_HOME/passwords"
-export PASH_CLIP='wl-copy'
-export PASH_TIMEOUT="6"
 
 # Colours
 if tput setaf 1 &> /dev/null; then
@@ -217,5 +194,10 @@ alias gd="git diff"
 alias gds="git diff --staged"
 alias ga="git add"
 alias gl="git log"
+alias gp="git pull"
+alias gr="git rebase"
+
+alias gls="eza --long --git --git-ignore"
+alias gtree="eza --tree --git --git-ignore --long --no-user -a"
 
 . "${HOME}/.bashrc-local"  # System-local configs

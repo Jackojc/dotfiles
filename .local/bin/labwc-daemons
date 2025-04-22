@@ -7,4 +7,5 @@ exec -a "${KILLME}" "tool-keeprunning" \
 	'xfce4-panel' \
 	'mako' \
 	'pipewire' \
-	'lxqt-policykit-agent'
+	'lxqt-policykit-agent' \
+	'swayidle -w'
