@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-
-xdotool search --classname $@

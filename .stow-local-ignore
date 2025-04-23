@@ -26,7 +26,7 @@ _darcs
 \notes
 \scripts
 
+stow-all.sh
 nix.sh
-stow.sh
 mkdirs.sh
 lib.sh
