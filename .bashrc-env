@@ -3,12 +3,9 @@
 # Set locale
 export LC_ALL="en_IE.UTF-8"
 
-# Home of current user
-HOMEDIR=$(getent passwd $(whoami) | cut -d: -f6)
-export HOME="${HOME:-$HOMEDIR}"
-
-# Executables path
-export PATH="${XDG_BIN_HOME}:${PATH}"
+# # Home of current user
+# HOMEDIR="$(getent passwd $(whoami) | cut -d: -f6)"
+# export HOME="${HOME:-$HOMEDIR}"
 
 # Defaults
 export TERMINAL="foot"
@@ -50,6 +47,9 @@ export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 export GOPATH="${XDG_DATA_HOME}/go"
 export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+
+# Executables path
+export PATH="${XDG_BIN_HOME}:${PATH}"
 
 ### PROGRAM SETTINGS ###
 

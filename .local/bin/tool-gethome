@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+HOMEDIR=$(getent passwd $(whoami) | cut -d: -f6)
+printf '%s\n' "${HOME:-$HOMEDIR}"
