@@ -56,7 +56,16 @@ export XCURSOR_THEME=Adwaita  # find /usr/share/icons/ -type d -name "cursors"
 
 # Makes DBUS_SESSION_BUS_ADDRESS available to labwc
 # see: https://labwc.github.io/labwc.1.html#session_management
+
+tool-keeprunning \
+	'swww-daemon' \
+	'waybar' \
+	'mako' \
+	'pipewire' \
+	'lxqt-policykit-agent' \
+	'swayidle -w' &
+
 exec dbus-run-session labwc
 
-pkill "${KILLME}"
-pkill "tool-keeprunning"
+# pkill "${KILLME}"
+# pkill "tool-keeprunning"
