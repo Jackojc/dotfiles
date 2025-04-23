@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-[ ! -e "$HOTKEY_FIFO" ] && mkfifo "$HOTKEY_FIFO"
-sxhkd -s "$HOTKEY_FIFO"
