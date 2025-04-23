@@ -4,8 +4,8 @@ STATE="$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"
 VOLUME="$(echo ${STATE} | rg -o '([0-9]*\.[0-9]+)' --replace '($1 * 100) / 1' | bc)"
 
 if printf "${STATE}" | grep -q MUTED; then
-	tool-notify-send --replace-file="${XDG_RUNTIME_DIR}/volume-notification" -t 1000 -a 'wpctl' -h "int:value:${VOLUME}" "[MICROPHONE] MUTED"
+	tool-notify-send --replace-file="${XDG_RUNTIME_DIR}/volume-notification" -a 'wpctl' -h "int:value:${VOLUME}" "[MICROPHONE] MUTED"
 else
-	tool-notify-send --replace-file="${XDG_RUNTIME_DIR}/volume-notification" -t 1000 -a 'wpctl' -h "int:value:${VOLUME}" "[MICROPHONE] ${VOLUME}%"
+	tool-notify-send --replace-file="${XDG_RUNTIME_DIR}/volume-notification" -a 'wpctl' -h "int:value:${VOLUME}" "[MICROPHONE] ${VOLUME}%"
 fi
 

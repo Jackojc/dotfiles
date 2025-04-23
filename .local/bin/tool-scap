@@ -26,6 +26,6 @@ case "$1" in
     usage
 esac
 
-OUTP="${XDG_PICTURES_DIR}/$(tool-iso8601)"
+OUTP="${XDG_PICTURES_DIR}/$(tool-iso8601).png"
 wl-paste > $OUTP
-notify-send -t 3000 -i "$OUTP" "scap" "$OUTP"
+notify-send -i "$OUTP" "screenshot" "$OUTP"
