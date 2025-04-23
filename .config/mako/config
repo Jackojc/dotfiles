@@ -37,12 +37,14 @@ invisible=0
 invisible=0
 
 [app-name=wpctl]
+default-timeout=500
 layer=overlay
 history=0
 anchor=center
 text-alignment=center
 
 [app-name=brightnessctl]
+default-timeout=500
 layer=overlay
 history=0
 anchor=center

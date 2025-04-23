@@ -1,0 +1,9 @@
+show=run
+term=foot
+matching=fuzzy
+insensitive=true
+# lines=10
+# columns=3
+# dynamic_lines=true
+layer=overlay
+always_parse_args=true

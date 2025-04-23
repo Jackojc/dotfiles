@@ -62,6 +62,12 @@
       <action name="AutoPlace" policy="center" />
     </windowRule>
 
+    <windowRule identifier="org.twosheds.iwgtk" skipTaskbar="yes" skipWindowSwitcher="yes">
+      <action name="SetDecorations" decorations="border" />
+      <action name="ToggleAlwaysOnTop" />
+      <action name="AutoPlace" policy="center" />
+    </windowRule>
+
     <windowRule identifier="org.gnupg.pinentry-qt" skipTaskbar="yes" skipWindowSwitcher="yes">
       <action name="SetDecorations" decorations="border" />
       <action name="AutoPlace" policy="center" />
@@ -126,7 +132,7 @@
 
     <!-- BEMENU -->
     <keybind key="W-Tab">
-        <action name="Execute" command="bemenu-run" />
+        <action name="Execute" command="wofi --show run" />
     </keybind>
 
     <!-- FOOT -->
