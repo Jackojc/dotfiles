@@ -24,9 +24,10 @@ _darcs
 ^/COPYING
 
 \notes
-\scripts
 
 stow-all.sh
+stow-gui.sh
+stow-shell.sh
 nix.sh
 mkdirs.sh
 lib.sh
