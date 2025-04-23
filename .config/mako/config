@@ -1,19 +1,22 @@
-font=APL386 Unicode 16
+layer=overlay
+anchor=bottom-right
+
+font=APL386 Unicode 12
 
 background-color=#1f2430
 text-color=#ffffff
 
 sort=-time
-layer=overlay
+
+outer-margin=10,10,10,10
 
 padding=5
 margin=5
-outer-margin=10,10,10,10
-anchor=bottom-right
+
 width=500
 height=300
 
-border-size=0
+border-size=1
 border-color=#ffffff
 border-radius=0
 
@@ -21,5 +24,26 @@ border-radius=0
 actions=0
 
 # Always timeout
-default-timeout=5000
+default-timeout=3000
 ignore-timeout=1
+
+[mode=do-not-disturb]
+invisible=1
+
+[mode=do-not-disturb app-name=wpctl]
+invisible=0
+
+[mode=do-not-disturb app-name=brightnessctl]
+invisible=0
+
+[app-name=wpctl]
+layer=overlay
+history=0
+anchor=center
+text-alignment=center
+
+[app-name=brightnessctl]
+layer=overlay
+history=0
+anchor=center
+text-alignment=center
