@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+BRIGHTNESS="$(brightnessctl get)"
+
+tool-notify-send --replace-file="${XDG_RUNTIME_DIR}/brightness-notification" -t 1000 -a 'brightnessctl' -h "int:value:${BRIGHTNESS}" "[SCREEN] ${BRIGHTNESS}%"

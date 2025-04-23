@@ -17,19 +17,21 @@
       <sendEventsMode>disabledOnExternalMouse</sendEventsMode>
     </device>
 
-    <device category="touch" accelProfile="flat" disableWhileTyping="yes"  />  <!-- TABLETS -->
+    <device category="touch" accelProfile="flat" disableWhileTyping="yes" />  <!-- TABLETS -->
     <device category="non-touch" accelProfile="flat" />  <!-- MICE -->
   </libinput>
 
   <theme cornerRadius="0" keepBorder="yes" dropShadows="yes">
     <name>gnoblin-labwc</name>
+    <icon>Adwaita</icon>
+      
     <titlebar layout="icon:iconify,max,close" />
 
     <font place="ActiveWindow"    name="APL386 Unicode" size="12" />
     <font place="InactiveWindow"  name="APL386 Unicode" size="12" />
     <font place="MenuHeader"      name="APL386 Unicode" size="12" />
     <font place="MenuItem"        name="APL386 Unicode" size="12" />
-    <font place="OnScreenDisplay" name="APL386 Unicode" size="20" />
+    <font place="OnScreenDisplay" name="APL386 Unicode" size="12" />
   </theme>
 
   <snapping range="50">
@@ -40,7 +42,8 @@
 
   <windowSwitcher show="yes" preview="yes" outlines="yes" allWorkspaces="no">
     <fields>
-      <field content="custom" format="%b [%s] %-10O %-10i %T" width="100%" />
+      <field content="icon" width="5%" />
+      <field content="custom" format="%b [%s] %-10O %-10i %T" width="95%" />
     </fields>
   </windowSwitcher>
 
@@ -53,13 +56,13 @@
       <action name="SetDecorations" decorations="border" />
     </windowRule>
 
-    <windowRule identifier="lxqt-policykit-agent">
+    <windowRule identifier="lxqt-policykit-agent" skipTaskbar="yes" skipWindowSwitcher="yes">
       <action name="SetDecorations" decorations="border" />
       <action name="ToggleAlwaysOnTop" />
       <action name="AutoPlace" policy="center" />
     </windowRule>
 
-    <windowRule identifier="org.gnupg.pinentry-qt">
+    <windowRule identifier="org.gnupg.pinentry-qt" skipTaskbar="yes" skipWindowSwitcher="yes">
       <action name="SetDecorations" decorations="border" />
       <action name="AutoPlace" policy="center" />
       <action name="ToggleAlwaysOnTop" />
@@ -310,19 +313,19 @@
 
     <!-- VOLUME KEYS -->
     <keybind key="XF86_AudioLowerVolume" allowWhenLocked="yes">
-      <action name="Execute" command="snd-volume-decr" />
+      <action name="Execute" command="sh -c 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- &amp;&amp; notify-volume-speaker'" />
     </keybind>
 
     <keybind key="XF86_AudioRaiseVolume" allowWhenLocked="yes">
-      <action name="Execute" command="snd-volume-incr" />
+      <action name="Execute" command="sh -c 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ &amp;&amp; notify-volume-speaker'" />
     </keybind>
 
     <keybind key="XF86_AudioMute" allowWhenLocked="yes">
-      <action name="Execute" command="snd-speaker-toggle" />
+      <action name="Execute" command="sh -c 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle &amp;&amp; notify-volume-speaker'" />
     </keybind>
 
     <keybind key="XF86_AudioMicMute" allowWhenLocked="yes">
-      <action name="Execute" command="snd-mic-toggle" />
+      <action name="Execute" command="sh -c 'wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle &amp;&amp; notify-volume-microphone'" />
     </keybind>
 
     <!-- BRIGHTNESS KEYS -->
