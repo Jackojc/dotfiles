@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-
-dunstify -u critical -r 9999 "recorder " "$@"
