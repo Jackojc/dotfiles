@@ -68,6 +68,12 @@
       <action name="AutoPlace" policy="center" />
     </windowRule>
 
+    <windowRule identifier="org.pulseaudio.pavucontrol" skipTaskbar="yes" skipWindowSwitcher="yes">
+      <action name="SetDecorations" decorations="border" />
+      <action name="ToggleAlwaysOnTop" />
+      <action name="AutoPlace" policy="center" />
+    </windowRule>
+
     <windowRule identifier="org.gnupg.pinentry-qt" skipTaskbar="yes" skipWindowSwitcher="yes">
       <action name="SetDecorations" decorations="border" />
       <action name="AutoPlace" policy="center" />

@@ -43,13 +43,14 @@
     },
 
     "wlr/taskbar": {
-        "format": "{icon} {title:.17}",
+        "format": "{icon} {title:.20}",
         "icon-size": 21,
         "spacing": 10,
         "on-click-middle": "close",
         "tooltip": false,
         "ignore-list": [],
-        "on-click": "activate"
+        "on-click": "activate",
+        "active-first": true
     },
 
     "custom/xbps": {
