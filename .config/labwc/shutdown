@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+# Runs asynchronously
 # Kill daemons on exit
 # pkill -f "${KILLME}"
-pkill -f "tool-keeprunning"
+# pkill -f "tool-keeprunning"
