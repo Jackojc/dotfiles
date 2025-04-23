@@ -66,29 +66,6 @@ export MANROFFOPT='-c'
 export PAGER='less'
 export MANPAGER="tool-batpager"
 
-# Bemenu
-export BEMENU_OPTS="
-    --center
-    --prompt 'run'
-    --prefix '>'
-    --wrap
-    --line-height 30
-    --width-factor 0.2
-    --list 15
-    --ignorecase
-    --fn 'APL386 Unicode 12'
-
-    --border 1 --bdr '#ffffff'
-
-    --nf '#ffffff' --nb '#1f2430f8'
-    --tf '#ffffff' --tb '#1f2430f8'
-    --hf '#fad07b' --hb '#1f2430f8'
-    --af '#ffffff' --ab '#1f2430f8'
-    --cf '#ffffff' --cb '#1f2430f8'
-    --ff '#ffffff' --fb '#1f2430f8'"
-
-export BEMENU_BACKEND=wayland
-
 # SWWW (wallpapers)
 export SWWW_TRANSITION="any"
 export SWWW_TRANSITION_FPS="60"

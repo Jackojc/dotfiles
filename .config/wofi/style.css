@@ -1,0 +1,24 @@
+* {
+  font-family: 'APL386 Unicode', monospace;
+  font-size: 18pt;
+}
+
+#outer-box {  /* Everything */
+  padding: 8pt;
+}
+
+#inner-box {  /* List of results */
+  margin-top: 8pt;
+}
+
+#input, #entry {
+  padding: 4pt;
+}
+
+#input > image.left {  /* Search Icon */
+  padding: 4pt;
+}
+
+/* window { */
+  /* background-color: rgba(31, 36, 48, 0.99); */
+/* } */
