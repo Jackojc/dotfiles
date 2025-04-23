@@ -1,8 +1,0 @@
-#!/usr/bin/env sh
-
-ans=$(printf 'yes\nno' | dmenu -p "$1")
-
-case "$ans" in
-	"yes") exit 0 ;;
-	*) exit 1 ;;
-esac
