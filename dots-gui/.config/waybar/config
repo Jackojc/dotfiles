@@ -43,14 +43,17 @@
     },
 
     "wlr/taskbar": {
-        "format": "{icon} {title:.20}",
+        "format": "{icon} {title}",
         "icon-size": 21,
         "spacing": 10,
         "on-click-middle": "close",
         "tooltip": false,
         "ignore-list": [],
         "on-click": "activate",
-        "active-first": true
+        // "active-first": true,
+        "rewrite": {
+            "^(.{16}).+$": "$1…"
+        }
     },
 
     "custom/xbps": {
@@ -68,7 +71,7 @@
     },
 
     "clock": {
-        "format": " {:%I:%M%p %a, %d/%m}",
+        "format": " {:%I:%M %p │ %a, %d/%m}",
         "tooltip-format": "<tt>{calendar}</tt>",
 
         "calendar": {
