@@ -1,2 +1,5 @@
 # Local gitconfig. Useful for user credentials.
 
+[user]
+	name = "Jack Clarke"
+	email = "jackojc@gmail.com"

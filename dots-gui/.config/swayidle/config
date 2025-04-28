@@ -1,3 +1,2 @@
-timeout 300 'gtklock --daemonize --follow-focus --gtk-theme "Adwaita:dark"'
 timeout 1800 'loginctl suspend'
-before-sleep 'gtklock --daemonize --follow-focus --gtk-theme "Adwaita:dark"'
+before-sleep 'labwc-lock'
