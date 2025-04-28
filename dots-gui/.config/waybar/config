@@ -8,7 +8,7 @@
     "passthrough": false,
     "reload_style_on_change": true,
 
-    "height": 42,
+    "height": 40,
 
     "modules-left": [
         "disk",
@@ -26,12 +26,32 @@
         "clock"
     ],
 
+    "upower": {
+        "icon-size": 17,
+        "hide-if-empty": true,
+        "tooltip": true,
+        "tooltip-spacing": 20,
+        "format": "{percentage}"
+    },
+
+    "battery": {
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "max-length": 25
+    },
+
     "wireplumber": {
-        "format": " {volume}%",
-        "format-muted": " MUTED",
+        "format": "{icon} {volume}%",
+        "format-muted": " MUTE",
         "on-click": "pavucontrol",
         "max-volume": 100,
-        "scroll-step": 0
+        "scroll-step": 0,
+        "format-icons": ["", "", ""]
     },
 
     "disk": {
@@ -61,7 +81,8 @@
         "return-type": "json",
         "tooltip": false,
         "interval": "3600",
-        "exec": "tool-xbps-updates"
+        "exec": "tool-xbps-updates",
+        "hide-empty-text": true
     },
 
     "tray": {
@@ -88,5 +109,5 @@
                 "today": "<span color='#ffcc66'><b><u>{}</u></b></span>"
             }
         }
-    },
+    }
 }

@@ -87,23 +87,23 @@
 
   <regions>
     <!-- CENTRE -->
-    <region name="center" x="9%" y="16%" height="68%" width="82%" />
+    <region name="center"              x="5%"  width="90%" y="10%" height="80%" />
 
     <!-- SIDES -->
-    <region name="left" x="0%" y="0%" height="100%" width="50%" />
-    <region name="right" x="50%" y="0%" height="100%" width="50%" />
+    <region name="left"                x="0%"  width="50%" y="0%"  height="100%" />
+    <region name="right"               x="50%" width="50%" y="0%"  height="100%" />
 
     <!-- QUADRANTS -->
-    <region name="top-left"     x="0%" y="0%" height="50%" width="50%" />
-    <region name="top-right"    x="50%" y="0%" height="50%" width="50%" />
-    <region name="bottom-left"  x="0%" y="50%" height="50%" width="50%" />
-    <region name="bottom-right" x="50%" y="50%" height="50%" width="50%" />
+    <region name="top-left"            x="0%"  width="50%" y="0%"  height="50%" />
+    <region name="top-right"           x="50%" width="50%" y="0%"  height="50%" />
+    <region name="bottom-left"         x="0%"  width="50%" y="50%" height="50%" />
+    <region name="bottom-right"        x="50%" width="50%" y="50%" height="50%" />
 
     <!-- CORNERS -->
-    <region name="top-left-corner"     x="2%" y="2%" height="30%" width="30%" />
-    <region name="top-right-corner"    x="68%" y="2%" height="30%" width="30%" />
-    <region name="bottom-left-corner"  x="2%" y="68%" height="30%" width="30%" />
-    <region name="bottom-right-corner" x="68%" y="68%" height="30%" width="30%" />
+    <region name="top-left-corner"     x="2%"  width="30%" y="2%"  height="30%" />
+    <region name="top-right-corner"    x="68%" width="30%" y="2%"  height="30%" />
+    <region name="bottom-left-corner"  x="2%"  width="30%" y="68%" height="30%" />
+    <region name="bottom-right-corner" x="68%" width="30%" y="68%" height="30%" />
   </regions>
 
   <!--
