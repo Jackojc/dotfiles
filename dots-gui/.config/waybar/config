@@ -8,7 +8,7 @@
     "passthrough": false,
     "reload_style_on_change": true,
 
-    "height": 40,
+    "height": 32,
 
     "modules-left": [
         "disk",
@@ -26,13 +26,13 @@
         "clock"
     ],
 
-    "upower": {
-        "icon-size": 17,
-        "hide-if-empty": true,
-        "tooltip": true,
-        "tooltip-spacing": 20,
-        "format": "{percentage}"
-    },
+    // "upower": {
+    //     "icon-size": 17,
+    //     "hide-if-empty": true,
+    //     "tooltip": true,
+    //     "tooltip-spacing": 20,
+    //     "format": "{percentage}"
+    // },
 
     "battery": {
         "interval": 60,
@@ -64,7 +64,7 @@
 
     "wlr/taskbar": {
         "format": "{icon} {title}",
-        "icon-size": 21,
+        "icon-size": 17,
         "spacing": 10,
         "on-click-middle": "close",
         "tooltip": false,
@@ -86,7 +86,7 @@
     },
 
     "tray": {
-        "icon-size": 21,
+        "icon-size": 17,
         "show-passive-items": "true",
         "spacing": 10
     },
