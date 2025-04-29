@@ -62,6 +62,10 @@
 
     <separator />
 
+    <item label="lock">
+      <action name="execute" command="labwc-lock" />
+    </item>
+
     <item label="suspend">
       <action name="execute" command="loginctl suspend" />
     </item>

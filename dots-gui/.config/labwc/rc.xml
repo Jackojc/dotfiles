@@ -22,7 +22,7 @@
   </libinput>
 
   <theme cornerRadius="0" keepBorder="yes" dropShadows="yes">
-    <name>gnoblin-labwc</name>
+    <name>gnelf-labwc</name>
     <icon>Adwaita</icon>
       
     <titlebar layout="icon:iconify,max,close" />
