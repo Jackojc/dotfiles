@@ -19,6 +19,8 @@
 
     <device category="touch" accelProfile="flat" disableWhileTyping="yes" />  <!-- TABLETS -->
     <device category="non-touch" accelProfile="flat" />  <!-- MICE -->
+
+    <device category="TPPS/2 IBM TrackPoint" accelProfile="flat" pointerSpeed="30" />
   </libinput>
 
   <theme cornerRadius="0" keepBorder="yes" dropShadows="yes">
@@ -117,6 +119,15 @@
     <layoutScope>global</layoutScope>
     <repeatRate>25</repeatRate>
     <repeatDelay>250</repeatDelay>
+
+    <!-- FUCKED -->
+    <keybind key="XF86_Back">
+      <action name="Execute" command="wtype -P sunPageUp -p sunPageUp" />
+    </keybind>
+
+    <keybind key="XF86_Forward">
+      <action name="Execute" command="wtype -P sunPageDown -p sunPageDown" />
+    </keybind>
 
     <!-- MISC -->
     <keybind key="Print">
