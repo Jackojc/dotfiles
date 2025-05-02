@@ -23,6 +23,13 @@
     <device category="TPPS/2 IBM TrackPoint" accelProfile="flat" pointerSpeed="30" />
   </libinput>
 
+  <tablet mapToOutput="DP-6" rotate="0" mouseEmulation="no">
+    <area top="0.0" left="0.0" width="0.0" height="0.0" />
+    <map button="Tip" to="Left" />
+    <map button="Stylus" to="Right" />
+    <map button="Stylus2" to="Middle" />
+  </tablet>
+
   <theme cornerRadius="0" keepBorder="yes" dropShadows="yes">
     <name>gnelf-labwc</name>
     <icon>Adwaita</icon>
@@ -181,6 +188,15 @@
 
     <keybind key="W-S-Space">
       <action name="ToggleMaximize" />
+    </keybind>
+
+    <keybind key="W-d">   <!-- SHOW DESKTOP -->
+      <action name="ForEach">
+        <query desktop="current" />
+        <then>
+          <action name="Iconify" />
+        </then>
+      </action>
     </keybind>
 
     <keybind key="W-c">
