@@ -57,9 +57,9 @@
   </windowSwitcher>
 
   <windowRules>
-    <!-- <windowRule identifier="*" type="normal"> -->
-      <!-- <action name="FitToOutput" /> -->
-    <!-- </windowRule> -->
+    <windowRule identifier="*" type="normal">
+      <action name="FitToOutput" />
+    </windowRule>
 
     <windowRule identifier="firefox">
       <action name="SetDecorations" decorations="border" />
@@ -72,13 +72,13 @@
     </windowRule>
 
     <windowRule identifier="org.twosheds.iwgtk" skipTaskbar="yes" skipWindowSwitcher="yes">
-      <action name="SetDecorations" decorations="border" />
+      <!-- <action name="SetDecorations" decorations="border" /> -->
       <action name="ToggleAlwaysOnTop" />
       <action name="AutoPlace" policy="center" />
     </windowRule>
 
     <windowRule identifier="org.pulseaudio.pavucontrol" skipTaskbar="yes" skipWindowSwitcher="yes">
-      <action name="SetDecorations" decorations="border" />
+      <!-- <action name="SetDecorations" decorations="border" /> -->
       <action name="ToggleAlwaysOnTop" />
       <action name="AutoPlace" policy="center" />
     </windowRule>
@@ -203,14 +203,14 @@
       <action name="SnapToRegion" region="center" />
     </keybind>
 
-    <!-- <keybind key="W-t"> -->
-      <!-- <action name="AutoPlace" policy="automatic" /> -->
+    <keybind key="W-t">
+      <action name="AutoPlace" policy="automatic" />
 
-      <!-- <action name="GrowToEdge" direction="left" /> -->
-      <!-- <action name="GrowToEdge" direction="right" /> -->
-      <!-- <action name="GrowToEdge" direction="up" /> -->
-      <!-- <action name="GrowToEdge" direction="down" /> -->
-    <!-- </keybind> -->
+      <action name="GrowToEdge" direction="left" />
+      <action name="GrowToEdge" direction="right" />
+      <action name="GrowToEdge" direction="up" />
+      <action name="GrowToEdge" direction="down" />
+    </keybind>
 
     <!-- <keybind key="W-t"> -->
       <!-- <action name="ForEach"> -->
