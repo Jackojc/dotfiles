@@ -80,7 +80,7 @@
         "format": " {}",
         "return-type": "json",
         "tooltip": false,
-        "interval": "3600",
+        "interval": "60",
         "exec": "tool-xbps-updates",
         "hide-empty-text": true
     },

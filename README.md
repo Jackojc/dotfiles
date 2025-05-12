@@ -9,8 +9,23 @@ shasum/sha256sum/openssl
 ```
 
 # nix
-- `nix-channel --update` update repos
-- `nix-env -u '*'` update packages
+```sh
+$ nix-channel --update    # Update repos
+$ nix-env -u '*'          # Update packages
+```
+
+# void
+Installing proprietary packages:
+```sh
+$ git clone https://github.com/void-linux/void-packages packages --depth 1 --recursive
+$ cd packages
+$ echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf
+$ ./xbps-src binary-bootstrap
+$ ./xbps-src clean
+$ ./xbps-src pkg -f <pkg>
+$ ./xbps-src install <pkg>
+$ sudo xbps-install --repository=hostdir/binpkgs/nonfree <pkg>
+```
 
 # tmux
 Tmux usually has fucked up colours unless you compile the tmux-256color
@@ -41,4 +56,12 @@ alterations.
 ```sh
 $ git update-index --skip-worktree .gitconfig-local   # From project root
 $ git update-index --skip-worktree .bashrc-local 
+```
+
+# gpg
+Fix permissions of GPG directory:
+```sh
+$ chown -R $(whoami) ~/.gnupg/
+$ find ~/.gnupg -type f -exec chmod 600 {} \;
+$ find ~/.gnupg -type d -exec chmod 700 {} \;
 ```
