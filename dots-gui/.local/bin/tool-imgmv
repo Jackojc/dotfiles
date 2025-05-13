@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+[ -z "$@" ] && echo "no destination specified" && exit 1
+
+nsxiv --recursive --stdout --animate . | \
+	xargs --verbose --no-run-if-empty --delimiter='\n' -I{} -- \
+		mv --interactive --verbose "{}" "$@"
