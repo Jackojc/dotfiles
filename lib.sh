@@ -1,1 +1,1 @@
-dots-common/.local/bin/lib-utils
+common/.local/bin/lib-utils
