@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-PKGS="$(xbps-install -nuM | wc -l)"
-echo "{\"text\": \"${PKGS}\"}"
