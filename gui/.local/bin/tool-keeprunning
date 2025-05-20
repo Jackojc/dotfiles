@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+[ "$#" -eq 0 ] && echo "usage: $(basename $0) <programs>" && exit 1
+
+# trap 'kill $(jobs -p)' EXIT
+trap 'trap - SIGTERM && kill 0' SIGINT SIGTERM EXIT
+
+kill-if-running() {
+	# echo "$(pgrep -fxn "$@")" >&2
+	# quoted="\'$@\'"
+	# echo "attempt kill \"$quoted\"" >&2
+	# pgrep -fx "$quoted" | xargs --no-run-if-empty -- kill -s SIGTERM && echo "killed '$@'" >&2
+	pkill -f "^$1" && echo "killed '$1'" >&2
+	sleep 0.1
+}
+
+keep-running() {
+	echo "keep running '$1'" >&2
+	kill-if-running $1
+
+	until $@ 2>&1 >/dev/null; do
+		STATUS="$?"
+
+		if [ $STATUS -eq 143 ]; then
+			break
+		fi
+		
+	    echo "'$@' crashed ($STATUS)" >&2
+
+		kill-if-running $1
+	    sleep 3
+	done
+
+	echo "finished '$1'" >&2
+}
+
+while [ $# -gt 0 ]; do
+    # echo "launching '$1'" >&2
+	keep-running $1 &
+	shift
+done
+
+echo "waiting" >&2
+wait
+
+
