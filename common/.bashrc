@@ -172,6 +172,7 @@ alias rm="rm -vI"
 alias qmv="qmv -fdo"
 alias ip="ip -c"
 alias tmux="tmux -u2"
+alias fd="fd --unrestricted"
 
 # Alternatives
 alias ls="eza --group-directories-first --dereference --classify"
