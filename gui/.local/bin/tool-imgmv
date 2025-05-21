@@ -3,5 +3,5 @@
 [ -z "$@" ] && echo "no destination specified" && exit 1
 
 nsxiv --recursive --stdout --animate . | \
-	xargs --verbose --no-run-if-empty --delimiter='\n' -I{} -- \
-		mv --interactive --verbose "{}" "$@"
+	xargs --no-run-if-empty --delimiter='\n' -I{} -- \
+		mv --no-clobber --verbose "{}" --target-directory="$@"
