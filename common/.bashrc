@@ -178,9 +178,10 @@ alias fd="fd --unrestricted"
 alias ls="eza --group-directories-first --dereference --classify"
 alias cat="bat"
 alias hexdump="hexyl"
-alias du="dust"
-alias du="duf"
+alias du="dua"
+alias df="duf"
 alias ping="gping"
+alias ncdu="dua"
 
 # # Shortened
 alias c="clear"
