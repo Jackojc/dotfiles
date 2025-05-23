@@ -21,7 +21,7 @@ nix-env -iA \
 	nixpkgs.renameutils \
 	nixpkgs.helix \
 	nixpkgs.jq \
-	nixpkgs.ncdu \
+	nixpkgs.dua \
 	nixpkgs.dtrx \
 	nixpkgs.duf \
 	nixpkgs.fd \
