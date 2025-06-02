@@ -1,0 +1,21 @@
+[[profile]]
+name = "desktop"
+
+[[profile.output]]
+enable = true
+search = ["m=DELL P2723D", "s=CWMV0V3", "v=Dell Inc."]
+mode = "2560x1440@59.951Hz"
+position = "3072,0"
+scale = 1.0
+transform = "normal"
+adaptive_sync = false
+
+[[profile.output]]
+enable = true
+search = ["m=BenQ RD280UA", "s=BBR0014401Q", "v=BNQ"]
+mode = "3840x2560@59.984Hz"
+position = "0,0"
+scale = 1.25
+transform = "normal"
+adaptive_sync = false
+
