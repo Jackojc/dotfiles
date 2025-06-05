@@ -30,4 +30,8 @@ nix-env -iA \
 	nixpkgs.difftastic \
 	nixpkgs.mdsh \
 	nixpkgs.slides \
-	nixpkgs.cmake
+	nixpkgs.cmake \
+	nixpkgs.meson
+
+nix-channel --update    # Update repos
+nix-env -u '*'          # Update packages

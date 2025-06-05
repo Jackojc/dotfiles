@@ -13,8 +13,16 @@ config = { exportPdf = "never" }
 # Languages
 [[language]]
 name = "bash"
+language-id = "bash"
 auto-format = false
 indent = { tab-width = 4, unit = "\t" }
+
+[[language]]
+name = "meson"
+language-id = "meson"
+file-types = [ { glob = "meson.build" }, { glob = "meson_options.txt" } ]
+roots = [ "meson.build", "meson_options.txt" ]
+indent = { tab-width = 2, unit = "  " }
 
 [[language]]
 name = "cpp"
