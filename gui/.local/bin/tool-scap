@@ -15,11 +15,11 @@ case "$1" in
     ;;
 
   area)
-    grim -g "$(slurp)" - | wl-copy
+    grim -g "$(tool-jslurp)" - | wl-copy
     ;;
 
   output)
-    grim -g "$(slurp -o)" - | wl-copy
+    grim -g "$(tool-jslurp -o)" - | wl-copy
     ;;
 
   *)
