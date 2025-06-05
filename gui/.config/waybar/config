@@ -12,7 +12,7 @@
 
     "modules-left": [
         "disk",
-        "custom/xbps",
+        // "custom/xbps",
         "battery",
         "wireplumber",
     ],
@@ -76,14 +76,14 @@
         }
     },
 
-    "custom/xbps": {
-        "format": " {}",
-        "return-type": "json",
-        "tooltip": false,
-        "interval": "60",
-        "exec": "tool-xbps-updates",
-        "hide-empty-text": true
-    },
+    // "custom/xbps": {
+    //     "format": " {}",
+    //     "return-type": "json",
+    //     "tooltip": false,
+    //     "interval": "60",
+    //     "exec": "tool-xbps-updates",
+    //     "hide-empty-text": true
+    // },
 
     "tray": {
         "icon-size": 17,
