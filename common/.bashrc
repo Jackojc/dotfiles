@@ -188,6 +188,10 @@ alias c="clear"
 alias e="hx"
 alias chux="chmod u+x"
 
+alias mss="meson setup build/"
+alias msc="meson compile -C build/"
+alias mst="meson test -C build/"
+
 # Git aliases
 alias gc="git commit"
 alias gca="git commit --amend"

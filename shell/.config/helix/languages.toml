@@ -6,6 +6,9 @@ args = [ "-header-insertion=never", "--clang-tidy" ]
 [language-server.clang-format]
 command = "clang-format"
 
+[language-server.meson-format]
+command = "meson format"
+
 [language-server.tinymist]  # Typst
 command = "tinymist"
 config = { exportPdf = "never" }
@@ -23,6 +26,7 @@ language-id = "meson"
 file-types = [ { glob = "meson.build" }, { glob = "meson_options.txt" } ]
 roots = [ "meson.build", "meson_options.txt" ]
 indent = { tab-width = 2, unit = "  " }
+language-servers = [ "meson-format" ]
 
 [[language]]
 name = "cpp"
