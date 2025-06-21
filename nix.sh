@@ -29,6 +29,7 @@ nix-env -iA \
 	nixpkgs.delta \
 	nixpkgs.difftastic \
 	nixpkgs.mdsh \
+	nixpkgs.typst \
 	nixpkgs.slides \
 	nixpkgs.cmake \
 	nixpkgs.meson
