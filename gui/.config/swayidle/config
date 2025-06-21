@@ -1,2 +1,2 @@
-timeout 1800 'loginctl suspend'
+timeout 3600 'loginctl suspend'
 before-sleep 'labwc-lock'
