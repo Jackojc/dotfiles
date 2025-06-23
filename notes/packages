@@ -1,0 +1,79 @@
+# Filesystems
+ntfs-3g
+
+# Video
+intel-gpu-tools
+intel-ucode
+intel-video-accel
+
+# Audio
+pipewire
+libjack-pipewire
+alsa-pipewire
+libspa-bluetooth
+
+# Applications
+lxqt-policykit
+transmission-qt
+
+qpwgraph
+pavucontrol
+
+iwgtk
+firefox
+mpv
+nsxiv
+nemo
+
+foot
+foot-terminfo
+
+# Wayland
+brightnessctl
+wdisplays
+wlr-randr
+wev
+wlrctl
+
+swayidle
+swaylock
+gtklock
+
+# Wayland Utils
+labwc
+mako
+wofi
+Waybar
+swww
+shikane
+
+grim
+grimshot
+slurp
+
+xdg-desktop-portal-gtk
+xdg-desktop-portal-wlr
+
+# Shell
+bash-completion
+fzf
+pass
+qrencode
+xz
+bc
+htop
+
+# Themes
+adwaita-qt
+adwaita-qt6
+qt5-wayland
+
+# Fonts
+terminus-font
+font-unifont-bdf
+fonts-droid-ttf
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-ttf
+noto-fonts-ttf-extra
+liberation-fonts-ttf
