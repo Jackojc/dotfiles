@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Set locale
-export LC_ALL="en_IE.UTF-8"
+# export LC_ALL="en_IE.UTF-8"
 
 # # Home of current user
 # HOMEDIR="$(getent passwd $(whoami) | cut -d: -f6)"
