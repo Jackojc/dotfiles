@@ -3,7 +3,7 @@
 dbus-update-activation-environment --all
 
 tool-keeprunning \
-	'swww-daemon' \
+	'swww-daemon --format xrgb' \
 	'waybar' \
 	'mako' \
 	'pipewire' \
