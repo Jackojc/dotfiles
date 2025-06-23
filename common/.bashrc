@@ -173,7 +173,7 @@ alias qmv="qmv -fdo"
 alias ip="ip -c"
 alias tmux="tmux -u2"
 alias fd="fd --unrestricted"
-alias rsync="rsync -avz"
+alias rsync="rsync -avzP"
 
 # Alternatives
 alias ls="eza --group-directories-first --dereference --classify"
