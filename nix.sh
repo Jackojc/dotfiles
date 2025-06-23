@@ -11,6 +11,7 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon --no-modify-profile
 
 nix-env -iA \
 	nixpkgs.stow \
+	nixpkgs.rsync \
 	nixpkgs.tmux \
 	nixpkgs.ripgrep \
 	nixpkgs.eza \
