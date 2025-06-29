@@ -369,11 +369,11 @@
 
     <!-- BRIGHTNESS KEYS -->
     <keybind key="XF86_MonBrightnessUp" allowWhenLocked="yes">
-      <action name="Execute" command="brightnessctl set +5%" />
+      <action name="Execute" command="sh -c 'brightnessctl set +5% &amp;&amp; notify-brightness'" />
     </keybind>
 
     <keybind key="XF86_MonBrightnessDown" allowWhenLocked="yes">
-      <action name="Execute" command="brightnessctl set 5%-" />
+      <action name="Execute" command="sh -c 'brightnessctl set 5%- &amp;&amp; notify-brightness'" />
     </keybind>
 
     <!-- MEDIA KEYS -->
