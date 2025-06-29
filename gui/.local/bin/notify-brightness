@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
-BRIGHTNESS="$(brightnessctl get)"
+CURRENT="$(brightnessctl get)"
+MAX="$(brightnessctl max)"
+
+BRIGHTNESS=$(echo "scale=2; $CURRENT / $MAX * 100" | bc | rg -o '(\d+)\.\d+' --replace '$1')
 
 tool-notify-send --replace-file="${XDG_RUNTIME_DIR}/brightness-notification" -a 'brightnessctl' -h "int:value:${BRIGHTNESS}" "[SCREEN] ${BRIGHTNESS}%"
