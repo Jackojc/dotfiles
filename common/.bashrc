@@ -182,7 +182,7 @@ alias hexdump="hexyl"
 alias du="dua"
 alias df="duf"
 alias ping="gping"
-alias ncdu="dua"
+alias ncdu="dua i"
 
 # # Shortened
 alias c="clear"
