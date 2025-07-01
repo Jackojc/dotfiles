@@ -13,6 +13,7 @@
     "modules-left": [
         "disk",
         // "custom/xbps",
+        "temperature",
         "battery",
         "wireplumber",
     ],
@@ -34,20 +35,37 @@
     //     "format": "{percentage}"
     // },
 
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+
+        "interval": 10,
+        "critical-threshold": 80,
+        "format-critical": " {temperatureC}°C",
+        "format": " {temperatureC}°C"
+    },
+
     "battery": {
-        "interval": 60,
+        "interval": 30,
         "states": {
             "warning": 30,
             "critical": 15
         },
+        // "rotate": 90,
         "format": "{icon} {capacity}%",
-        "format-icons": ["", "", "", "", ""],
-        "max-length": 25
+        "format-icons": {
+            "default": ["", "", "", "", ""],
+            "plugged": ""
+        },
+        // "max-length": 25,
+        "weighted-average": true,
+        "tooltip": true,
+        "tooltip-format": "power: {power}W\ncycles: {cycles}\nhealth: {health}%\nremaining: {time}"
     },
 
     "wireplumber": {
         "format": "{icon} {volume}%",
-        "format-muted": " MUTE",
+        "format-muted": " ",
         "on-click": "pavucontrol",
         "max-volume": 100,
         "scroll-step": 0,
@@ -56,10 +74,10 @@
 
     "disk": {
         "interval": 30,
-        "format": " {free}",
-        "path": "/home",
+        "format": " {free}",
+        "path": "/",
         "tooltip": false,
-        "unit": "GB"
+        "unit": "GiB"
     },
 
     "wlr/taskbar": {
