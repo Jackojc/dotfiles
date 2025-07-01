@@ -189,6 +189,9 @@ alias c="clear"
 alias e="hx"
 alias chux="chmod u+x"
 
+alias calc="tool-calc"
+alias pash="tool-pash"
+
 alias mss="meson setup build/"
 alias msc="meson compile -C build/"
 alias mst="meson test -C build/"
