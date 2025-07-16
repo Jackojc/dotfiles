@@ -145,18 +145,22 @@
       <action name="Execute" command="tool-scap all" />
     </keybind>
 
-    <!-- SHOW MENUS -->
-    <keybind key="W-S-Tab">
-        <action name="ShowMenu" menu="root-menu" />
+    <keybind key="W-l">
+      <action name="Execute" command="labwc-lock" />
     </keybind>
 
-    <keybind key="W-l">
-        <action name="ShowMenu" menu="launcher-menu" />
+    <!-- SHOW MENUS -->
+    <keybind key="W-S-Tab">
+      <action name="ShowMenu" menu="root-menu" />
     </keybind>
+
+    <!-- <keybind key="W-l"> -->
+      <!-- <action name="ShowMenu" menu="launcher-menu" /> -->
+    <!-- </keybind> -->
 
     <!-- BEMENU -->
     <keybind key="W-Tab">
-        <action name="Execute" command="wofi --show run" />
+      <action name="Execute" command="wofi --show run" />
     </keybind>
 
     <!-- FOOT -->
