@@ -8,6 +8,7 @@ tool-keeprunning \
 	'mako' \
 	'pipewire' \
 	'lxqt-policykit-agent' \
-	'shikane' \
-	'swayidle -w' &
+	'shikane' &
+
+	# 'swayidle -w' &
 
