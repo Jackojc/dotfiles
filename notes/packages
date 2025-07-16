@@ -46,6 +46,7 @@ wofi
 Waybar
 swww
 shikane
+wtype   # Needed for remapping pageup/pagedown
 
 grim
 grimshot
