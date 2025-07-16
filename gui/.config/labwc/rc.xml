@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <labwc_config>
 
-  <core adaptiveSync="yes" allowTearing="fullscreen" reuseOutputMode="yes" />
+  <core allowTearing="fullscreen" reuseOutputMode="yes" />
   <focus raiseOnFocus="yes" />
   <placement policy="automatic" />
 
