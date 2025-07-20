@@ -63,6 +63,7 @@ qrencode
 xz
 bc
 htop
+rsync
 
 # Themes
 adwaita-qt
