@@ -5,5 +5,5 @@
 # Install minimal shell environment
 . "${HOME}/.nix-profile/etc/profile.d/nix.sh"  # Source env vars for nix
 
-stow --no-folding common
-stow --no-folding shell
+LC_ALL=C stow --no-folding common
+LC_ALL=C stow --no-folding shell
