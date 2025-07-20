@@ -1,18 +1,35 @@
 #!/usr/bin/env bash
 
 # Constants
-HOMEDIR=$(getent passwd jack | cut -d: -f6)
-export HOME="${HOME:-$HOMEDIR}"
+# HOMEDIR=$(getent passwd jack | cut -d: -f6)
+# export HOME="${HOME:-$HOMEDIR}"
 
+# XDG User Directories
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 export XDG_BIN_HOME="${XDG_BIN_HOME:-$HOME/.local/bin}"
 export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
+export XDG_PUBLICSHARE_DIR="/dev/null"
+export XDG_TEMPLATES_DIR="/dev/null"
+export XDG_DESKTOP_DIR="${HOME}/desktop"
+export XDG_DOCUMENTS_DIR="${HOME}/docs"
+export XDG_DOWNLOAD_DIR="${HOME}/downloads"
+export XDG_MUSIC_DIR="${HOME}/music"
+export XDG_PICTURES_DIR="${HOME}/pictures"
+export XDG_VIDEOS_DIR="${HOME}/videos"
+
+# Custom Directories
+export DIR_MEDIA="${HOME}/media"
+export DIR_MUSIC="${HOME}/music"
+export DIR_WALLPAPERS="${HOME}/wallpapers"
+export DIR_NOTES="${HOME}/notes"
+export DIR_STICKERS="${HOME}/stickers"
+
 # Utilities
 die() {
-    printf 'error: %s.\n' "$1" >&2
+    printf 'error: %s!\n' "$1" >&2
     exit 1
 }
 
@@ -23,6 +40,12 @@ log() {
 logcmd() {
     printf "$(date '+%Y-%m-%d %H:%M:%S') %s\n" "$*"
     "$@"
+}
+
+assert-root() {
+    if (( EUID != 0 )); then
+    	die "must be root"
+    fi
 }
 
 # This is just a simple wrapper around 'command -v' to avoid

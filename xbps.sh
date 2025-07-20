@@ -2,4 +2,5 @@
 
 . ./lib.sh
 
-xbps-install -Syu $(sed 's/#.*//' < "notes/packages" | tr '\n' ' ' | sed 's/ \+/ /gp')
+assert-root
+xbps-install -Syu $(packages "xbps-packages")
