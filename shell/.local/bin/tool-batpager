@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
 # Taken from `https://github.com/sharkdp/bat/issues/1145` @lahwaacz
-exec cat "$@" | col -bx | bat --language man --style plain --pager "$PAGER"
+exec cat "$@" | ul | bat --language man --style plain --pager "$PAGER"
