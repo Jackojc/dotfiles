@@ -70,6 +70,10 @@ pw_show() {
     "$gpg" -dq "$1.gpg"
 }
 
+pw_qr() {
+    "$gpg" -dq "$1.gpg" | tool-qr
+}
+
 pw_wait_clear() {
     # Disable warning against word-splitting as it is safe
     # and intentional (globbing is disabled).
@@ -166,6 +170,7 @@ pash 2.3.0 - simple password manager.
 => [d]el  [name] - Delete a password entry.
 => [l]ist        - List all entries.
 => [s]how [name] - Show password for an entry.
+=> [q]r   [name] - Show password for an entry as a QR code.
 
 Password length:   export PASH_LENGTH=$PASH_LENGTH
 Password pattern:  export PASH_PATTERN=$PASH_PATTERN
@@ -230,6 +235,7 @@ main() {
         c*) pw_copy "$2" ;;
         d*) pw_del  "$2" ;;
         s*) pw_show "$2" ;;
+        q*) pw_qr   "$2" ;;
         l*) pw_list ;;
         # t*) pw_tree ;;
         *)  usage
