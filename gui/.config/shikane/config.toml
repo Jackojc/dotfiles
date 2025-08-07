@@ -19,3 +19,23 @@ scale = 1.25
 transform = "normal"
 adaptive_sync = false
 
+[[profile]]
+name = "tv"
+
+[[profile.output]]
+enable = true
+search = ["m=0x02D8", "s=", "v=LG Display"]
+mode = "1366x768@60.019Hz"
+position = "1920,312"
+scale = 1.0
+transform = "normal"
+adaptive_sync = false
+
+[[profile.output]]
+enable = true
+search = ["m=SONY TV  *30", "s=0x01010101", "v=Sony"]
+mode = "1920x1080@60Hz"
+position = "0,0"
+scale = 1.0
+transform = "normal"
+adaptive_sync = false
