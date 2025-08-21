@@ -14,7 +14,7 @@
     <device category="touchpad">
       <accelProfile>flat</accelProfile>
       <disableWhileTyping>yes</disableWhileTyping>
-      <sendEventsMode>disabledOnExternalMouse</sendEventsMode>
+      <!-- <sendEventsMode>disabledOnExternalMouse</sendEventsMode> -->
     </device>
 
     <device category="touch" accelProfile="flat" disableWhileTyping="yes" />  <!-- TABLETS -->
@@ -59,6 +59,12 @@
   <windowRules>
     <windowRule identifier="*" type="normal">
       <action name="FitToOutput" />
+    </windowRule>
+
+    <windowRule identifier="firefox" title="Picture-in-Picture">
+      <action name="ToggleAlwaysOnTop" />
+      <action name="SetDecorations" decorations="border" />
+      <action name="ToggleSnapToRegion" region="top-right-corner" />
     </windowRule>
 
     <windowRule identifier="firefox">
