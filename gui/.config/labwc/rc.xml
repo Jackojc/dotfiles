@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <labwc_config>
 
-  <core allowTearing="fullscreen" reuseOutputMode="yes" />
+  <!-- <core allowTearing="fullscreen" reuseOutputMode="yes" /> -->
   <focus raiseOnFocus="yes" />
   <placement policy="automatic" />
 
@@ -57,9 +57,9 @@
   </windowSwitcher>
 
   <windowRules>
-    <windowRule identifier="*" type="normal">
-      <action name="FitToOutput" />
-    </windowRule>
+    <!-- <windowRule identifier="*" type="normal"> -->
+      <!-- <action name="FitToOutput" /> -->
+    <!-- </windowRule> -->
 
     <windowRule identifier="firefox" title="Picture-in-Picture">
       <action name="ToggleAlwaysOnTop" />
