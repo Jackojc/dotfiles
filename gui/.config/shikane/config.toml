@@ -5,7 +5,16 @@ name = "desktop"
 enable = true
 search = ["m=DELL P2723D", "s=CWMV0V3", "v=Dell Inc."]
 mode = "2560x1440@59.951Hz"
-position = "3072,0"
+position = "0,388"
+scale = 1.0
+transform = "90"
+adaptive_sync = false
+
+[[profile.output]]
+enable = true
+search = ["m=L197 Wide", "s=V376345", "v=Lenovo Group Limited"]
+mode = "1440x900@59.901Hz"
+position = "1440,0"
 scale = 1.0
 transform = "normal"
 adaptive_sync = false
@@ -14,7 +23,7 @@ adaptive_sync = false
 enable = true
 search = ["m=BenQ RD280UA", "s=BBR0014401Q", "v=BNQ"]
 mode = "3840x2560@59.984Hz"
-position = "0,0"
+position = "1440,900"
 scale = 1.25
 transform = "normal"
 adaptive_sync = false
