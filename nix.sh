@@ -28,14 +28,7 @@ nix-env -iA \
 	nixpkgs.fd \
 	nixpkgs.git \
 	nixpkgs.delta \
-	nixpkgs.difftastic \
-	nixpkgs.typst \
-	nixpkgs.tinymist \
-	nixpkgs.typstyle \
-	nixpkgs.slides
-
-	# nixpkgs.cmake 
-	# nixpkgs.meson
+	nixpkgs.difftastic
 
 nix-channel --update    # Update repos
 nix-env -u '*'          # Update packages
