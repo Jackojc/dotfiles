@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <labwc_config>
 
-  <!-- <core allowTearing="fullscreen" reuseOutputMode="yes" /> -->
+  <core autoEnableOutputs="no" allowTearing="fullscreen" reuseOutputMode="yes" />
   <focus raiseOnFocus="yes" />
   <placement policy="automatic" />
 
@@ -23,7 +23,7 @@
     <device category="TPPS/2 IBM TrackPoint" accelProfile="flat" pointerSpeed="30" />
   </libinput>
 
-  <tablet mapToOutput="DP-6" rotate="0" mouseEmulation="no">
+  <tablet mapToOutput="DP-7" rotate="0" mouseEmulation="no">
     <area top="0.0" left="0.0" width="0.0" height="0.0" />
     <map button="Tip" to="Left" />
     <map button="Stylus" to="Right" />
@@ -102,17 +102,19 @@
 
   <regions>
     <!-- CENTRE -->
-    <region name="center"              x="5%"  width="90%" y="10%" height="80%" />
+    <region name="center" x="5%"  width="90%" y="10%" height="80%" />
 
     <!-- SIDES -->
-    <region name="left"                x="0%"  width="50%" y="0%"  height="100%" />
-    <region name="right"               x="50%" width="50%" y="0%"  height="100%" />
+    <region name="left"   x="0%"  width="50%" y="0%"  height="100%" />
+    <region name="right"  x="50%" width="50%" y="0%"  height="100%" />
+    <region name="top"    x="0%" width="100%" y="0%"  height="50%" />
+    <region name="bottom" x="0%" width="100%" y="50%"  height="50%" />
 
     <!-- QUADRANTS -->
-    <region name="top-left"            x="0%"  width="50%" y="0%"  height="50%" />
-    <region name="top-right"           x="50%" width="50%" y="0%"  height="50%" />
-    <region name="bottom-left"         x="0%"  width="50%" y="50%" height="50%" />
-    <region name="bottom-right"        x="50%" width="50%" y="50%" height="50%" />
+    <region name="top-left"     x="0%"  width="50%" y="0%"  height="50%" />
+    <region name="top-right"    x="50%" width="50%" y="0%"  height="50%" />
+    <region name="bottom-left"  x="0%"  width="50%" y="50%" height="50%" />
+    <region name="bottom-right" x="50%" width="50%" y="50%" height="50%" />
 
     <!-- CORNERS -->
     <region name="top-left-corner"     x="2%"  width="30%" y="2%"  height="30%" />
