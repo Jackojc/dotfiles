@@ -3,7 +3,7 @@
 
   <core autoEnableOutputs="no" allowTearing="fullscreen" reuseOutputMode="yes" />
   <focus raiseOnFocus="yes" />
-  <placement policy="automatic" />
+  <placement policy="center" />
 
   <resize popupShow="Always" minimumArea="20" />
 
