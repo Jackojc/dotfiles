@@ -29,7 +29,8 @@ nix-env -iA \
 	nixpkgs.git \
 	nixpkgs.delta \
 	nixpkgs.difftastic \
-	nixpkgs.broot
+	nixpkgs.broot \
+	nixpkgs.mergiraf
 
 nix-channel --update    # Update repos
 nix-env -u '*'          # Update packages
