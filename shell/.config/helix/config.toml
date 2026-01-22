@@ -18,6 +18,12 @@ true-color = true  # terminal features
 completion-replace = true
 preview-completion-insert = false
 
+insert-final-newline = true
+trim-final-newlines = true
+trim-trailing-whitespace = true
+
+editor-config = true
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
@@ -37,6 +43,7 @@ enable = true
 
 [editor.lsp]
 display-inlay-hints = true
+auto-signature-help = false
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
