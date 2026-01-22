@@ -183,6 +183,7 @@ alias du="dua"
 alias df="duf"
 alias ping="gping"
 alias ncdu="dua i"
+alias diff="difft"  # Difftastic
 
 # # Shortened
 alias c="clear"
@@ -194,7 +195,7 @@ alias pash="tool-pash"
 
 alias mss="meson setup build/"
 alias msc="meson compile -C build/"
-alias mst="meson test -C build/"
+alias mst="meson test --print-errorlogs -C build/"
 
 # Git aliases
 alias gc="git commit"

@@ -4,7 +4,7 @@
 [core]
 	autocrlf = input
 	pager = delta
-	fsmonitor = true
+	# fsmonitor = true  # Might be causing ghost changes in helix
 	untrackedCache = true
 [color]
 	ui = true
@@ -26,6 +26,11 @@
 	cmd = difft "$MERGED" "$LOCAL" "abcdef1" "100644" "$REMOTE" "abcdef2" "100644"
 [difftool]
 	prompt = false
+
+# Mergiraf
+[merge "mergiraf"]
+	name = mergiraf
+	driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
 
 
 # Credentials
@@ -57,7 +62,6 @@
 	autoStash = true
 	updateRefs = true
 [merge]
-	tool = difftastic
 	conflictstyle = zdiff3  # Better diffs
 [diff]
 	colorMoved = plain    # Show moved lines in a different colour
