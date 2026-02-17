@@ -37,7 +37,7 @@
   <theme cornerRadius="0" keepBorder="yes" dropShadows="yes">
     <name>gnelf-labwc</name>
     <icon>Adwaita</icon>
-      
+
     <titlebar layout="icon:iconify,max,close" />
 
     <font place="ActiveWindow"    name="APL386 Unicode" size="12" />
@@ -100,7 +100,7 @@
     </windowRule>
 
     <!-- <windowRule identifier="org.keepassxc.KeePassXC"> -->
-        <!-- <action name="SnapToRegion" region="center" /> -->      
+        <!-- <action name="SnapToRegion" region="center" /> -->
     <!-- </windowRule> -->
   </windowRules>
 
