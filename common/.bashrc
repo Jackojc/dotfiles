@@ -134,7 +134,7 @@ bind '"\e[C": forward-char'
 bind '"\e[D": backward-char'
 
 # Source env vars for nix.
-. "${HOME}/.nix-profile/etc/profile.d/nix.sh"
+# . "${HOME}/.nix-profile/etc/profile.d/nix.sh"
 
 # Helpers
 function has() {  # Check if program exists

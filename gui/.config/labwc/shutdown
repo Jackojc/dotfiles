@@ -4,3 +4,5 @@
 # Kill daemons on exit
 # pkill -f "${KILLME}"
 # pkill -f "tool-keeprunning"
+
+ps --user "$(id -u -n)" | awk 'NR > 1 {print $1}' | xargs -t kill

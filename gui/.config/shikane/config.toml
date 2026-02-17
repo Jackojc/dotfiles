@@ -28,6 +28,18 @@ scale = 1.0
 transform = "normal"
 adaptive_sync = false
 
+# [[profile]]
+# name = "x230"
+
+# [[profile.output]]
+# enable = true
+# search = ["m=0x02D8", "s=", "v=LG Display"]
+# mode = "1366x768@60.019Hz"
+# position = "0,0"
+# scale = 1.0
+# transform = "normal"
+# adaptive_sync = false
+
 [[profile]]
 name = "tv"
 

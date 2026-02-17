@@ -4,7 +4,10 @@
 
 # Install nix package manager
 # We can run this even with existing install to update.
-sh <(curl -L https://nixos.org/nix/install) --no-daemon --no-modify-profile
+
+export NIXPKGS_ALLOW_UNFREE=1
+
+# curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh -s -- --daemon --no-modify-profile || die "installing nix"
 
 # Install minimal shell environment
 . "${HOME}/.nix-profile/etc/profile.d/nix.sh"  # Source env vars for nix
@@ -17,7 +20,7 @@ nix-env -iA \
 	nixpkgs.eza \
 	nixpkgs.bat \
 	nixpkgs.hexyl \
-	nixpkgs.du-dust \
+	nixpkgs.dust \
 	nixpkgs.gping \
 	nixpkgs.renameutils \
 	nixpkgs.helix \
