@@ -7,7 +7,7 @@
 
 export NIXPKGS_ALLOW_UNFREE=1
 
-# curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install | sh -s -- --daemon --no-modify-profile || die "installing nix"
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --no-daemon
 
 # Install minimal shell environment
 . "${HOME}/.nix-profile/etc/profile.d/nix.sh"  # Source env vars for nix
