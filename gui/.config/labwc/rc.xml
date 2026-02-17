@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 <labwc_config>
 
-  <core autoEnableOutputs="no" allowTearing="fullscreen" reuseOutputMode="yes" />
+  <core allowTearing="fullscreen" reuseOutputMode="yes" />
+
+  <!-- autoEnableOutputs is broken on x230 -->
+  <!-- <core autoEnableOutputs="no" allowTearing="fullscreen" reuseOutputMode="yes" /> -->
+
   <focus raiseOnFocus="yes" />
   <placement policy="center" />
 
