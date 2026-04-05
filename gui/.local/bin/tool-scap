@@ -3,7 +3,7 @@
 set -e
 
 usage() {
-  echo "usage: $(basename $0) [all|area|output]" 1>&2 
+  echo "usage: $(basename $0) [all|area|output]" 1>&2
   exit 1
 }
 
@@ -15,21 +15,21 @@ getgeom() {
 
 if [ "$#" -ne 1 ]; then
   usage
-fi 
+fi
 
 case "$1" in
   all)
-    grim - | wl-copy
+    grim - | wl-copy | swappy -f -
     ;;
 
   area)
     GEOM="$(getgeom)"
-    grim -g "$GEOM" - | wl-copy
+    grim -g "$GEOM" - | wl-copy | swappy -f -
     ;;
 
   output)
     GEOM="$(getgeom -o)"
-    grim -g "$GEOM" - | wl-copy
+    grim -g "$GEOM" - | wl-copy | swappy -f -
     ;;
 
   *)
