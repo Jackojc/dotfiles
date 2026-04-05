@@ -5,7 +5,7 @@
 # CAREFUL! These can fuck up tmux
 # export TERM="screen-256color"
 # export LC_ALL="C.UTF-8"
-# 
+#
 # eval "$(ssh-agent -s)"
 
 # Environment vars
@@ -28,28 +28,40 @@ export TERMINFO_DIRS="${XDG_DATA_HOME}/terminfo:/usr/share/terminfo"
 if tput setaf 1 &> /dev/null; then
 	tput sgr0
 
-	MAGENTA=$(tput setaf 5)
-	ORANGE=$(tput setaf 4)
+	BLACK=$(tput setaf 0)
+	RED=$(tput setaf 1)
 	GREEN=$(tput setaf 2)
-	PURPLE=$(tput setaf 1)
+	YELLOW=$(tput setaf 3)
+	BLUE=$(tput setaf 4)
+	MAGENTA=$(tput setaf 5)
+	CYAN=$(tput setaf 6)
+	WHITE=$(tput setaf 7)
 
 	BOLD=$(tput bold)
 	RESET=$(tput sgr0)
 
 else
-	MAGENTA="\033[1;31m"
-	ORANGE="\033[1;33m"
+	BLACK="\033[1;30m"
+	RED="\033[1;31m"
 	GREEN="\033[1;32m"
-	PURPLE="\033[1;35m"
+	YELLOW="\033[1;33m"
+	BLUE="\033[1;34m"
+	MAGENTA="\033[1;35m"
+	CYAN="\033[1;36m"
+	WHITE="\033[1;37m"
 
-	BOLD=""
+	BOLD="\033[1m"
 	RESET="\033[m"
 fi
 
-export MAGENTA
-export ORANGE
+export BLACK
+export RED
 export GREEN
-export PURPLE
+export YELLOW
+export BLUE
+export MAGENTA
+export CYAN
+export WHITE
 
 export BOLD
 export RESET
@@ -60,8 +72,11 @@ export RESET
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_STATESEPARATOR=''
 
-export PS1="\[$BOLD\]\[$MAGENTA\]\u@\h\[$RESET\] \[$GREEN\]\w\[$PURPLE\]\$(__git_ps1 ' %s')\[$RESET\] $\[$RESET\] "
-export PS2="\[$ORANGE\]→ \[$RESET\]"
+export PS1="\[$YELLOW\]\u@\h\[$RESET\] \[$CYAN\]\w\[$BOLD\]\[$RED\]\$(__git_ps1 ' %s')\[$RESET\] $\[$RESET\] "
+export PS2="\[$CYAN\]↪ \[$RESET\]"
+
+# export PS1="\[$BOLD\]\[$MAGENTA\]\u@\h\[$RESET\] \[$GREEN\]\w\[$PURPLE\]\$(__git_ps1 ' %s')\[$RESET\] $\[$RESET\] "
+# export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 # Settings
 export PROMPT_DIRTRIM=3

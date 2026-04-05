@@ -1,0 +1,148 @@
+# Theme: Blindboy
+# Author: Jackojc
+
+# Based on Okabe & Ito colours
+# https://jfly.uni-koeln.de/color/#pallet
+# https://coolors.co/f0e442-e69d00-d55c00-f9102f-0072b2-56b3e9-009e74-1f202a
+
+# Notes:
+# - Use warm and cool colours alternatively
+# - When using two warm or cool colours, use
+#   distinct brightness or saturation
+# - Avoid combinations of low saturation or low brightness
+
+# Syntax
+"comment" = { fg = "blue" }
+
+"attributes" = "vermillion"
+"namespace" = "vermillion"
+"keyword" = "vermillion_bright"
+"label" = "vermillion_bright"
+"operator" = "orange"
+"special" = "yellow"
+
+"constructor" = "green_bright"
+"function" = { fg = "green_bright", modifiers = ["bold"] }
+"string"  = "yellow"
+"type" = { fg = "blue", modifiers = ["italic"] }
+
+"variable" = { fg = "cyan_bright" }
+"variable.other.member" = { fg = "cyan" }
+
+"constant" = { fg = "orange" }
+# "constant.character.escape" = "vermillion"
+# "constant.numeric" = "vermillion_bright"
+
+"diff.delta" = "blue"
+"diff.minus" = "red"
+"diff.plus" = "green_bright"
+
+"debug" = "yellow"
+"hint" = "blue"
+"info" = "white"
+"warning" = "cyan"
+"error" = "vermillion"
+
+# Markup
+"markup.heading" = { fg = "yellow", modifiers = ["bold"] }
+
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+
+"markup.link.text" = "cyan"
+"markup.link.url" = { fg = "vermillion_bright", modifiers = ["underlined"] }
+
+"markup.list" = "orange"
+"markup.quote" = "blue"
+"markup.raw" = "green"
+
+# Diagnostic
+"diagnostic" = { modifiers = ["underlined"] }
+
+"diagnostic.hint" = { underline = { style = "curl" } }
+"diagnostic.info" = { underline = { style = "curl" } }
+"diagnostic.warning" = { underline = { style = "curl" } }
+"diagnostic.error" = { underline = { style = "curl" } }
+
+# UI
+"ui.background" = { bg = "black" }
+"ui.window" = { bg = "black_bright" }
+"ui.gutter" = { bg = "black" }
+
+"ui.popup" = { bg = "navy" }
+"ui.menu" = { bg = "navy" }
+"ui.statusline" = { bg = "navy" }
+"ui.help" = { bg = "navy" }
+
+"ui.text" = "white_bright"
+"ui.text.focus" = "white_bright"
+
+"ui.selection" = { bg = "blue", fg = "cyan" }
+"ui.selection.primary" = { bg = "cyan", fg = "white_bright" }
+
+"ui.cursor" = { bg = "orange_bright" }
+
+"ui.cursor.primary.normal" = { fg = "yellow_bright", modifiers = ["reversed"] }
+"ui.cursor.primary.insert" = { fg = "green_bright", modifiers = ["bold", "reversed"] }
+"ui.cursor.primary.select" = { fg = "blue_bright", modifiers = ["reversed"] }
+
+"ui.cursorline.primary" = { fg = "yellow", bg = "navy" }
+"ui.cursor.match" = { fg = "vermillion", modifiers = ["reversed"] }
+
+"ui.linenr" = { fg = "navy", modifiers = ["dim"] }
+"ui.linenr.selected" = { fg = "navy_bright", modifiers = ["bold"] }
+
+"ui.bufferline" = { bg = "navy", fg = "white" }
+"ui.bufferline.active" = { bg = "navy_bright", fg = "white_bright", modifiers = ["bold"] }
+
+"ui.menu.scroll" = { fg = "white", bg = "navy_bright" }
+"ui.menu.selected" = { fg = "yellow", modifiers = ["reversed"] }
+
+"ui.statusline.inactive" = { bg = "navy_bright", fg = "black_bright" }
+"ui.statusline.insert" = { bg = "orange", fg = "black_bright", modifiers = ["bold"] }
+"ui.statusline.normal" = { bg = "cyan_bright", fg = "black_bright" }
+"ui.statusline.select" = { bg = "blue", fg = "white_bright", modifiers = ["italic"] }
+
+"ui.virtual.inlay-hint" = { fg = "green", modifiers = ["dim", "italic"] }
+"ui.virtual.whitespace" = { fg = "black_bright" }
+"ui.virtual.indent-guide" = { fg = "black_bright" }
+"ui.virtual.ruler" = { bg = "navy" }
+"ui.virtual.jump-label" = { fg = "yellow_bright", modifiers = ["bold", "slow_blink", "underlined"] }
+
+[palette]
+background = "#0e0f1a"
+foreground = "#f4f4f4"
+
+background_bright = "#171824"
+foreground_bright = "#ffffff"
+
+white = "#f4f4f4"
+black = "#000000"
+
+white_bright = "#ffffff"
+black_bright = "#252525"
+
+# Warm
+orange = "#e69d00"
+yellow = "#f0e442"
+vermillion = "#d55c00"
+red = "#f9102f"
+
+# Cool
+blue = "#0072b2"
+navy = "#1f202a"
+cyan = "#56b3e9"
+green = "#009e74"
+
+# Warm (Bright)
+orange_bright = "#f4aa24"
+yellow_bright = "#fdf153"
+vermillion_bright = "#e3691d"
+red_bright = "#ff2d3c"
+
+# Cool (Bright)
+blue_bright = "#1b7ebf"
+navy_bright = "#292a34"
+cyan_bright = "#63c0f7"
+green_bright = "#23ab80"
