@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+
+
+# TODO:
+# - Cache full capabilities files for all monitors in /tmp
+# - Attempt to read the cache or if it doesn't exist, create it
+# - Lookup cache to check:
+#   1. Monitor count
+#   2. Supports brightness control or not
+#   3. Bus number
+# - Increase/Decrease/Set/Get brightness
+# - Clamp to 0 or 100
+# - Change brightness on focused monitor
+# - Shift + Bright up/down set to 0 and 100
+
+# Create cache if it doesn't exist.
+DDC_CACHE="/tmp/tool-ddc-cache"
+[ ! -f "$DDC_CACHE" ] && ddcutil detect --verbose > "$DDC_CACHE"
+
+DISPLAY_NUM="$(rg '\bDisplay\b' --count -- $DDC_CACHE)"
+DISPLAY_ID="$(rg '\bDisplay\b\s*(\d+)$' --only-matching --replace '$1' -- $DDC_CACHE)"
+DISPLAY_BUS="$(rg '\bI2C bus:\s*/dev/i2c-(.+)$' --only-matching --replace '$1' -- $DDC_CACHE)"
+DISPLAY_IS_LAPTOP="$(rg '\bIs laptop display:\s*(.+)$' --only-matching --replace '$1' -- $DDC_CACHE)"
+DISPLAY_MODEL="$(rg '\bModel:\s*(.+)$' --only-matching --replace '$1' -- $DDC_CACHE)"
+
+for i in $DISPLAY_ID; do
+	NUM="$(echo "$DISPLAY_NUM" | awk "NR==${i}")"
+	ID="$(echo "$DISPLAY_ID" | awk "NR==${i}")"
+	MODEL="$(echo "$DISPLAY_MODEL" | awk "NR==${i}")"
+	BUS="$(echo "$DISPLAY_BUS" | awk "NR==${i}")"
+	LAPTOP="$(echo "$DISPLAY_IS_LAPTOP" | awk "NR==${i}")"
+
+	# Per monitor cache.
+	DDC_CACHE_MONITOR="/tmp/tool-ddc-cache-$BUS"
+	[ ! -f "$DDC_CACHE_MONITOR" ] && ddcutil --bus "$BUS" capabilities > "$DDC_CACHE_MONITOR"
+
+	BRIGHT="$(rg '\bFeature:\s*10 \(Brightness\)$' --trim --only-matching --replace 'true' -- $DDC_CACHE_MONITOR)"
+
+	echo "$ID\t$MODEL\t$BUS\t$LAPTOP\t$BRIGHT"
+done
