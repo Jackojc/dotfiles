@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
 gtklock \
-	--daemonize \
 	--gtk-theme "Adwaita:dark" \
 	--background "$(swww query | rg -o 'image: (.+)$' --replace '$1' | shuf -n1)"

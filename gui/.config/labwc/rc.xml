@@ -7,7 +7,7 @@
   <!-- <core autoEnableOutputs="no" allowTearing="fullscreen" reuseOutputMode="yes" /> -->
 
   <focus raiseOnFocus="yes" />
-  <placement policy="center" />
+  <placement policy="cascade" />
 
   <resize popupShow="Always" minimumArea="20" />
 
@@ -38,6 +38,8 @@
     <name>gnelf-labwc</name>
     <icon>Adwaita</icon>
 
+    <fallbackAppIcon>labwc</fallbackAppIcon>
+
     <titlebar layout="icon:iconify,max,close" />
 
     <font place="ActiveWindow"    name="APL386 Unicode" size="12" />
@@ -53,7 +55,9 @@
     </overlay>
   </snapping>
 
-  <windowSwitcher show="yes" preview="yes" outlines="yes" allWorkspaces="no">
+  <windowSwitcher show="yes" preview="yes" outlines="yes" allWorkspaces="no" unshade="yes">
+    <osd show="yes" style="thumbnail" output="focused" thumbnailLabelFormat="%T" />
+
     <fields>
       <field content="icon" width="5%" />
       <field content="custom" format="%b [%s] %-10O %-10i %T" width="95%" />
