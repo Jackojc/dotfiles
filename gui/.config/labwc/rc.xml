@@ -49,13 +49,14 @@
     <font place="OnScreenDisplay" name="APL386 Unicode" size="12" />
   </theme>
 
-  <snapping range="50">
+  <snapping>
+    <range inner="50" outer="50" />
     <overlay enabled="yes">
       <delay inner="0" outer="0" />
     </overlay>
   </snapping>
 
-  <windowSwitcher show="yes" preview="yes" outlines="yes" allWorkspaces="no" unshade="yes">
+  <windowSwitcher preview="yes" outlines="yes" allWorkspaces="no" unshade="yes">
     <osd show="yes" style="thumbnail" output="focused" thumbnailLabelFormat="%T" />
 
     <fields>
