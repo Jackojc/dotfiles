@@ -94,7 +94,7 @@
 "ui.linenr.selected" = { fg = "navy_bright", modifiers = ["bold"] }
 
 "ui.bufferline" = { bg = "navy", fg = "white" }
-"ui.bufferline.active" = { bg = "navy_bright", fg = "white_bright", modifiers = ["bold"] }
+"ui.bufferline.active" = { bg = "navy_bright", fg = "white_bright" }
 
 "ui.menu.scroll" = { fg = "white", bg = "navy_bright" }
 "ui.menu.selected" = { fg = "yellow", modifiers = ["reversed"] }
