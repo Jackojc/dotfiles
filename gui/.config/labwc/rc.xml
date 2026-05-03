@@ -57,7 +57,7 @@
   </snapping>
 
   <windowSwitcher preview="yes" outlines="yes" allWorkspaces="no" unshade="yes">
-    <osd show="yes" style="thumbnail" output="focused" thumbnailLabelFormat="%T" />
+    <osd show="yes" style="thumbnail" output="cursor" thumbnailLabelFormat="%T" />
 
     <fields>
       <field content="icon" width="5%" />
