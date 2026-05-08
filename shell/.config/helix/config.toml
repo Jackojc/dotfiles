@@ -53,8 +53,8 @@ auto-signature-help = true
 cursor-line = "hint"
 other-lines = "error"
 
-# [editor.search]
-# smart-case = false
+[editor.search]
+smart-case = false
 
 [editor.statusline]
 left = ["selections", "mode", "spacer", "file-modification-indicator", "spinner"]
