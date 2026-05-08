@@ -93,7 +93,7 @@
 "ui.linenr" = { fg = "navy", modifiers = ["dim"] }
 "ui.linenr.selected" = { fg = "navy_bright", modifiers = ["bold"] }
 
-"ui.bufferline" = { bg = "navy", fg = "white" }
+"ui.bufferline" = { bg = "black", fg = "white" }
 "ui.bufferline.active" = { bg = "navy_bright", fg = "white_bright" }
 
 "ui.menu.scroll" = { fg = "white", bg = "navy_bright" }
