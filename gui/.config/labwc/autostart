@@ -1,5 +1,17 @@
 #!/usr/bin/env sh
 
+source lib-utils
+
+has dbus-update-activation-environment || die "dbus-update-activation-environment"
+has shikane || die "shikane"
+has pipewire || die "pipewire"
+has swayidle || die "swayidle"
+has poweralertd || die "poweralertd"
+has swww-daemon || die "swww-daemon"
+has waybar || die "waybar"
+has mako || die "mako"
+has lxqt-policykit-agent || die "lxqt-policykit-agent"
+
 # labwc-daemons &
 dbus-update-activation-environment --all
 
