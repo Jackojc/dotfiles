@@ -67,7 +67,11 @@
     </item>
 
     <item label="suspend">
-      <action name="execute" command="loginctl suspend" />
+      <action name="execute" command="loginctl hybrid-sleep" />
+    </item>
+
+    <item label="hibernate">
+      <action name="execute" command="loginctl hibernate" />
     </item>
 
     <menu id="power-menu" label="power">
@@ -97,7 +101,7 @@
 
   <menu id="launcher-menu">
       <seperator label="graphical" />
-      
+
       <item label="web">
         <action name="execute" command="firefox-wayland" />
       </item>

@@ -6,4 +6,4 @@
 #
 #
 
-waylock -ignore-empty-password -init-color 0x064a89 -input-color 0x333f48 -input-alt-color 0x444f58 -fail-color 0xe2232a
+waylock -fork-on-lock -ignore-empty-password -init-color 0x064a89 -input-color 0x333f48 -input-alt-color 0x444f58 -fail-color 0xe2232a
