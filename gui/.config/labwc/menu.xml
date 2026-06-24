@@ -52,7 +52,7 @@
       <action name="execute" command="tool-wallpaper" />
     </item>
 
-    <seperator />
+    <separator />
 
     <!-- <menu id="tools-menu"      label="tools"      execute="menu-tools" /> -->
     <!-- <menu id="notes-menu"      label="notes"      execute="menu-notes" /> -->
@@ -60,7 +60,7 @@
     <!-- <menu id="usb-menu"        label="usb"        execute="menu-usb" /> -->
     <!-- <menu id="screenshot-menu" label="screenshot" execute="menu-screenshot" /> -->
 
-    <separator />
+    <!-- <separator /> -->
 
     <item label="lock">
       <action name="execute" command="labwc-lock" />
@@ -74,23 +74,15 @@
       <action name="execute" command="loginctl hibernate" />
     </item>
 
-    <menu id="power-menu" label="power">
-      <item label="reboot">
-        <action name="execute" command="loginctl reboot" />
-      </item>
+    <separator />
 
-      <item label="reboot (to windows)">
-        <action name="execute" command="tool-rbwin" />
-      </item>
+    <item label="reboot">
+      <action name="execute" command="loginctl reboot" />
+    </item>
 
-      <item label="reboot (setup/uefi)">
-        <action name="execute" command="loginctl reboot --firmware-setup" />
-      </item>
-
-      <item label="poweroff">
-        <action name="execute" command="loginctl poweroff" />
-      </item>
-    </menu>
+    <item label="poweroff">
+      <action name="execute" command="loginctl poweroff" />
+    </item>
 
     <separator />
 
