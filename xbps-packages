@@ -28,6 +28,8 @@ nemo
 foot
 foot-terminfo
 
+sioyek
+
 # Wayland
 brightnessctl
 wdisplays
