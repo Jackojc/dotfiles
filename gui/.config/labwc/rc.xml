@@ -397,6 +397,14 @@
       <action name="Execute" command="sh -c 'brightnessctl set 5%- &amp;&amp; notify-brightness'" />
     </keybind>
 
+    <keybind key="S-XF86_MonBrightnessUp" allowWhenLocked="yes">
+      <action name="Execute" command="sh -c 'wlopm --on \'*\''" />
+    </keybind>
+
+    <keybind key="S-XF86_MonBrightnessDown" allowWhenLocked="yes">
+      <action name="Execute" command="sh -c 'wlopm --off \'*\''" />
+    </keybind>
+
     <!-- MEDIA KEYS -->
     <keybind key="XF86_AudioMedia" allowWhenLocked="yes">
       <action name="Execute" command="playerctl play-pause" />
