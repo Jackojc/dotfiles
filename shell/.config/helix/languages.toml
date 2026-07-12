@@ -11,15 +11,16 @@ args = [ "-header-insertion=never", "--clang-tidy" ]
 
 [language-server.tinymist]  # Typst
 command = "tinymist"
-config = { exportPdf = "never" }
+# config = { exportPdf = "onType"}
+# config = { exportPdf = "onType", preview.background.enabled = true, preview.background.args = [ "--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open" ]}
 
 [language-server.pyright]  # Python
 command = "pyright-langserver"
-arsg = [ "--stdio" ]
+args = [ "--stdio" ]
 
 # [language-server.black]  # Python
 # command = "black"
-# arsg = ["--quiet", "-"]
+# args = ["--quiet", "-"]
 
 # Languages
 [[language]]
@@ -61,11 +62,13 @@ formatter = { command = "clang-format", args = [] }
 name = "typst"
 scope = "source.typst"
 file-types = ["typst", "typ"]
-# indent = { tab-width = 2, unit = "  " }
+indent = { tab-width = 2, unit = "  " }
 comment-token = "//"
 injection-regex = "typ(st)?"
 roots = ["typst.toml"]
+auto-format = true
 language-servers = ["tinymist"]
+formatter = { command = "typstyle", args = [] }
 
 [[language]]
 name = "python"
@@ -82,3 +85,15 @@ formatter = { command = "black", args = ["-", "-q"] }
 '[' = ']'
 '$' = '$'
 '"' = '"'
+
+[[language]]
+name = "cane"
+scope = "source.cane"
+file-types = ["cane"]
+comment-tokens = [";"]
+indent = { tab-width = 2, unit = "  " }
+grammar = "cane"
+
+[[grammar]]
+name = "cane"
+source = { path = "/home/jack/.config/helix/grammars/cane" }
