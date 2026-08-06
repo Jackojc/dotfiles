@@ -1,3 +1,0 @@
-[screencast]
-chooser_type = simple
-chooser_cmd = tool-jslurp -f %o -or
