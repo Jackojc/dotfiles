@@ -1,3 +1,7 @@
 #!/usr/bin/env sh
 
-wl-copy --primary --type image < "$@"
+set -eu
+
+[ "$#" -eq 0 ] && echo "no image specified" && exit 1
+
+wl-copy --primary --type image < "$1"

@@ -1,14 +1,14 @@
 #!/usr/bin/env sh
 
-set -e
+set -eu
 
 usage() {
-  echo "usage: $(basename $0) [all|area|output]" 1>&2
+  echo "usage: $(basename "$0") [all|area|output]" 1>&2
   exit 1
 }
 
 getgeom() {
-  if ! tool-jslurp $@; then
+  if ! tool-jslurp "$@"; then
     exit 1
   fi
 }
@@ -37,5 +37,5 @@ case "$1" in
 esac
 
 OUTP="${XDG_PICTURES_DIR}/$(tool-iso8601).png"
-wl-paste > $OUTP
+wl-paste > "$OUTP"
 notify-send -i "$OUTP" "screenshot" "$OUTP"

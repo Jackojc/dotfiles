@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-args="$@"
+args="$*"
 
 if [ -z "$args" ]; then
 	file="$(fd --hidden -tf | fzf)"
