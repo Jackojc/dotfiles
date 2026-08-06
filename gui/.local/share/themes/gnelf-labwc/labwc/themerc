@@ -74,7 +74,7 @@ menu.separator.color: #444444
 menu.separator.padding.width: 10
 menu.separator.padding.height: 5
 
-menu.title.bg.color:   #fcfbfa
+menu.title.bg.color:   #1f202a
 menu.title.text.color: #ffffff
 
 menu.title.text.justify: center

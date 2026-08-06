@@ -1,13 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-# re-exec under bash if running as sh
-if [ -z "${BASH_VERSION:-}" ]; then
-    exec bash "$0" "$@"
-fi
-
-source lib-utils
-
-need() { has "$1" || printf 'autostart: missing %s\n' "$1" >&2; }
+. lib-utils
 
 need dbus-update-activation-environment
 need shikane

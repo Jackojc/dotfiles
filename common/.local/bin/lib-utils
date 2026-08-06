@@ -42,8 +42,8 @@ logcmd() {
     "$@"
 }
 
-assert-root() {
-    if (( EUID != 0 )); then
+assert_root() {
+    if [ "$(id -u)" -ne 0 ]; then
     	die "must be root"
     fi
 }
@@ -54,6 +54,10 @@ assert-root() {
 has() {
     _cmd=$(command -v "$1" 2>/dev/null) || return 1
     [ -x "$_cmd" ] || return 1
+}
+
+need() {
+    has "$1" || printf '%s: missing %s\n' "${0##*/}" "$1" >&2
 }
 
 glob() {
