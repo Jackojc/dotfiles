@@ -1,28 +1,33 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+# re-exec under bash if running as sh
+if [ -z "${BASH_VERSION:-}" ]; then
+    exec bash "$0" "$@"
+fi
 
 source lib-utils
 
-has dbus-update-activation-environment || die "dbus-update-activation-environment"
-has shikane || die "shikane"
-has pipewire || die "pipewire"
-has swayidle || die "swayidle"
-has poweralertd || die "poweralertd"
-has swww-daemon || die "swww-daemon"
-has waybar || die "waybar"
-has mako || die "mako"
-has lxqt-policykit-agent || die "lxqt-policykit-agent"
+need() { has "$1" || printf 'autostart: missing %s\n' "$1" >&2; }
+
+need dbus-update-activation-environment
+need shikane
+need pipewire
+need swayidle
+need swww-daemon
+need waybar
+need mako
+need lxqt-policykit-agent
 
 # labwc-daemons &
 dbus-update-activation-environment --all
 
-shikane &
-pipewire &
+has shikane && shikane &
+has pipewire && pipewire &
 
-swayidle -w &
-poweralertd &
+has swayidle && swayidle -w &
+has swww-daemon && swww-daemon --format xrgb &  # Wallpapers
+has waybar && waybar &
+has mako && mako &  # Notifications
 
-swww-daemon --format xrgb &  # Wallpapers
-waybar &
-mako &  # Notifications
-
-lxqt-policykit-agent &
+has lxqt-policykit-agent && lxqt-policykit-agent &
+has poweralertd && poweralertd &
