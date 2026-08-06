@@ -23,6 +23,7 @@ iwgtk
 firefox
 mpv
 pqiv
+nsxiv   # tool-imgcp/tool-imgmv need '--stdout' for selection
 nemo
 
 foot
@@ -53,6 +54,8 @@ wtype   # Needed for remapping pageup/pagedown
 grim
 grimshot
 slurp
+swappy
+wl-clipboard
 
 xdg-desktop-portal-gtk
 xdg-desktop-portal-wlr
@@ -66,6 +69,13 @@ xz
 bc
 htop
 rsync
+gnupg
+python3
+aspell
+aspell-en
+
+# Hardware
+ddcutil
 
 # Themes
 adwaita-qt

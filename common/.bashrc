@@ -230,3 +230,5 @@ alias gtree="eza --tree --git --git-ignore --long --no-user -a"
 . "${HOME}/.config/broot/launcher/bash/br"  # Source broot
 
 if [ -e /home/jack/.nix-profile/etc/profile.d/nix.sh ]; then . /home/jack/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+. "/home/jack/.local/share/cargo/env"

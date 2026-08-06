@@ -23,7 +23,7 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-\notes
+^/notes
 
 stow-all.sh
 stow-gui.sh
