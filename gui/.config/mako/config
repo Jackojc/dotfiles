@@ -3,9 +3,6 @@ anchor=bottom-right
 
 font=APL386 Unicode 12
 
-background-color=#1f2430
-text-color=#ffffff
-
 sort=-time
 
 outer-margin=10,10,10,10
@@ -17,7 +14,6 @@ width=500
 height=300
 
 border-size=1
-border-color=#ffffff
 border-radius=0
 
 # Don't trigger events when clicking notifications
@@ -49,3 +45,7 @@ layer=overlay
 history=0
 anchor=center
 text-alignment=center
+
+background-color=#1f202a
+text-color=#f4f4f4
+border-color=#8a8578
