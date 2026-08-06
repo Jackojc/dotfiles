@@ -1,13 +1,13 @@
-@define-color bg_main rgba(25, 25, 25, 0.98);
-@define-color bg_main_tooltip rgba(0, 0, 0, 0.98);
+@define-color bg_main         rgba(14, 15, 26, 0.98);
+@define-color bg_main_tooltip rgba(8, 9, 16, 0.98);
 
-@define-color bg_hover  rgba(200, 200, 200, 0.15);
-@define-color bg_active rgba(100, 100, 100, 0.15);
+@define-color bg_hover        rgba(244, 244, 244, 0.15);
+@define-color bg_active       rgba(138, 133, 120, 0.15);
 
-@define-color border_main rgba(255, 255, 255, 0.2);
+@define-color border_main     rgba(89, 86, 78, 0.6);
 
-@define-color content_main white;
-@define-color content_inactive rgba(255, 255, 255, 0.25);
+@define-color content_main     #f4f4f4;
+@define-color content_inactive rgba(138, 133, 120, 0.6);
 
 * {
 	text-shadow: none;
