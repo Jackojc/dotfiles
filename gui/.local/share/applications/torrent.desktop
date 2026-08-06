@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Application
 Name=Torrent
-Exec=transmission-gtk %U
+Exec=transmission-qt %U
 
