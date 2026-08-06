@@ -52,7 +52,7 @@ assert-root() {
 # spamming '>/dev/null' throughout this function. This also guards
 # against aliases and functions.
 has() {
-    _cmd=$(command -v "$1") 2>/dev/null || return 1
+    _cmd=$(command -v "$1" 2>/dev/null) || return 1
     [ -x "$_cmd" ] || return 1
 }
 
@@ -96,5 +96,5 @@ exists() {
 
 packages() {
     exists "$1"
-    <"$1" sed 's/#.*//' | tr '\n' ' ' | sed 's/ \+/ /gp'
+    <"$1" sed 's/#.*//' | tr '\n' ' ' | sed 's/ \+/ /g'
 }
