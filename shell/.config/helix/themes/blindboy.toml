@@ -66,7 +66,7 @@
 
 # UI
 "ui.background" = { bg = "background" }
-"ui.window" = { bg = "guide" }
+"ui.window" = { bg = "structure" }
 "ui.gutter" = { bg = "background" }
 
 "ui.popup" = { bg = "navy" }
@@ -89,7 +89,7 @@
 "ui.cursorline.primary" = { fg = "yellow", bg = "navy" }
 "ui.cursor.match" = { fg = "vermillion", modifiers = ["reversed"] }
 
-"ui.linenr" = { fg = "guide" }
+"ui.linenr" = { fg = "structure" }
 "ui.linenr.selected" = { fg = "dim", modifiers = ["bold"] }
 
 "ui.bufferline" = { bg = "black", fg = "white" }
@@ -111,37 +111,38 @@
 
 
 [palette]
-background        = "#0e0f1a"   # background
-foreground        = "#f4f4f4"   # foreground
-background_bright = "#171824"   # background_raised
-foreground_bright = "#ffffff"   # foreground_bright
-white             = "#f4f4f4"   # foreground
-black             = "#000000"   # black
-white_bright      = "#ffffff"   # foreground_bright
-black_bright      = "#8a8578"   # dim
-dim               = "#8a8578"   # dim
-guide             = "#59564e"   # guide
-orange            = "#e69f00"   # orange
-yellow            = "#f0e442"   # yellow
-vermillion        = "#d55e00"   # vermillion
-purple            = "#cc79a7"   # reddish_purple
-blue              = "#2981c2"   # blue_readable
-navy              = "#1f202a"   # background_panel
-cyan              = "#56b4e9"   # sky_blue
-green             = "#009e73"   # bluish_green
-orange_bright     = "#f4aa24"   # bright_orange
-yellow_bright     = "#fdf153"   # bright_yellow
-vermillion_bright = "#e3691d"   # bright_vermillion
-purple_bright     = "#e187b9"   # bright_reddish_purple
-blue_bright       = "#2f89cb"   # bright_blue
-navy_bright       = "#292a34"   # background_high
-cyan_bright       = "#63c0f7"   # bright_sky_blue
-green_bright      = "#23ab80"   # bright_bluish_green
+background        = "#0e0f1a"
+foreground        = "#f4f4f4"
+background_bright = "#171824"
+foreground_bright = "#ffffff"
+white             = "#f4f4f4"
+black             = "#000000"
+white_bright      = "#ffffff"
+black_bright      = "#8a8578"
+dim               = "#8a8578"
+structure         = "#59564e"
+guide             = "#292a34"
+orange            = "#e69f00"
+yellow            = "#f0e442"
+vermillion        = "#d55e00"
+purple            = "#cc79a7"
+blue              = "#2981c2"
+navy              = "#1f202a"
+cyan              = "#56b4e9"
+green             = "#009e73"
+orange_bright     = "#f4aa24"
+yellow_bright     = "#fdf153"
+vermillion_bright = "#e3691d"
+purple_bright     = "#e187b9"
+blue_bright       = "#2f89cb"
+navy_bright       = "#292a34"
+cyan_bright       = "#63c0f7"
+green_bright      = "#23ab80"
 
-added             = "#56b4e9"   # ui.added
-changed           = "#f0e442"   # ui.changed
-removed           = "#e69f00"   # ui.removed
-error             = "#d55e00"   # ui.error
-warning           = "#e69f00"   # ui.warning
-success           = "#56b4e9"   # ui.success
-info              = "#2981c2"   # ui.info
+added             = "#56b4e9"
+changed           = "#f0e442"
+removed           = "#e69f00"
+error             = "#d55e00"
+warning           = "#e69f00"
+success           = "#56b4e9"
+info              = "#2981c2"

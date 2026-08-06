@@ -2,5 +2,5 @@
 
 . ./lib.sh
 
-assert-root
+assert_root
 xbps-install -Syu $(packages "xbps-packages")
