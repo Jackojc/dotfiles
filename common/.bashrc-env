@@ -51,6 +51,7 @@ export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
 export PYTHONSTARTUP="${XDG_CONFIG_HOME}/python/pythonrc"
 
 # Only prepend if not already there.
+case ":${PATH}:" in
 	*":${XDG_BIN_HOME}:"*) ;;
 	*) export PATH="${XDG_BIN_HOME}:${PATH}" ;;
 esac
