@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 . lib-utils
 
@@ -7,6 +7,7 @@ need shikane
 need pipewire
 need swayidle
 need swww-daemon
+need swww
 need waybar
 need mako
 need lxqt-policykit-agent
@@ -24,3 +25,16 @@ has mako && mako &  # Notifications
 
 has lxqt-policykit-agent && lxqt-policykit-agent &
 has poweralertd && poweralertd &
+
+# Wait for wallpaper daemon to start then set a random wallpaper.
+# There was an issue where the daemon wasn't started and we'd skip
+# setting the wallpaper so just had a black desktop.
+if has swww; then
+	n=0
+	until [ -n "$(swww query 2>/dev/null)" ] || [ "$n" -ge 50 ]; do
+		n=$((n + 1))
+		sleep 0.1
+	done
+
+	tool-wallpaper
+fi
