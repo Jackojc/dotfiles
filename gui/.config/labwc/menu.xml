@@ -18,7 +18,7 @@
 
     <menu id="decorations-menu" label="decorations">
       <item label="on">
-        <action name="SetDecorations" decorations="all" />
+        <action name="SetDecorations" decorations="full" />
       </item>
 
       <item label="off">
@@ -26,7 +26,7 @@
       </item>
     </menu>
 
-    <seperator />
+    <separator />
 
     <item label="always on top">
       <action name="ToggleAlwaysOnTop" />
@@ -92,7 +92,7 @@
   </menu>
 
   <menu id="launcher-menu">
-      <seperator label="graphical" />
+      <separator label="graphical" />
 
       <item label="web">
         <action name="execute" command="firefox-wayland" />
@@ -110,13 +110,13 @@
         <action name="execute" command="qpwgraph" />
       </item>
 
-      <seperator label="terminal" />
+      <separator label="terminal" />
 
       <item label="calc">
         <action name="execute" command="foot tool-calc" />
       </item>
 
-      <seperator label="utils" />
+      <separator label="utils" />
 
       <item label="wifi">
         <action name="execute" command="foot iwctl" />

@@ -57,7 +57,8 @@ export XCURSOR_THEME=Adwaita  # find /usr/share/icons/ -type d -name "cursors"
 # Makes DBUS_SESSION_BUS_ADDRESS available to labwc
 # see: https://labwc.github.io/labwc.1.html#session_management
 
-dbus-run-session labwc
+# Run labwc and capture log.
+dbus-run-session labwc 2>&1 | tee -a "${XDG_CACHE_HOME:-$HOME/.cache}/labwc.log"
 
 # pkill -f "${KILLME}"
 # pkill -f "tool-keeprunning"

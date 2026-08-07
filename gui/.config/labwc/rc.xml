@@ -56,7 +56,7 @@
     </overlay>
   </snapping>
 
-  <windowSwitcher preview="yes" outlines="yes" allWorkspaces="no" unshade="yes">
+  <windowSwitcher preview="yes" outlines="yes" unshade="yes">
     <osd show="yes" style="thumbnail" output="cursor" thumbnailLabelFormat="%T" />
 
     <fields>
