@@ -8,4 +8,4 @@ if [ ! -d "${DIR_WALLPAPERS:-}" ]; then
 fi
 
 # wbg "$(fd . "$DIR_WALLPAPERS" -tf | shuf --head-count=1)"
-swww img "$(fd . "$DIR_WALLPAPERS" -tf | shuf --head-count=1)"
+awww img "$(fd . "$DIR_WALLPAPERS" -tf | shuf --head-count=1)"

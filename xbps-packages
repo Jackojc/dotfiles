@@ -2,15 +2,23 @@
 ntfs-3g
 
 # Video
-intel-gpu-tools
+igt-gpu-tools
 intel-ucode
 intel-video-accel
+linux-firmware-intel
+
+mesa-dri
+mesa-vulkan-intel
+vulkan-loader
+
+colord
 
 # Audio
 pipewire
 libjack-pipewire
 alsa-pipewire
 libspa-bluetooth
+playerctl
 
 # Applications
 lxqt-policykit
@@ -50,6 +58,7 @@ Waybar
 awww
 shikane
 wtype   # Needed for remapping pageup/pagedown
+wlopm
 
 grim
 grimshot
@@ -68,14 +77,118 @@ qrencode
 xz
 bc
 htop
-rsync
+wget
 gnupg
 python3
 aspell
 aspell-en
 
+stow
+rsync
+tmux
+git
+
+ripgrep
+fd
+eza
+bat
+hexyl
+jq
+
+dust
+dua-cli
+duf
+gping
+
+delta
+difftastic
+mergiraf
+
+broot
+dtrx
+renameutils
+
+unzip
+mtools
+xorriso
+geteltorito   # extracts a boot image from a Lenovo BIOS update ISO
+xtools
+openssl-devel
+
+# Development
+helix
+clang-tools-extra   # provides clangd
+pyright
+tinymist            # Typst LSP
+
+cmake
+meson
+
+typst
+typstyle
+
+# SDR
+rtl-sdr
+airspy
+SoapyRTLSDR
+LimeSuite
+
+gqrx
+CubicSDR
+welle-io
+
+gpredict
+kismet
+
+# Navigation
+gpsd
+gpsd-qt
+gpsd-xgps
+
+OpenCPN
+OpenCPN-gshhs-full
+OpenCPN-gshhs-high
+
+navit
+viking
+modrana
+
+marble
+kstars
+
+# System
+dbus
+elogind
+polkit
+socklog-void
+
+dracut
+plymouth
+zstd          # dracut compresses the initramfs with it
+
+void-repo-nonfree
+
+# Network
+avahi
+avahi-utils   # avahi-resolve-host-name, used by the ssh config for .local
+socat         # ProxyCommand transport for .local on musl
+
+iwd
+chrony
+
+ufw
+fail2ban
+tor
+fuse-sshfs
+
 # Hardware
 ddcutil
+bluetuith   # launched from the labwc root menu
+bluez
+
+acpi
+cpupower
+upower
 
 # Themes
 adwaita-qt

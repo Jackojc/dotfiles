@@ -11,8 +11,8 @@
 export TERMINAL="foot"
 export BROWSER="firefox-wayland"
 export EDITOR="hx"
-export READER="zathura"
-export VIEWER="imv-wayland"
+export READER="sioyek"
+export VIEWER="nsxiv"
 
 # Misc
 export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"

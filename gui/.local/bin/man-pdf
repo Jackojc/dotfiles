@@ -1,3 +1,21 @@
 #!/usr/bin/env sh
 
-man -Tpdf "$@" | ${READER:-zathura} -
+set -eu
+
+# Hacky workaround to let sioyek read from stdin.
+# It can't _actually_ read from stdin so we have
+# to create a temporary file.
+
+cache="${XDG_CACHE_HOME:-$HOME/.cache}/man-pdf"
+mkdir -p "$cache"
+
+name=$(printf '%s' "$*" | tr -cs 'A-Za-z0-9._' '-')
+out="${cache}/${name}.pdf"
+
+part="${out}.part"
+trap 'rm -f "$part"' EXIT
+
+man -Tpdf "$@" >"$part"
+mv -f "$part" "$out"
+
+"${READER:-sioyek}" "$out"

@@ -2,7 +2,7 @@
 
 # gtklock \
 # 	--gtk-theme "Adwaita:dark" \
-# 	--background "$(swww query | rg -o 'image: (.+)$' --replace '$1' | shuf -n1)"
+# 	--background "$(awww query | rg -o 'image: (.+)$' --replace '$1' | shuf -n1)"
 #
 #
 
