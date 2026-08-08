@@ -28,6 +28,5 @@ _darcs
 stow-all.sh
 stow-gui.sh
 stow-shell.sh
-nix.sh
 mkdirs.sh
 lib.sh

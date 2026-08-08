@@ -6,8 +6,8 @@ need dbus-update-activation-environment
 need shikane
 need pipewire
 need swayidle
-need swww-daemon
-need swww
+need awww-daemon
+need awww
 need waybar
 need mako
 need lxqt-policykit-agent
@@ -19,7 +19,7 @@ has shikane && shikane &
 has pipewire && pipewire &
 
 has swayidle && swayidle -w &
-has swww-daemon && swww-daemon --format xrgb &  # Wallpapers
+has awww-daemon && awww-daemon &  # Wallpapers
 has waybar && waybar &
 has mako && mako &  # Notifications
 
@@ -29,9 +29,9 @@ has poweralertd && poweralertd &
 # Wait for wallpaper daemon to start then set a random wallpaper.
 # There was an issue where the daemon wasn't started and we'd skip
 # setting the wallpaper so just had a black desktop.
-if has swww; then
+if has awww; then
 	n=0
-	until [ -n "$(swww query 2>/dev/null)" ] || [ "$n" -ge 50 ]; do
+	until [ -n "$(awww query 2>/dev/null)" ] || [ "$n" -ge 50 ]; do
 		n=$((n + 1))
 		sleep 0.1
 	done
