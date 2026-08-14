@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-
-pkexec efibootmgr -n "$(efibootmgr | rg '^Boot([0-9]{4}). Windows Boot Manager' --replace '$1' -o)" && \
-	loginctl reboot
