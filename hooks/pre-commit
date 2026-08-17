@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+cd "$(git -C "$(dirname "$0")" rev-parse --show-toplevel)" || exit 1  # cd to repo root.
+exec ./lint.sh
