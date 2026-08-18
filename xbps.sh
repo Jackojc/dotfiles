@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-set -o errexit -o nounset
-
 #
 # install void package manifest
 #
 
+set -o errexit -o nounset
 cd "$(git -C "$(dirname "$0")" rev-parse --show-toplevel)" || exit 1  # cd to project root
-
 . ./common/.local/bin/lib-utils
 
 # TODO: allow passing a different manifest file?
@@ -17,16 +15,8 @@ usage() {
 	printf 'usage: %s\n' "$(basename "$0")"
 }
 
-case "${1:-}" in
-	-h | --help) usage; exit 0 ;;
-	'') ;;
-	*) usage >&2; exit 1 ;;
-esac
-
-[ "$#" -le 1 ] || { usage >&2; exit 1; }
-
+no_args "$@"
 require xbps-install
-exists "$MANIFEST"
 
 # shellcheck disable=SC2046
 set -- $(packages "$MANIFEST")
