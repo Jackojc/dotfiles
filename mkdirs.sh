@@ -1,25 +1,46 @@
 #!/usr/bin/env bash
 
-. ./lib.sh
+#
+# create standard directories
+#
 
-mkdir -p "${XDG_CACHE_HOME}"
-mkdir -p "${XDG_CONFIG_HOME}"
-mkdir -p "${XDG_DATA_HOME}"
-mkdir -p "${XDG_BIN_HOME}"
-mkdir -p "${XDG_STATE_HOME}"
+set -o errexit -o nounset
+cd "$(git -C "$(dirname "$0")" rev-parse --show-toplevel)" || exit 1
+. ./common/.local/bin/lib-utils
 
-mkdir -p "${XDG_PUBLICSHARE_DIR}"
-mkdir -p "${XDG_TEMPLATES_DIR}"
-mkdir -p "${XDG_DESKTOP_DIR}"
-mkdir -p "${XDG_DOCUMENTS_DIR}"
-mkdir -p "${XDG_DOWNLOAD_DIR}"
-mkdir -p "${XDG_MUSIC_DIR}"
-mkdir -p "${XDG_PICTURES_DIR}"
-mkdir -p "${XDG_VIDEOS_DIR}"
+usage() {
+	printf 'usage: %s\n' "$(basename "$0")"
+}
 
-mkdir -p "${DIR_MEDIA}"
-mkdir -p "${DIR_MUSIC}"
-mkdir -p "${DIR_WALLPAPERS}"
-mkdir -p "${DIR_NOTES}"
-mkdir -p "${DIR_STICKERS}"
+no_args "$@"
 
+make_directory() {
+	for dir in "$@"; do
+		case "$dir" in '' | "$HOME" | /dev/null) continue ;; esac
+		[ -d "$dir" ] || { mkdir --parents "$dir" && printf 'created %s\n' "$dir"; }
+	done
+}
+
+make_directory \
+	"${XDG_CACHE_HOME}" \
+	"${XDG_CONFIG_HOME}" \
+	"${XDG_DATA_HOME}" \
+	"${XDG_BIN_HOME}" \
+	"${XDG_STATE_HOME}"
+
+make_directory \
+	"${XDG_PUBLICSHARE_DIR}" \
+	"${XDG_TEMPLATES_DIR}" \
+	"${XDG_DESKTOP_DIR}" \
+	"${XDG_DOCUMENTS_DIR}" \
+	"${XDG_DOWNLOAD_DIR}" \
+	"${XDG_MUSIC_DIR}" \
+	"${XDG_PICTURES_DIR}" \
+	"${XDG_VIDEOS_DIR}"
+
+make_directory \
+	"${DIR_MEDIA}" \
+	"${DIR_MUSIC}" \
+	"${DIR_WALLPAPERS}" \
+	"${DIR_NOTES}" \
+	"${DIR_STICKERS}"
