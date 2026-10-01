@@ -50,6 +50,8 @@
 
 
 # Commands
+[alias]
+	check = diff HEAD --check
 [pull]
 	rebase = true   # Rebase when pulling if origin is ahead.
 	default = current
