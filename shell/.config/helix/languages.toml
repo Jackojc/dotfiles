@@ -36,12 +36,12 @@ file-types = [ { glob = "meson.build" }, { glob = "meson_options.txt" } ]
 roots = [ "meson.build", "meson_options.txt" ]
 indent = { tab-width = 2, unit = "  " }
 # language-servers = [ "meson-format" ]
-formatter = { command = "meson format", args = [] }
+formatter = { command = "meson", args = ["format", "-"] }
 
 [[language]]
 name = "cpp"
 language-id = "cpp"
-file-types = [ "cpp", "hpp", "cxx", "hxx", "h" ]
+file-types = [ "cpp", "hpp", "cxx", "hxx" ]
 roots = [ "CMakeLists.txt", "Makefile" ]
 auto-format = true
 indent = { tab-width = 4, unit = "\t" }
@@ -69,6 +69,7 @@ roots = ["typst.toml"]
 auto-format = true
 language-servers = ["tinymist"]
 formatter = { command = "typstyle", args = [] }
+auto-pairs = { '(' = ')', '{' = '}', '[' = ']', '$' = '$', '"' = '"' }
 
 [[language]]
 name = "python"
@@ -78,13 +79,6 @@ roots = ["pyproject.toml", "setup.py", "Poetry.lock", ".git"]
 auto-format = true
 language-servers = [ "pyright" ]
 formatter = { command = "black", args = ["-", "-q"] }
-
-[language.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-'$' = '$'
-'"' = '"'
 
 [[language]]
 name = "cane"
