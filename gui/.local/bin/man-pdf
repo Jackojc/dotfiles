@@ -1,21 +1,18 @@
 #!/usr/bin/env sh
 
-set -eu
-
 # Hacky workaround to let sioyek read from stdin.
 # It can't _actually_ read from stdin so we have
-# to create a temporary file.
+# to create temporary file.
+
+set -o errexit -o nounset
 
 cache="${XDG_CACHE_HOME:-$HOME/.cache}/man-pdf"
-mkdir -p "$cache"
-
-name=$(printf '%s' "$*" | tr -cs 'A-Za-z0-9._' '-')
+name=$(printf '%s' "$*" | tr --complement --squeeze-repeats 'A-Za-z0-9._' '-')
 out="${cache}/${name}.pdf"
 
-part="${out}.part"
-trap 'rm -f "$part"' EXIT
+trap 'rm --force "$out"' EXIT
 
-man -Tpdf "$@" >"$part"
-mv -f "$part" "$out"
+mkdir --parents "$cache"
+man -Tpdf "$@" >"$out"
 
 "${READER:-sioyek}" "$out"
