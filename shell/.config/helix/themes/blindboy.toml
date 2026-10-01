@@ -109,7 +109,6 @@
 "ui.virtual.ruler" = { bg = "navy" }
 "ui.virtual.jump-label" = { fg = "yellow_bright", modifiers = ["bold", "underlined"] }
 
-
 [palette]
 background        = "#0e0f1a"
 foreground        = "#f4f4f4"

@@ -26,6 +26,12 @@ editor-config = true
 
 # popup-border = "all"
 
+[editor.auto-pairs]
+'(' = ')'
+'{' = '}'
+'[' = ']'
+'"' = '"'
+
 [editor.cursor-shape]
 insert = "block"
 normal = "block"
