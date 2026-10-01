@@ -4,3 +4,5 @@ source-path=common
 source-path=common/.local/bin
 source-path=shell/.local/bin
 source-path=gui/.local/bin
+source-path=gui
+source-path=shell
