@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+[ -S "$XDG_RUNTIME_DIR/pipewire-0" ] || exit 1
+exec pipewire -c pipewire-pulse.conf 2>&1
