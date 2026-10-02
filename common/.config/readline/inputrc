@@ -1,0 +1,15 @@
+$include /etc/inputrc
+
+set completion-map-case on
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set mark-symlinked-directories on
+set visible-stats on
+set colored-stats on
+set colored-completion-prefix on
+set page-completions off
+set bell-style none
+
+# search history using input so far
+"\e[A": history-search-backward
+"\e[B": history-search-forward
