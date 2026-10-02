@@ -1,1 +1,15 @@
 htop_history
+
+# Secrets
+.git-credentials
+.netrc
+.env
+*.pem
+*.key
+*.p12
+id_rsa
+id_ecdsa
+id_ed25519
+
+# Cane tree-sitter grammar
+/shell/.config/helix/grammars/cane/src/
