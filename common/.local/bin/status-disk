@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+
+avail=$(df --block-size=G --output=avail -- "${1:-/}")
+echo "${avail##*[[:space:]]} free"
