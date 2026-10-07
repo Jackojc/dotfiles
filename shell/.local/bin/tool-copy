@@ -1,6 +1,14 @@
 #!/usr/bin/env sh
 
-input=$(cat)
-echo "$input" | xsel -ib
-echo "$input"
+# copy stdin to clipboard and print it
 
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+require wl-copy
+
+tmp=$(mktemp)
+trap 'rm -f -- "$tmp"' EXIT
+
+tee "$tmp"
+wl-copy < "$tmp"
