@@ -1,20 +1,20 @@
 layer=overlay
 anchor=bottom-right
 
-font=APL386 Unicode 12
+font=Lexend 13.5
 
 sort=-time
 
-outer-margin=10,10,10,10
+outer-margin=13,13,13,13
 
-padding=5
+padding=13
 margin=5
 
-width=500
-height=300
+width=465
+height=287
 
 border-size=1
-border-radius=0
+border-radius=3
 
 # Don't trigger events when clicking notifications
 actions=0
@@ -23,13 +23,25 @@ actions=0
 default-timeout=3000
 ignore-timeout=1
 
+background-color=#0e0f1afa
+text-color=#f4f4f4
+border-color=#59564e
+progress-color=over #56b4e94d
+
+# Critical stays until dismissed, with a vermilion border.
+[urgency=critical]
+border-color=#d55e00
+background-color=#d55e00fa
+text-color=#0e0f1a
+default-timeout=0
+
 [mode=do-not-disturb]
 invisible=1
 
 [mode=do-not-disturb app-name=wpctl]
 invisible=0
 
-[mode=do-not-disturb app-name=brightnessctl]
+[mode=do-not-disturb app-name=tool-brightness]
 invisible=0
 
 [app-name=wpctl]
@@ -39,13 +51,9 @@ history=0
 anchor=center
 text-alignment=center
 
-[app-name=brightnessctl]
+[app-name=tool-brightness]
 default-timeout=500
 layer=overlay
 history=0
 anchor=center
 text-alignment=center
-
-background-color=#1f202a
-text-color=#f4f4f4
-border-color=#8a8578
