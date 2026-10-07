@@ -1,0 +1,26 @@
+window#osd {
+	border-radius: 3px;
+	border: 1px solid #59564e;
+	background: alpha(#0e0f1a, 0.98);
+}
+
+window#osd #container {
+	margin: 13px;
+}
+
+window#osd image,
+window#osd label {
+	color: #f4f4f4;
+	font-family: Lexend;
+	font-size: 13.5pt;
+}
+
+window#osd trough {
+	border-radius: 3px;
+	background: #59564e;
+}
+
+window#osd progress {
+	border-radius: 3px;
+	background: #56b4e9;
+}

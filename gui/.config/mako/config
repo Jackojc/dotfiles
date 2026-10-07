@@ -16,10 +16,10 @@ height=287
 border-size=1
 border-radius=3
 
-# Don't trigger events when clicking notifications
+# dont trigger events when clicking notifications
 actions=0
 
-# Always timeout
+# always timeout
 default-timeout=3000
 ignore-timeout=1
 
@@ -28,7 +28,7 @@ text-color=#f4f4f4
 border-color=#59564e
 progress-color=over #56b4e94d
 
-# Critical stays until dismissed, with a vermilion border.
+# critical stays open until dismissed
 [urgency=critical]
 border-color=#d55e00
 background-color=#d55e00fa
@@ -38,18 +38,8 @@ default-timeout=0
 [mode=do-not-disturb]
 invisible=1
 
-[mode=do-not-disturb app-name=wpctl]
-invisible=0
-
 [mode=do-not-disturb app-name=tool-brightness]
 invisible=0
-
-[app-name=wpctl]
-default-timeout=500
-layer=overlay
-history=0
-anchor=center
-text-alignment=center
 
 [app-name=tool-brightness]
 default-timeout=500
