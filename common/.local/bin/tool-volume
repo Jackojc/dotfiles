@@ -1,0 +1,48 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+require wpctl
+
+usage() {
+	printf '%s' "\
+usage: $(basename "$0") speaker|microphone <command>
+
+  get         current level
+  up [n]      increase by n percent
+  down [n]    descrease by n percent
+  mute        toggle mute
+
+example: $(basename "$0") speaker up 5
+"
+}
+
+case "${1:-}" in
+	speaker)    target='@DEFAULT_AUDIO_SINK@' ;;
+	microphone) target='@DEFAULT_AUDIO_SOURCE@' ;;
+
+	*) usage >&2; exit 1 ;;
+esac
+
+shift
+
+wp() {
+	timeout 5 wpctl "$@" || die "wpctl $1 failed"
+}
+
+case "${1:-}" in
+	get)
+		state=$(wp get-volume "$target")
+
+		printf '%s\n' "$state" |
+			awk '{ printf "%d %s\n", $2 * 100 + 0.5, /MUTED/ ? "muted" : "unmuted" }'
+		;;
+
+	up)   wp set-volume --limit 1.0 "$target" "${2:-2}%+" ;;
+	down) wp set-volume "$target" "${2:-2}%-" ;;
+
+	mute) wp set-mute "$target" toggle ;;
+
+	*) usage >&2; exit 1 ;;
+esac

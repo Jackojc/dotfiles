@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+
+state=$(tool-volume speaker get)
+
+# print percentage or "muted" if, well, muted.
+case "$state" in
+	*' muted') echo muted ;;
+	*) echo "${state% *}%" ;;
+esac
