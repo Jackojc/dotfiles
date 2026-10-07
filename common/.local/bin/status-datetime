@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec date "+%a %d/%m %H:%M"

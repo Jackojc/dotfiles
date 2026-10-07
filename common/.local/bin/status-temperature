@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+
+for hwmon in /sys/class/hwmon/hwmon*; do
+	case $(cat "$hwmon/name") in
+		coretemp | k10temp | zenpower) sensor=$hwmon/temp1_input; break ;;
+	esac
+done
+
+[ -n "${sensor:-}" ] || exit 1
+
+celsius=$(( ($(cat "$sensor") + 500) / 1000 ))
+
+if [ "$celsius" -ge 80 ]; then
+	echo "${celsius}°C hot"
+
+else
+	echo "${celsius}°C"
+fi

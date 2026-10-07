@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+
+for battery in /sys/class/power_supply/BAT*; do
+	[ -r "$battery/capacity" ] || continue
+
+	echo "bat $(cat "$battery/capacity")% $(tr '[:upper:]' '[:lower:]' < "$battery/status")"
+	exit 0
+done
+
+echo ac

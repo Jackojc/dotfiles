@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+
+n=$(xbps-install --dry-run --update --memory-sync | wc --lines)
+[ "$n" -eq 0 ] || echo "$n"
