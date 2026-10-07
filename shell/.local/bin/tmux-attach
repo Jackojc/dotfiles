@@ -1,12 +1,19 @@
 #!/usr/bin/env sh
 
-if [ -z "$TMUX" ] ;then
-	ID="$(tmux ls | rg -v attached | cut -d: -f1 | head -n1)" # get the id of a deattached session
+# attempt to connect to existing
+# tmux session that is not currently
+# connected to by anyone (orphaned?).
+# if there's none, start a new session.
 
-	if [ -z "$ID" ]; then # if not available create a new one
-		exec tmux new-session
-	else
-		exec tmux attach-session -t "$ID" # if available attach to it
-	fi
-fi
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
 
+[ -z "${TMUX:-}" ] || exit 0
+
+require tmux
+
+session=$(tmux list-sessions -F '#{session_name}' \
+	-f '#{==:#{session_attached},0}' 2>/dev/null | head --lines=1)
+
+[ -z "$session" ] || exec tmux attach-session -t "=$session"
+exec tmux new-session

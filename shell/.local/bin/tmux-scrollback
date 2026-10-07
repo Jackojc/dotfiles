@@ -1,5 +1,13 @@
 #!/usr/bin/env sh
 
-file=`mktemp`.sh
-tmux capture-pane -pS -32768 > $file
-tmux display-popup -E "$EDITOR -ro +: $file"
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+require tmux
+[ -n "${TMUX:-}" ] || die 'not inside tmux'
+
+tmp=$(mktemp --suffix=.sh)
+trap 'rm -f -- "$tmp"' EXIT
+
+tmux capture-pane -p -S - >"$tmp"
+tmux display-popup -E "${EDITOR:-hx} +$(wc -l <"$tmp") '$tmp'"
