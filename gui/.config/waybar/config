@@ -12,8 +12,8 @@
 
     "modules-left": [
         "disk",
-        // "custom/xbps",
-        "temperature",
+        "custom/xbps",
+        "custom/temperature",
         "battery",
         "wireplumber",
     ],
@@ -35,14 +35,12 @@
     //     "format": "{percentage}"
     // },
 
-    "temperature": {
-        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
-        "input-filename": "temp1_input",
-
+    "custom/temperature": {
+        "format": " {}",
+        "exec": "status-temperature",
+        "on-click": "foot htop",
         "interval": 10,
-        "critical-threshold": 80,
-        "format-critical": " {temperatureC}°C",
-        "format": " {temperatureC}°C"
+        "tooltip": false
     },
 
     "battery": {
@@ -75,15 +73,16 @@
     "disk": {
         "interval": 30,
         "format": " {free}",
-        "path": "/",
+        "path": "/home",
+        "on-click": "foot dua i /home",
         "tooltip": false,
         "unit": "GiB"
     },
 
     "wlr/taskbar": {
         "format": "{icon} {title}",
-        "icon-size": 17,
-        "spacing": 10,
+        "icon-size": 16,
+        "spacing": 13,
         "on-click-middle": "close",
         "tooltip": false,
         "ignore-list": [],
@@ -94,19 +93,18 @@
         }
     },
 
-    // "custom/xbps": {
-    //     "format": " {}",
-    //     "return-type": "json",
-    //     "tooltip": false,
-    //     "interval": "60",
-    //     "exec": "tool-xbps-updates",
-    //     "hide-empty-text": true
-    // },
+    "custom/xbps": {
+        "format": " {}",
+        "tooltip": false,
+        "interval": 60,
+        "exec": "status-xbps",
+        "hide-empty-text": true
+    },
 
     "tray": {
-        "icon-size": 17,
+        "icon-size": 16,
         "show-passive-items": "true",
-        "spacing": 10
+        "spacing": 13
     },
 
     "clock": {
@@ -120,11 +118,11 @@
             "on-scroll": 0,
 
             "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                "days": "<span color='#ecc6d9'>{}</span>",
-                "weeks": "<span color='#99ffdd'>W{}</span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                "today": "<span color='#ffcc66'><b><u>{}</u></b></span>"
+                "months": "<span color='#f4f4f4'><b>{}</b></span>",
+                "days": "<span color='#8a8578'>{}</span>",
+                "weeks": "<span color='#59564e'>W{}</span>",
+                "weekdays": "<span color='#8a8578'><b>{}</b></span>",
+                "today": "<span color='#56b4e9'><b><u>{}</u></b></span>"
             }
         }
     }
