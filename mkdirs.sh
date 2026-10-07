@@ -5,30 +5,20 @@
 #
 
 set -o errexit -o nounset
+
 cd "$(git -C "$(dirname "$0")" rev-parse --show-toplevel)" || exit 1
-. ./common/.local/bin/lib-utils
 
-usage() {
-	printf 'usage: %s\n' "$(basename "$0")"
-}
+. ./common/.local/lib/lib-utils
+. ./common/.local/lib/lib-env
 
-no_args "$@"
-
-make_directory() {
-	for dir in "$@"; do
-		case "$dir" in '' | "$HOME" | /dev/null) continue ;; esac
-		[ -d "$dir" ] || { mkdir --parents "$dir" && printf 'created %s\n' "$dir"; }
-	done
-}
-
-make_directory \
+mkdir --parents --verbose -- \
 	"${XDG_CACHE_HOME}" \
 	"${XDG_CONFIG_HOME}" \
 	"${XDG_DATA_HOME}" \
 	"${XDG_BIN_HOME}" \
 	"${XDG_STATE_HOME}"
 
-make_directory \
+mkdir --parents --verbose -- \
 	"${XDG_PUBLICSHARE_DIR}" \
 	"${XDG_TEMPLATES_DIR}" \
 	"${XDG_DESKTOP_DIR}" \
@@ -38,7 +28,7 @@ make_directory \
 	"${XDG_PICTURES_DIR}" \
 	"${XDG_VIDEOS_DIR}"
 
-make_directory \
+mkdir --parents --verbose -- \
 	"${DIR_MEDIA}" \
 	"${DIR_MUSIC}" \
 	"${DIR_WALLPAPERS}" \
