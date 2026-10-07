@@ -1,0 +1,92 @@
+#!/usr/bin/env sh
+
+# source environment config
+if [ -r "${HOME}/.local/lib/lib-env" ]; then
+    . "${HOME}/.local/lib/lib-env"
+fi
+
+is_terminal() {
+    [ -t 2 ]  # check if a terminal is connected, seems to be convention
+}
+
+is_wayland() {
+    [ -n "${WAYLAND_DISPLAY:-}" ]
+}
+
+is_root() {
+    [ "$(id -u)" -eq 0 ]
+}
+
+is_installed() {
+    [ -x "$(command -v "$1" 2>/dev/null)" ]
+}
+
+should() {
+    is_installed "$1" || warn "missing: $1"
+}
+
+require() {
+    is_installed "$1" || die "${2:-$1 not found}"
+}
+
+exists() {
+    [ -f "$1" ] || die "no such file: '$1'"
+}
+
+packages() {  # check file exists and if so, strip comments
+    exists "$1"
+    sed 's/#.*//' -- "$1"
+}
+
+if is_terminal; then
+    RESET=$(printf '\033[0m')
+    BOLD=$(printf '\033[1m')
+
+    RED=$(printf '\033[31m')
+    CYAN=$(printf '\033[36m')
+fi
+
+log() {
+    printf '%s: %s\n' "$(basename "$0")" "$1" >&2
+}
+
+warn() {
+    log "${CYAN:-}warn:${RESET:-} $1"
+}
+
+error() {
+    log "${BOLD:-}${RED:-}error:${RESET:-} $1"
+}
+
+die() {
+    error "$1"
+
+    # notify if no terminal is connected
+    if ! is_terminal && is_installed notify-send; then
+        notify-send --urgency critical "$(basename "$0")" "$1"
+    fi
+
+    exit 1
+}
+
+yn() {
+    printf '%s [y/n]: ' "$1"
+    read -r _yn || return 1
+
+    case $_yn in
+        [yY]*) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+menu() {
+    require fzf
+    require fuzzel
+
+    if is_wayland && ! is_terminal; then
+        echo fuzzel
+
+    else
+        echo fzf
+    fi
+}

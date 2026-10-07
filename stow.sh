@@ -1,52 +1,27 @@
 #!/usr/bin/env sh
 
-set -o errexit -o nounset
-
-#
 # stow the directories in this repo into $HOME.
 # it restows and prunes dead links.
-#
+# remove: stow --delete --target "$HOME" common shell gui
+
+set -o errexit -o nounset
 
 # cd to repo root.
 cd "$(git -C "$(dirname "$0")" rev-parse --show-toplevel)" || exit 1
 
-. ./common/.local/bin/lib-utils
-
-PACKAGES='common shell gui'  # directories to stow
-HOSTNAME="host-$(uname -n)"
-
-usage() {
-	printf '%s' "usage: $(basename "$0") [-n|-D] [package...]
-  -n  dry run
-  -D  unstow
-  -h  help
-"
-}
-
-action=--restow
-dry=''
-
-while getopts ':nDh' opt; do
-	case "$opt" in
-		n) dry='--simulate --verbose' ;;
-		D) action=--delete ;;
-		h) usage; exit 0 ;;
-		*) usage >&2; exit 1 ;;
-	esac
-done
-shift $(( OPTIND - 1 ))
+. ./common/.local/lib/lib-utils
 
 require stow
 
-# shellcheck disable=SC2086
-[ "$#" -gt 0 ] || set -- $PACKAGES
+[ "$#" -gt 0 ] || set -- common shell gui
 
-if [ -d "$HOSTNAME" ]; then
-	set -- "$@" "$HOSTNAME"
+host="$(uname -n)"
+
+if [ -d "$host" ]; then
+	set -- "$@" "$host"
 
 else
-	log "unknown host '${HOSTNAME}'!"
+	log "unknown host '${host}'!"
 fi
 
-# shellcheck disable=SC2086
-LC_ALL=C stow "$action" $dry --no-folding --target "$HOME" "$@"
+LC_ALL=C stow --restow --no-folding --target "$HOME" "$@"
