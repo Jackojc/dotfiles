@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-[ "$#" -gt 1 ] && echo "usage: $(basename $0) <sentences>" && exit 1
+[ "$#" -gt 1 ] && { printf 'usage: %s [sentences]\n' "$(basename "$0")" >&2; exit 1; }
 
 MAX_WORD_LENGTH=6
 MIN_WORD_LENGTH=1
