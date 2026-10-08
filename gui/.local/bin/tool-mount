@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+require udisksctl
+
+device=$(lsblk --list --paths --noheadings \
+	--filter 'HOTPLUG && TYPE == "part" && FSTYPE && !MOUNTPOINT' \
+	--output NAME,SIZE,FSTYPE,LABEL |
+	sed 's/ /\t/' | tool-menu mount)
+
+udisksctl mount -b "$device"
