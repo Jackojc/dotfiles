@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+[ "$#" -eq 1 ] || die 'usage: tool-img-cp <directory>'
+[ -d "$1" ] || die "no such directory '$1'"
+
+require nsxiv
+
+nsxiv --recursive --stdout --animate . |
+	xargs --no-run-if-empty --delimiter='\n' -I{} -- \
+		cp --archive --no-clobber --verbose "{}" --target-directory="$1"
