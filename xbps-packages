@@ -1,92 +1,189 @@
-# Filesystems
+# System
+base-system
+gcompat       # glibc compat
+runit
+void-repo-nonfree
+
+dbus
+elogind
+polkit
+socklog-void  # syslog
+cronie
+apparmor
+
+dracut
+dracut-uefi
+zstd
+plymouth      # boot splash
+
+systemd-boot
+systemd-boot-efistub
+ukify         # uki builder
+efibootmgr
+sbctl         # secure boot
+sbsigntool
+geteltorito   # lenovo bios extract
+
+btrfs-progs
+compsize      # btrfs usage
+btrbk         # btrfs snapshots
+restic        # compressed & encrypted backups
+cryptsetup
+lvm2
 ntfs-3g
+smartmontools
 
-# Video
-igt-gpu-tools
 intel-ucode
-intel-video-accel
 linux-firmware-intel
-
+intel-video-accel
 mesa-dri
 mesa-vulkan-intel
 vulkan-loader
+igt-gpu-tools
 
-colord
+acpi
+cpupower
+upower
+poweralertd
 
-# Audio
-pipewire
-libjack-pipewire
-alsa-pipewire
-libspa-bluetooth
-playerctl
-
-# Applications
-lxqt-policykit
-transmission-qt
-
-qpwgraph
-pavucontrol
-
-iwgtk
-firefox
-mpv
-pqiv
-nsxiv   # tool-imgcp/tool-imgmv need '--stdout' for selection
-nemo
-
-foot
-foot-terminfo
-
-sioyek
-
-# Wayland
+colord        # colour profiles
 brightnessctl
-wdisplays
-wlr-randr
-wev
-wlrctl
+ddcutil
+fbset
+
+bluez
+bluetuith
+
+libmtp
+gvfs-mtp
+android-tools
+
+# Network
+iwd
+iwgtk         # iwd frontend
+chrony        # ntp
+dnscrypt-proxy
+
+avahi
+avahi-utils
+socat
+
+ufw
+fail2ban
+
+wireguard-tools
+yggdrasil
+yggdrasilctl
+
+mosh
+fuse-sshfs
+syncthing
+wget
+gping
+
+# Wayland Shit
+labwc
+Waybar
+fuzzel        # launcher
+mako          # notifications
+SwayOSD       # volume overlay
+awww          # wallpaper
 
 swayidle
-swaylock
-gtklock
+waylock
+wlopm         # display power
 
-# Wayland Utils
-labwc
-mako
-wofi
-Waybar
-awww
-shikane
-wtype   # Needed for remapping pageup/pagedown
-wlopm
+wdisplays
+wlr-randr
+shikane       # monitor profiles
+
+wev           # input events
+wlrctl        # compositor control
+wtype
+
+lxqt-policykit
+glib
+
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+xdg-desktop-portal-wlr
+
+qt5-wayland
+adwaita-qt
+adwaita-qt6
 
 grim
 grimshot
 slurp
-swappy
+swappy        # screenshot editor
+wf-recorder
+
 wl-clipboard
+cliphist
 
-xdg-desktop-portal-gtk
-xdg-desktop-portal-wlr
+terminus-font
+font-unifont-bdf
+nerd-fonts-ttf
+font-awesome6
+fonts-droid-ttf
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-ttf
+noto-fonts-ttf-extra
+liberation-fonts-ttf
 
-# Shell
-bash-completion
-fzf
-pass
-qrencode
-xz
-bc
-htop
-wget
-gnupg
-python3
+# Applications
+foot
+foot-terminfo
+
+firefox
+chromium
+
+nemo
+keepassxc
+transmission-qt
+flatpak
+
+sioyek        # pdf viewer
+xournalpp     # pen device notes
+qpdf          # pdf split
+
+typst
+typstyle
 aspell
 aspell-en
 
-stow
-rsync
+# Media
+pipewire
+wireplumber
+wireplumber-elogind
+libjack-pipewire
+alsa-pipewire
+alsa-utils
+libspa-bluetooth
+
+playerctl
+pavucontrol
+qpwgraph
+libsndfile-progs
+
+mpv
+yt-dlp
+ffmpeg6
+
+pqiv          # image viewer
+nsxiv         # image viewer
+
+qrencode
+zbar          # qr reader
+
+# Shell
+bash-completion
 tmux
-git
+fzf
+stow
+htop
+bc
 
 ripgrep
 fd
@@ -95,39 +192,88 @@ bat
 hexyl
 jq
 
+moreutils
+psmisc
+lsof
+plocate
+xtools        # xbps helpers
+
 dust
 dua-cli
 duf
-gping
 
+rsync
+xz
+unzip
+dtrx          # extract archives
+renameutils
+mtools        # fat images
+xorriso       # iso images
+
+gnupg
+gnupg2
+pass
+oath-toolkit  # totp
+
+# Development
+git
+git-lfs
 delta
 difftastic
 mergiraf
+pre-commit
 
-broot
-dtrx
-renameutils
-
-unzip
-mtools
-xorriso
-geteltorito   # extracts a boot image from a Lenovo BIOS update ISO
-xtools
-openssl-devel
-
-# Development
 helix
-clang-tools-extra   # provides clangd
-pyright
-tinymist            # Typst LSP
+tree-sitter-cli
+scc           # line counts
+shellcheck
+entr          # file watcher
+watchexec     # file watcher
 
+python3
+python3-pipx
+pyright
+nodejs
+tinymist      # typst lsp
+
+podman
+fuse-overlayfs
+
+man-pages-devel
+man-pages-posix
+
+base-devel
 cmake
 meson
+openssl-devel
+ccache
+mold
 
-typst
-typstyle
+clang-tools-extra
+Bear
+sparse        # c linter
+cppcheck
+cflow         # call graph
 
-# SDR
+llvm21
+qbe           # compiler backend
+re2c          # lexer generator
+nasm
+wabt          # wasm tools
+
+gdb
+valgrind
+linux-tools   # perf
+strace
+ltrace
+uftrace
+elfutils
+lcov          # coverage
+bcc-tools     # ebpf tools
+hyperfine     # benchmarks
+diffoscope    # build diff
+
+# SIGINT
 rtl-sdr
 airspy
 SoapyRTLSDR
@@ -135,72 +281,18 @@ LimeSuite
 
 gqrx
 CubicSDR
-welle-io
+welle-io      # dab radio
+gpredict      # satellite tracking
+kismet        # wardriving
 
-gpredict
-kismet
-
-# Navigation
 gpsd
 gpsd-qt
 gpsd-xgps
 
-OpenCPN
-OpenCPN-gshhs-full
-OpenCPN-gshhs-high
-
+OpenCPN       # chart plotter
 navit
-viking
-modrana
+viking        # gps + route planner
+modrana       # maps
 
-marble
+marble        # globe
 kstars
-
-# System
-dbus
-elogind
-polkit
-socklog-void
-
-dracut
-plymouth
-zstd          # dracut compresses the initramfs with it
-
-void-repo-nonfree
-
-# Network
-avahi
-avahi-utils   # avahi-resolve-host-name, used by the ssh config for .local
-socat         # ProxyCommand transport for .local on musl
-
-iwd
-chrony
-
-ufw
-fail2ban
-tor
-fuse-sshfs
-
-# Hardware
-ddcutil
-bluetuith   # launched from the labwc root menu
-bluez
-
-acpi
-cpupower
-upower
-
-# Themes
-adwaita-qt
-adwaita-qt6
-qt5-wayland
-
-# Fonts
-terminus-font
-font-unifont-bdf
-fonts-droid-ttf
-noto-fonts-cjk
-noto-fonts-emoji
-noto-fonts-ttf
-noto-fonts-ttf-extra
-liberation-fonts-ttf
