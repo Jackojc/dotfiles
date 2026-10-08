@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+prompt="${1:-select}> "
+backend=$(menu)  # gives fzf in terminal or fuzzel in gui
+
+case "$backend" in
+	fzf) choice=$(fzf --prompt "$prompt" --height 40% --reverse | cut -f1) ;;
+	fuzzel) choice=$(fuzzel --dmenu --accept-nth 1 --prompt "$prompt") ;;
+esac
+
+[ -n "$choice" ] || exit 1
+printf '%s\n' "$choice"

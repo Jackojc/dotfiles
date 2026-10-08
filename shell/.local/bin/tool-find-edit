@@ -1,17 +1,11 @@
 #!/usr/bin/env sh
 
-args="$*"
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
 
-if [ -z "$args" ]; then
-	file="$(fd --hidden -tf | fzf)"
-else
-	file="$(fd --hidden -tf | fzf -q "$@")"
-fi
+require fd
+require fzf
+[ -n "${EDITOR:-}" ] || die 'EDITOR is not set'
 
-if [ -z "$file" ]; then
-	exit 1
-fi
-
-$EDITOR "$file"
-
-
+file=$(fd --hidden --type f | fzf --query "$*") || exit 1
+exec "$EDITOR" "./${file#./}"
