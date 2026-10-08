@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+DIR=${DIR_NOTES:-$HOME/notes}
+[ -d "$DIR" ] || die "no notes directory at '$DIR'"
+
+cd "$DIR"
+exec tool-find-edit

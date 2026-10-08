@@ -1,9 +1,20 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-choice="$(man -k . | fzf | cut -d'(' -f1)"
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
 
-if [ -z "$choice" ]; then
-	exit 1
+require man
+require fzf
+require fuzzel
+
+pages() {
+	paste <(man -w -k . 2>/dev/null) <(man -k . 2>/dev/null)
+}
+
+if is_terminal; then
+	page=$(pages | fzf --delimiter '\t' --with-nth 2 --prompt 'man> ') || exit 1
+	exec man -l "${page%%$'\t'*}"
 fi
 
-man $choice
+page=$(pages | fuzzel --dmenu --with-nth 2 --accept-nth 1 --prompt 'man> ') || exit 1
+exec man-pdf -l "$page"

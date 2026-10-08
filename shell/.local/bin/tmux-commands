@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+require tmux
+
+[ -n "${TMUX:-}" ] || die 'not inside tmux'
+
+if [ "${1:-}" != --popup ]; then
+	exec tmux display-popup -E -w 80% -h 60% "'$0' --popup"
+fi
+
+choice=$(tmux list-commands | tool-menu 'tmux') || exit 1
+tmux command-prompt -I "${choice%% *} "
