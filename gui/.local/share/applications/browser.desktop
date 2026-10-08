@@ -1,5 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=Browser
-Exec=/bin/firefox %F
-
+Exec=/bin/firefox %u
