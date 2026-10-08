@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-set -eu
-
-[ "$#" -eq 0 ] && echo "no destination specified" && exit 1
-
-nsxiv --recursive --stdout --animate . | \
-	xargs --no-run-if-empty --delimiter='\n' -I{} -- \
-		cp --archive --no-clobber --verbose "{}" --target-directory="$1"

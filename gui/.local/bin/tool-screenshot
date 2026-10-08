@@ -1,41 +1,51 @@
 #!/usr/bin/env sh
 
-set -eu
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+DIR="${XDG_PICTURES_DIR:-$HOME/pictures}"
 
 usage() {
-  echo "usage: $(basename "$0") [all|area|output]" 1>&2
-  exit 1
+	printf '%s' "\
+usage: $(basename "$0") <all|area|output>
+
+  all      screenshot all monitors
+  area     screenshot selected region
+  output   screenshot selected monitor
+"
 }
 
-getgeom() {
-  if ! tool-jslurp "$@"; then
-    exit 1
-  fi
-}
-
-if [ "$#" -ne 1 ]; then
-  usage
-fi
-
-case "$1" in
-  all)
-    grim - | wl-copy | swappy -f -
-    ;;
-
-  area)
-    GEOM="$(getgeom)"
-    grim -g "$GEOM" - | wl-copy | swappy -f -
-    ;;
-
-  output)
-    GEOM="$(getgeom -o)"
-    grim -g "$GEOM" - | wl-copy | swappy -f -
-    ;;
-
-  *)
-    usage
+case "${1:-}" in
+	-h | --help) usage; exit 0 ;;
+	'') usage >&2; exit 1 ;;
 esac
 
-OUTP="${XDG_PICTURES_DIR}/$(tool-iso8601).png"
-wl-paste > "$OUTP"
-notify-send -i "$OUTP" "screenshot" "$OUTP"
+[ "$#" -eq 1 ] || { usage >&2; exit 1; }
+
+require grim
+require wl-copy
+
+case "$1" in
+	all) geometry='' ;;
+	area) geometry=$(tool-select-region) || exit 1 ;;
+	output) geometry=$(tool-select-region -o) || exit 1 ;;
+	*) usage >&2; exit 1 ;;
+esac
+
+mkdir --parents "$DIR"
+
+out=$(mktemp --suffix=.png -- "$DIR/$(tool-iso8601)-XXXXXXXX") ||
+	die 'cant create the output file'
+
+if [ -n "$geometry" ]; then
+	grim -l 1 -g "$geometry" "$out" || { rm --force -- "$out"; die 'screenshot failed'; }
+
+else
+	grim -l 1 "$out" || { rm --force -- "$out"; die 'screenshot failed'; }
+fi
+
+wl-copy --type image/png <"$out"
+
+if is_installed notify-send; then
+	notify-send --icon "$out" 'screenshot' "$out" >/dev/null 2>&1 || true
+fi
