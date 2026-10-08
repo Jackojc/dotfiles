@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-# Taken from `https://github.com/sharkdp/bat/issues/1145` @lahwaacz
-exec cat "$@" | ul | bat --language man --style plain --pager "$PAGER"
+exec sed 's/.\x08//g' "$@" |
+	bat --language man --style plain --theme=ansi --pager "$PAGER"
