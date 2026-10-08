@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+require curl
+
+usage() {
+	printf 'usage: %s <topic>\n\nprint a cheatsheet from cheat.sh\n' "$(basename "$0")"
+}
+
+case "${1:-}" in
+	-h | --help | '') usage; exit 0 ;;
+esac
+
+topic=$(printf '%s' "$*" | tr ' ' '+')  # join args with `+`
+
+curl --silent --show-error --location --max-time 20 "https://cheat.sh/${topic}" ||
+	die "could not connect to cheat.sh"
