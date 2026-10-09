@@ -1,11 +1,16 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-set -eu
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
 
-if [ ! -d "${DIR_WALLPAPERS:-}" ]; then
-	printf 'no wallpaper directory\n'
-	exit 1
-fi
+require awww
 
-# wbg "$(fd . "$DIR_WALLPAPERS" -tf | shuf --head-count=1)"
-awww img "$(fd . "$DIR_WALLPAPERS" -tf | shuf --head-count=1)"
+image=$(
+	file --mime-type -- "$DIR_WALLPAPERS"/* |
+		grep ': *image/' |
+		cut --delimiter=: --fields=1 |
+		shuf --head-count=1
+)
+
+[ -n "$image" ] || die "'$DIR_WALLPAPERS' is empty"
+awww img --resize crop "$image"
