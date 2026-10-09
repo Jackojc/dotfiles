@@ -1,9 +1,11 @@
 #!/usr/bin/env sh
 
-# gtklock \
-# 	--gtk-theme "Adwaita:dark" \
-# 	--background "$(awww query | rg -o 'image: (.+)$' --replace '$1' | shuf -n1)"
-#
-#
+set -o errexit -o nounset
 
-waylock -fork-on-lock -ignore-empty-password -init-color 0x064a89 -input-color 0x333f48 -input-alt-color 0x444f58 -fail-color 0xe2232a
+exec waylock \
+	-fork-on-lock \
+	-ignore-empty-password \
+	-init-color 0x0e0f1a \
+	-input-color 0x0072b2 \
+	-input-alt-color 0x00466e \
+	-fail-color 0xe69f00
