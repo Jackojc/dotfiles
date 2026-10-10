@@ -1,60 +1,36 @@
 <?xml version="1.0"?>
 <labwc_config>
 
-  <core allowTearing="fullscreen" reuseOutputMode="yes" />
-
   <!-- autoEnableOutputs is broken on x230 -->
-  <!-- <core autoEnableOutputs="no" allowTearing="fullscreen" reuseOutputMode="yes" /> -->
+  <core allowTearing="fullscreen" reuseOutputMode="yes" />
 
   <focus raiseOnFocus="yes" />
   <placement policy="cascade" />
-
   <resize popupShow="Always" minimumArea="20" />
 
-  <libinput>
-    <device category="default" accelProfile="flat" />
-
-    <!-- TRACKPADS -->
-    <device category="touchpad">
-      <accelProfile>flat</accelProfile>
-      <disableWhileTyping>yes</disableWhileTyping>
-      <!-- <sendEventsMode>disabledOnExternalMouse</sendEventsMode> -->
-    </device>
-
-    <device category="touch" accelProfile="flat" disableWhileTyping="yes" />  <!-- TABLETS -->
-    <device category="non-touch" accelProfile="flat" />  <!-- MICE -->
-
-    <device category="TPPS/2 IBM TrackPoint" accelProfile="flat" pointerSpeed="30" />
-  </libinput>
-
-  <tablet mapToOutput="DP-7" rotate="0" mouseEmulation="no">
-    <area top="0.0" left="0.0" width="0.0" height="0.0" />
-    <map button="Tip" to="Left" />
-    <map button="Stylus" to="Right" />
-    <map button="Stylus2" to="Middle" />
-  </tablet>
-
-  <theme cornerRadius="0" keepBorder="yes" dropShadows="yes">
-    <name>gnelf-labwc</name>
-    <icon>Adwaita</icon>
-
-    <fallbackAppIcon>labwc</fallbackAppIcon>
-
-    <titlebar layout="icon:iconify,max,close" />
-
-    <font place="ActiveWindow"    name="APL386 Unicode" size="12" />
-    <font place="InactiveWindow"  name="APL386 Unicode" size="12" />
-    <font place="MenuHeader"      name="APL386 Unicode" size="12" />
-    <font place="MenuItem"        name="APL386 Unicode" size="12" />
-    <font place="OnScreenDisplay" name="APL386 Unicode" size="12" />
-  </theme>
+  <resistance>
+    <screenEdgeStrength>20</screenEdgeStrength>
+    <windowEdgeStrength>20</windowEdgeStrength>
+    <unSnapThreshold>20</unSnapThreshold>
+    <unMaximizeThreshold>150</unMaximizeThreshold>
+  </resistance>
 
   <snapping>
-    <range inner="50" outer="50" />
+    <range inner="20" outer="50" />
+    <cornerRange>50</cornerRange>
+    <topMaximize>yes</topMaximize>
     <overlay enabled="yes">
-      <delay inner="0" outer="0" />
+      <delay inner="300" outer="300" />
     </overlay>
   </snapping>
+
+  <theme cornerRadius="3" keepBorder="yes" dropShadows="yes" dropShadowsOnTiled="yes">
+    <name>ratio-labwc</name>
+    <icon>Adwaita</icon>
+    <fallbackAppIcon>labwc</fallbackAppIcon>
+    <titlebar layout="icon:iconify,max,close" />
+    <font name="Lexend" size="12" />
+  </theme>
 
   <windowSwitcher preview="yes" outlines="yes" unshade="yes">
     <osd show="yes" style="thumbnail" output="cursor" thumbnailLabelFormat="%T" />
@@ -65,35 +41,48 @@
     </fields>
   </windowSwitcher>
 
-  <windowRules>
-    <!-- <windowRule identifier="*" type="normal"> -->
-      <!-- <action name="FitToOutput" /> -->
-    <!-- </windowRule> -->
+  <libinput>
+    <device category="default" accelProfile="flat" />
 
+    <device category="touchpad">
+      <accelProfile>flat</accelProfile>
+      <disableWhileTyping>yes</disableWhileTyping>
+      <tap>yes</tap>
+    </device>
+
+    <device category="TPPS/2 IBM TrackPoint" accelProfile="flat" pointerSpeed="30" />
+  </libinput>
+
+  <tablet mapToOutput="DP-7" />
+
+  <regions>
+    <region name="left-third"   x="0%"     width="33.34%" y="0%" height="100%" />
+    <region name="center-third" x="33.33%" width="33.34%" y="0%" height="100%" />
+    <region name="right-third"  x="66.66%" width="33.34%" y="0%" height="100%" />
+
+    <region name="center" x="15%" width="70%" y="10%" height="80%" />
+
+    <region name="top-left-corner"     x="2%"  width="30%" y="2%"  height="30%" />
+    <region name="top-right-corner"    x="68%" width="30%" y="2%"  height="30%" />
+    <region name="bottom-left-corner"  x="2%"  width="30%" y="68%" height="30%" />
+    <region name="bottom-right-corner" x="68%" width="30%" y="68%" height="30%" />
+  </regions>
+
+  <windowRules>
     <windowRule identifier="firefox" title="Picture-in-Picture">
       <action name="ToggleAlwaysOnTop" />
       <action name="SetDecorations" decorations="border" />
       <action name="ToggleSnapToRegion" region="top-right-corner" />
     </windowRule>
 
-    <windowRule identifier="firefox">
+    <windowRule identifier="firefox" ignoreFocusRequest="yes">
       <action name="SetDecorations" decorations="border" />
     </windowRule>
+
+    <windowRule identifier="*chrom*" ignoreFocusRequest="yes" />
 
     <windowRule identifier="lxqt-policykit-agent" skipTaskbar="yes" skipWindowSwitcher="yes">
       <action name="SetDecorations" decorations="border" />
-      <action name="ToggleAlwaysOnTop" />
-      <action name="AutoPlace" policy="center" />
-    </windowRule>
-
-    <windowRule identifier="org.twosheds.iwgtk" skipTaskbar="yes" skipWindowSwitcher="yes">
-      <!-- <action name="SetDecorations" decorations="border" /> -->
-      <action name="ToggleAlwaysOnTop" />
-      <action name="AutoPlace" policy="center" />
-    </windowRule>
-
-    <windowRule identifier="org.pulseaudio.pavucontrol" skipTaskbar="yes" skipWindowSwitcher="yes">
-      <!-- <action name="SetDecorations" decorations="border" /> -->
       <action name="ToggleAlwaysOnTop" />
       <action name="AutoPlace" policy="center" />
     </windowRule>
@@ -104,33 +93,24 @@
       <action name="ToggleAlwaysOnTop" />
     </windowRule>
 
-    <!-- <windowRule identifier="org.keepassxc.KeePassXC"> -->
-        <!-- <action name="SnapToRegion" region="center" /> -->
-    <!-- </windowRule> -->
+    <windowRule identifier="org.twosheds.iwgtk" skipTaskbar="yes" skipWindowSwitcher="yes">
+      <action name="ToggleAlwaysOnTop" />
+      <action name="AutoPlace" policy="center" />
+    </windowRule>
+
+    <windowRule identifier="org.pulseaudio.pavucontrol" skipTaskbar="yes" skipWindowSwitcher="yes">
+      <action name="ToggleAlwaysOnTop" />
+      <action name="AutoPlace" policy="center" />
+    </windowRule>
+
+    <windowRule identifier="handbook-editor">
+      <action name="SnapToEdge" direction="left" />
+    </windowRule>
+
+    <windowRule identifier="sioyek" title="*handbook.pdf*">
+      <action name="SnapToEdge" direction="right" />
+    </windowRule>
   </windowRules>
-
-  <regions>
-    <!-- CENTRE -->
-    <region name="center" x="5%"  width="90%" y="10%" height="80%" />
-
-    <!-- SIDES -->
-    <region name="left"   x="0%"  width="50%" y="0%"  height="100%" />
-    <region name="right"  x="50%" width="50%" y="0%"  height="100%" />
-    <region name="top"    x="0%" width="100%" y="0%"  height="50%" />
-    <region name="bottom" x="0%" width="100%" y="50%"  height="50%" />
-
-    <!-- QUADRANTS -->
-    <region name="top-left"     x="0%"  width="50%" y="0%"  height="50%" />
-    <region name="top-right"    x="50%" width="50%" y="0%"  height="50%" />
-    <region name="bottom-left"  x="0%"  width="50%" y="50%" height="50%" />
-    <region name="bottom-right" x="50%" width="50%" y="50%" height="50%" />
-
-    <!-- CORNERS -->
-    <region name="top-left-corner"     x="2%"  width="30%" y="2%"  height="30%" />
-    <region name="top-right-corner"    x="68%" width="30%" y="2%"  height="30%" />
-    <region name="bottom-left-corner"  x="2%"  width="30%" y="68%" height="30%" />
-    <region name="bottom-right-corner" x="68%" width="30%" y="68%" height="30%" />
-  </regions>
 
   <!--
     W - window/super/logo
@@ -139,48 +119,41 @@
     S - shift
   -->
   <keyboard>
-    <!-- CONFIG -->
     <layoutScope>global</layoutScope>
     <repeatRate>25</repeatRate>
     <repeatDelay>250</repeatDelay>
 
-    <!-- FUCKED -->
-    <keybind key="XF86_Back">
-      <action name="Execute" command="wtype -P sunPageUp -p sunPageUp" />
-    </keybind>
-
-    <keybind key="XF86_Forward">
-      <action name="Execute" command="wtype -P sunPageDown -p sunPageDown" />
-    </keybind>
-
-    <!-- MISC -->
-    <keybind key="Print">
-      <action name="Execute" command="tool-scap area" />
-    </keybind>
-
-    <keybind key="W-Print">
-      <action name="Execute" command="tool-scap all" />
-    </keybind>
-
+    <!-- SESSION -->
     <keybind key="W-l">
       <action name="Execute" command="labwc-lock" />
     </keybind>
 
-    <!-- SHOW MENUS -->
+    <keybind key="Print">
+      <action name="Execute" command="tool-screenshot area" />
+    </keybind>
+
+    <keybind key="W-Print">
+      <action name="Execute" command="tool-screenshot all" />
+    </keybind>
+
+    <!-- MENUS -->
     <keybind key="W-S-Tab">
       <action name="ShowMenu" menu="root-menu" />
     </keybind>
 
-    <!-- <keybind key="W-l"> -->
-      <!-- <action name="ShowMenu" menu="launcher-menu" /> -->
-    <!-- </keybind> -->
-
-    <!-- BEMENU -->
-    <keybind key="W-Tab">
-      <action name="Execute" command="wofi --show run" />
+    <keybind key="W-a">
+      <action name="ShowMenu" menu="launcher-menu" />
     </keybind>
 
-    <!-- FOOT -->
+    <keybind key="A-Space">
+      <action name="ShowMenu" menu="client-menu" atCursor="yes" />
+    </keybind>
+
+    <keybind key="W-Tab">
+      <action name="Execute" command="fuzzel" />
+    </keybind>
+
+    <!-- APPS -->
     <keybind key="W-Return">
       <action name="Execute" command="foot" />
     </keybind>
@@ -189,12 +162,49 @@
       <action name="Execute" command="foot tmux-attach" />
     </keybind>
 
-    <!-- WINDOW -->
-    <keybind key="A-Space">
-      <action name="ShowMenu" menu="client-menu" atCursor="yes" />
+    <keybind key="W-b">
+      <action name="ForEach">
+        <query identifier="firefox" />
+        <then>
+          <action name="Focus" />
+          <action name="Raise" />
+        </then>
+        <none>
+          <action name="Execute" command="firefox-wayland" />
+        </none>
+      </action>
     </keybind>
 
-    <!-- WINDOW STATE -->
+    <keybind key="W-e">
+      <action name="ForEach">
+        <query identifier="nemo" />
+        <then>
+          <action name="Focus" />
+          <action name="Raise" />
+        </then>
+        <none>
+          <action name="Execute" command="nemo" />
+        </none>
+      </action>
+    </keybind>
+
+    <keybind key="W-o">
+      <action name="Execute" command="foot tool-notes" />
+    </keybind>
+
+    <keybind key="W-S-slash">
+      <action name="Execute" command="tool-handbook" />
+    </keybind>
+
+    <!-- WINDOWS -->
+    <keybind key="A-Tab">
+      <action name="NextWindow" output="focused" />
+    </keybind>
+
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow" output="focused" />
+    </keybind>
+
     <keybind key="W-x">
       <action name="Close" />
     </keybind>
@@ -211,206 +221,160 @@
       <action name="ToggleMaximize" />
     </keybind>
 
-    <keybind key="W-d">   <!-- SHOW DESKTOP -->
-      <action name="ForEach">
-        <query desktop="current" />
-        <then>
-          <action name="Iconify" />
-        </then>
-      </action>
-    </keybind>
-
-    <keybind key="W-c">
-      <action name="SnapToRegion" region="center" />
+    <keybind key="W-d">
+      <action name="ToggleShowDesktop" />
     </keybind>
 
     <keybind key="W-t">
       <action name="AutoPlace" policy="automatic" />
-
       <action name="GrowToEdge" direction="left" />
       <action name="GrowToEdge" direction="right" />
       <action name="GrowToEdge" direction="up" />
       <action name="GrowToEdge" direction="down" />
     </keybind>
 
-    <!-- <keybind key="W-t"> -->
-      <!-- <action name="ForEach"> -->
-        <!-- <query monitor="current" /> -->
-        <!-- <then> -->
-          <!-- <action name="AutoPlace" policy="automatic" /> -->
-        <!-- </then> -->
-      <!-- </action> -->
-
-      <!-- <action name="ForEach"> -->
-        <!-- <query /> -->
-        <!-- <then> -->
-          <!-- <action name="GrowToEdge" direction="left" /> -->
-          <!-- <action name="GrowToEdge" direction="right" /> -->
-          <!-- <action name="GrowToEdge" direction="up" /> -->
-          <!-- <action name="GrowToEdge" direction="down" /> -->
-
-          <!-- <action name="Maximize" /> -->
-  				<!-- <action name="ResizeRelative" left="-50%" right="-50%" top="-50%" bottom="-50%" /> -->
-        <!-- </then> -->
-      <!-- </action> -->
-
-      <!-- <action name="ForEach"> -->
-        <!-- <query monitor="current" /> -->
-        <!-- <then> -->
-          <!-- <action name="MoveToEdge" direction="left" /> -->
-          <!-- <action name="GrowToEdge" direction="right" /> -->
-        <!-- </then> -->
-      <!-- </action> -->
-
-      <!-- <action name="ForEach"> -->
-        <!-- <query monitor="current" /> -->
-        <!-- <then> -->
-          <!-- <action name="MoveToEdge" direction="up" /> -->
-          <!-- <action name="GrowToEdge" direction="down" /> -->
-        <!-- </then> -->
-      <!-- </action> -->
-
-      <!-- <action name="ForEach"> -->
-        <!-- <query monitor="current" /> -->
-        <!-- <then> -->
-          <!-- <action name="GrowToEdge" direction="right" /> -->
-          <!-- <action name="GrowToEdge" direction="down" /> -->
-        <!-- </then> -->
-      <!-- </action> -->
-    <!-- </keybind> -->
-
-    <!-- WINDOW FOCUS NEXT/PREV -->
-    <keybind key="A-Tab">
-      <action name="NextWindow" />
-      <!-- <action name="WarpCursor" to="window" /> -->
+    <!-- SNAPPING -->
+    <keybind key="W-left">
+      <action name="ToggleSnapToEdge" direction="left" combine="yes" />
     </keybind>
 
-    <keybind key="A-S-Tab">
-      <action name="PreviousWindow" />
-      <!-- <action name="WarpCursor" to="window" /> -->
+    <keybind key="W-right">
+      <action name="ToggleSnapToEdge" direction="right" combine="yes" />
     </keybind>
 
-    <!-- WINDOW SNAP & FILL -->
-    <keybind key="W-S-bracketleft">
-      <action name="ToggleSnapToRegion" region="left" />
+    <keybind key="W-up">
+      <action name="ToggleSnapToEdge" direction="up" combine="yes" />
     </keybind>
 
-    <keybind key="W-S-bracketright">
-      <action name="ToggleSnapToRegion" region="right" />
+    <keybind key="W-down">
+      <action name="ToggleSnapToEdge" direction="down" combine="yes" />
     </keybind>
 
-    <!-- WINDOW SNAPPING TO CORNERS -->
+    <keybind key="W-S-left">
+      <action name="MoveToEdge" direction="left" />
+      <action name="GrowToEdge" direction="left" />
+      <action name="GrowToEdge" direction="up" />
+      <action name="GrowToEdge" direction="down" />
+    </keybind>
+
+    <keybind key="W-S-right">
+      <action name="MoveToEdge" direction="right" />
+      <action name="GrowToEdge" direction="right" />
+      <action name="GrowToEdge" direction="up" />
+      <action name="GrowToEdge" direction="down" />
+    </keybind>
+
+    <keybind key="W-S-up">
+      <action name="MoveToEdge" direction="up" />
+      <action name="GrowToEdge" direction="up" />
+      <action name="GrowToEdge" direction="left" />
+      <action name="GrowToEdge" direction="right" />
+    </keybind>
+
+    <keybind key="W-S-down">
+      <action name="MoveToEdge" direction="down" />
+      <action name="GrowToEdge" direction="down" />
+      <action name="GrowToEdge" direction="left" />
+      <action name="GrowToEdge" direction="right" />
+    </keybind>
+
+    <keybind key="W-C-left">
+      <action name="GrowToEdge" direction="left" />
+    </keybind>
+
+    <keybind key="W-C-right">
+      <action name="GrowToEdge" direction="right" />
+    </keybind>
+
+    <keybind key="W-C-up">
+      <action name="GrowToEdge" direction="up" />
+    </keybind>
+
+    <keybind key="W-C-down">
+      <action name="GrowToEdge" direction="down" />
+    </keybind>
+
+    <keybind key="W-c">
+      <action name="ToggleSnapToRegion" region="center" />
+    </keybind>
+
     <keybind key="W-S-1">
+      <action name="ToggleSnapToRegion" region="left-third" />
+    </keybind>
+
+    <keybind key="W-S-2">
+      <action name="ToggleSnapToRegion" region="center-third" />
+    </keybind>
+
+    <keybind key="W-S-3">
+      <action name="ToggleSnapToRegion" region="right-third" />
+    </keybind>
+
+    <keybind key="W-Home">
       <action name="ToggleSnapToRegion" region="top-left-corner" />
       <action name="ToggleAlwaysOnTop" />
     </keybind>
 
-    <keybind key="W-S-2">
+    <keybind key="W-Prior">
       <action name="ToggleSnapToRegion" region="top-right-corner" />
       <action name="ToggleAlwaysOnTop" />
     </keybind>
 
-    <keybind key="W-S-3">
+    <keybind key="W-End">
       <action name="ToggleSnapToRegion" region="bottom-left-corner" />
       <action name="ToggleAlwaysOnTop" />
     </keybind>
 
-    <keybind key="W-S-4">
+    <keybind key="W-Next">
       <action name="ToggleSnapToRegion" region="bottom-right-corner" />
       <action name="ToggleAlwaysOnTop" />
     </keybind>
 
-    <!-- WINDOW MOVE TO EDGES -->
-    <keybind key="W-left">
-      <action name="MoveToEdge" direction="left" />
+    <keybind key="W-u">
+      <action name="UnSnap" />
     </keybind>
 
-    <keybind key="W-right">
-      <action name="MoveToEdge" direction="right" />
+    <!-- OUTPUTS -->
+    <keybind key="W-comma">
+      <action name="FocusOutput" direction="left" />
     </keybind>
 
-    <keybind key="W-up">
-      <action name="MoveToEdge" direction="up" />
+    <keybind key="W-period">
+      <action name="FocusOutput" direction="right" />
     </keybind>
 
-    <keybind key="W-down">
-      <action name="MoveToEdge" direction="down" />
+    <keybind key="W-S-comma">
+      <action name="MoveToOutput" direction="left" />
+      <action name="FitToOutput" />
     </keybind>
 
-    <!-- WINDOW GROW TO EDGES -->
-    <keybind key="W-S-left">
-      <action name="GrowToEdge" direction="left" />
+    <keybind key="W-S-period">
+      <action name="MoveToOutput" direction="right" />
+      <action name="FitToOutput" />
     </keybind>
 
-    <keybind key="W-S-right">
-      <action name="GrowToEdge" direction="right" />
-    </keybind>
-
-    <keybind key="W-S-up">
-      <action name="GrowToEdge" direction="up" />
-    </keybind>
-
-    <keybind key="W-S-down">
-      <action name="GrowToEdge" direction="down" />
-    </keybind>
-
-    <!-- WINDOW SHRINK EDGES -->
-    <keybind key="W-C-left">
-      <action name="ShrinkToEdge" direction="left" />
-    </keybind>
-
-    <keybind key="W-C-right">
-      <action name="ShrinkToEdge" direction="right" />
-    </keybind>
-
-    <keybind key="W-C-up">
-      <action name="ShrinkToEdge" direction="up" />
-    </keybind>
-
-    <keybind key="W-C-down">
-      <action name="ShrinkToEdge" direction="down" />
-    </keybind>
-
-    <!-- VOLUME KEYS -->
+    <!-- AUDIO -->
     <keybind key="XF86_AudioLowerVolume" allowWhenLocked="yes">
-      <action name="Execute" command="sh -c 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- &amp;&amp; notify-volume-speaker'" />
+      <action name="Execute" command="swayosd-client --output-volume -2" />
     </keybind>
 
     <keybind key="XF86_AudioRaiseVolume" allowWhenLocked="yes">
-      <action name="Execute" command="sh -c 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ &amp;&amp; notify-volume-speaker'" />
+      <action name="Execute" command="swayosd-client --output-volume +2" />
     </keybind>
 
     <keybind key="XF86_AudioMute" allowWhenLocked="yes">
-      <action name="Execute" command="sh -c 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle &amp;&amp; notify-volume-speaker'" />
+      <action name="Execute" command="swayosd-client --output-volume mute-toggle" />
     </keybind>
 
     <keybind key="XF86_AudioMicMute" allowWhenLocked="yes">
-      <action name="Execute" command="sh -c 'wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle &amp;&amp; notify-volume-microphone'" />
-    </keybind>
-
-    <!-- BRIGHTNESS KEYS -->
-    <keybind key="XF86_MonBrightnessUp" allowWhenLocked="yes">
-      <action name="Execute" command="sh -c 'brightnessctl set +5% &amp;&amp; notify-brightness'" />
-    </keybind>
-
-    <keybind key="XF86_MonBrightnessDown" allowWhenLocked="yes">
-      <action name="Execute" command="sh -c 'brightnessctl set 5%- &amp;&amp; notify-brightness'" />
-    </keybind>
-
-    <keybind key="S-XF86_MonBrightnessUp" allowWhenLocked="yes">
-      <action name="Execute" command="sh -c 'wlopm --on \'*\''" />
-    </keybind>
-
-    <keybind key="S-XF86_MonBrightnessDown" allowWhenLocked="yes">
-      <action name="Execute" command="sh -c 'wlopm --off \'*\''" />
-    </keybind>
-
-    <!-- MEDIA KEYS -->
-    <keybind key="XF86_AudioMedia" allowWhenLocked="yes">
-      <action name="Execute" command="playerctl play-pause" />
+      <action name="Execute" command="swayosd-client --input-volume mute-toggle" />
     </keybind>
 
     <keybind key="XF86_AudioPlay" allowWhenLocked="yes">
+      <action name="Execute" command="playerctl play-pause" />
+    </keybind>
+
+    <keybind key="XF86_AudioMedia" allowWhenLocked="yes">
       <action name="Execute" command="playerctl play-pause" />
     </keybind>
 
@@ -422,13 +386,41 @@
       <action name="Execute" command="playerctl previous" />
     </keybind>
 
+    <!-- SCREEN -->
+    <keybind key="XF86_MonBrightnessUp" allowWhenLocked="yes">
+      <action name="Execute" command="tool-brightness up" />
+    </keybind>
+
+    <keybind key="XF86_MonBrightnessDown" allowWhenLocked="yes">
+      <action name="Execute" command="tool-brightness down" />
+    </keybind>
+
+    <keybind key="C-XF86_MonBrightnessDown" allowWhenLocked="yes">
+      <action name="Execute" command="tool-nightmode" />
+    </keybind>
+
+    <keybind key="S-XF86_MonBrightnessUp" allowWhenLocked="yes">
+      <action name="Execute" command="wlopm --on '*'" />
+    </keybind>
+
+    <keybind key="S-XF86_MonBrightnessDown" allowWhenLocked="yes">
+      <action name="Execute" command="wlopm --off '*'" />
+    </keybind>
+
+    <!-- X230 BACK AND FORWARD -->
+    <keybind key="XF86_Back">
+      <action name="Execute" command="wtype -P sunPageUp -p sunPageUp" />
+    </keybind>
+
+    <keybind key="XF86_Forward">
+      <action name="Execute" command="wtype -P sunPageDown -p sunPageDown" />
+    </keybind>
   </keyboard>
 
   <mouse>
-    <doubleClickTime>1</doubleClickTime>
+    <doubleClickTime>500</doubleClickTime>
 
-    <context name="Frame">  <!-- WINDOW + DECORATIONS -->
-      <!-- MOVE & RESIZE -->
+    <context name="Frame">
       <mousebind button="W-Left" action="Drag">
         <action name="Focus" />
         <action name="Raise" />
@@ -441,18 +433,25 @@
         <action name="Resize" />
       </mousebind>
 
-      <!-- SCROLL RESIZE -->
-			<mousebind direction="W-Down" action="Scroll">
+      <mousebind direction="W-Down" action="Scroll">
         <action name="Focus" />
         <action name="Raise" />
-				<action name="ResizeRelative" left="-16%" right="-16%" top="-9%" bottom="-9%" />
-			</mousebind>
+        <action name="ResizeRelative" left="-16%" right="-16%" top="-9%" bottom="-9%" />
+      </mousebind>
 
-			<mousebind direction="W-Up" action="Scroll">
+      <mousebind direction="W-Up" action="Scroll">
         <action name="Focus" />
         <action name="Raise" />
-				<action name="ResizeRelative" left="16%" right="16%" top="9%" bottom="9%" />
-			</mousebind>
+        <action name="ResizeRelative" left="16%" right="16%" top="9%" bottom="9%" />
+      </mousebind>
+    </context>
+
+    <context name="Border">
+      <mousebind button="Left" action="Drag">
+        <action name="Focus" />
+        <action name="Raise" />
+        <action name="Resize" />
+      </mousebind>
     </context>
 
     <context name="Client">
@@ -472,8 +471,7 @@
       </mousebind>
     </context>
 
-    <context name="TitleBar">  <!-- ENTIRE WINDOW DECORATION -->
-      <!-- FOCUS -->
+    <context name="TitleBar">
       <mousebind button="Left" action="Press">
         <action name="Focus" />
         <action name="Raise" />
@@ -489,7 +487,6 @@
         <action name="Raise" />
       </mousebind>
 
-      <!-- SHADE -->
       <mousebind direction="Up" action="Scroll">
         <action name="Focus" />
         <action name="Raise" />
@@ -503,7 +500,7 @@
       </mousebind>
     </context>
 
-    <context name="Title">  <!-- WINDOW TITLE + BLANK SPACE (NOT INCLUDING BUTTONS) -->
+    <context name="Title">
       <mousebind button="Left" action="Drag">
         <action name="Focus" />
         <action name="Raise" />
@@ -517,86 +514,17 @@
       </mousebind>
     </context>
 
-    <context name="Desktop">  <!-- AKA ROOT -->
-      <!-- SHOW ROOT MENU -->
+    <context name="Desktop">
       <mousebind button="Right" action="Click">
         <action name="Unfocus" />
         <action name="ShowMenu" menu="root-menu" />
       </mousebind>
 
-      <!-- UNFOCUS WINDOWS WHEN CLICKING DESKTOP -->
       <mousebind button="Left" action="Press">
         <action name="Unfocus" />
       </mousebind>
     </context>
 
-    <!-- RESIZE SIDES -->
-    <context name="Top">
-      <mousebind button="Left" action="Drag">
-        <action name="Focus" />
-        <action name="Raise" />
-        <action name="Resize" />
-      </mousebind>
-    </context>
-
-    <context name="Left">
-      <mousebind button="Left" action="Drag">
-        <action name="Focus" />
-        <action name="Raise" />
-        <action name="Resize" />
-      </mousebind>
-    </context>
-
-    <context name="Right">
-      <mousebind button="Left" action="Drag">
-        <action name="Focus" />
-        <action name="Raise" />
-        <action name="Resize" />
-      </mousebind>
-    </context>
-
-    <context name="Bottom">
-      <mousebind button="Left" action="Drag">
-        <action name="Focus" />
-        <action name="Raise" />
-        <action name="Resize" />
-      </mousebind>
-    </context>
-
-    <!-- RESIZE CORNERS -->
-    <context name="TRCorner">
-      <mousebind button="Left" action="Drag">
-        <action name="Focus" />
-        <action name="Raise" />
-        <action name="Resize" />
-      </mousebind>
-    </context>
-
-    <context name="BRCorner">
-      <mousebind button="Left" action="Drag">
-        <action name="Focus" />
-        <action name="Raise" />
-        <action name="Resize" />
-      </mousebind>
-    </context>
-
-    <context name="TLCorner">
-      <mousebind button="Left" action="Drag">
-        <action name="Focus" />
-        <action name="Raise" />
-        <action name="Resize" />
-      </mousebind>
-    </context>
-
-    <context name="BLCorner">
-      <mousebind button="Left" action="Drag">
-        <action name="Focus" />
-        <action name="Raise" />
-        <action name="Resize" />
-      </mousebind>
-    </context>
-
-    <!-- WINDOW BUTTONS -->
     <context name="Maximize">
       <mousebind button="Left" action="Click">
         <action name="Focus" />
@@ -652,7 +580,6 @@
         <action name="Close" />
       </mousebind>
     </context>
-
   </mouse>
 
 </labwc_config>
