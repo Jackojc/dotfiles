@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+require notify-send
+
+usage() {
+	printf '%s' "\
+usage: $(basename "$0") <duration> <message...>
+
+examples:
+	$(basename "$0") 10s countdown
+	$(basename "$0") 30m take a break
+"
+}
+
+case "${1:-}" in
+	-h | --help) usage; exit 0 ;;
+esac
+
+[ "$#" -ge 2 ] || { usage >&2; exit 1; }
+
+printf '%s' "$1" | grep --quiet --line-regexp '\([0-9.]\+[hms]\)\+' ||
+	die "no time unit specified (h/m/s)"
+
+printf '%s' "$1" | grep --only-matching '[0-9.]\+[hms]' | xargs sleep
+shift
+
+notify-send --urgency critical --app-name timer timer "$*"
+printf '%s\n' "$*"
