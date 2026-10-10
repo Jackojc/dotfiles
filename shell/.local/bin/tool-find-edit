@@ -5,7 +5,6 @@ set -o errexit -o nounset
 
 require fd
 require fzf
-[ -n "${EDITOR:-}" ] || die 'EDITOR is not set'
 
-file=$(fd --hidden --type f | fzf --query "$*") || exit 1
-exec "$EDITOR" "./${file#./}"
+[ -n "${EDITOR:-}" ] || die 'EDITOR is not set'
+fd --hidden --type f | fzf --query "$*" --bind "enter:execute($EDITOR ./{})"
