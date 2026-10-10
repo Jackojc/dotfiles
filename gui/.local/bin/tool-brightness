@@ -1,0 +1,35 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+usage() {
+	printf '%s' "\
+usage: $(basename "$0") <command>
+
+  get       current level (0-100)
+  up        increase by 5%
+  down      decrease by 5%
+"
+}
+
+require brightnessctl
+require swayosd-client
+
+if ! brightnessctl --class backlight --list > /dev/null 2>&1; then
+	warn 'no backlight'
+	exit 1
+fi
+
+case "${1:-}" in
+	get)
+		brightnessctl --class backlight --machine-readable info |
+			cut --delimiter=, --fields=4 | tr --delete %
+		;;
+
+	up)   swayosd-client --brightness +5 ;;
+	down) swayosd-client --brightness -5 ;;
+
+	-h | --help) usage ;;
+	*) usage >&2; exit 1 ;;
+esac

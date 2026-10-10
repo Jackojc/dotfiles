@@ -1,0 +1,47 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+require brightnessctl
+require ddcutil
+require jq
+require notify-send
+require tool-brightness
+require tool-main-monitor
+require wlr-randr
+
+ddc() { ddcutil --skip-ddc-checks "$@"; }
+
+main_monitor=$(tool-main-monitor)
+
+brightness=$(ddc --sn "$main_monitor" getvcp 10 --brief 2> /dev/null |
+	cut --delimiter=' ' --fields=4)
+
+[ -n "$brightness" ] || brightness=$(tool-brightness get)
+
+monitors=$(wlr-randr --json | jq --raw-output '
+	.[] | select(.enabled and (.name | test("^(eDP|LVDS)") | not)) | .serial
+')
+
+set_brightness() {
+	brightnessctl --class backlight --list --machine-readable 2> /dev/null |
+		cut --delimiter=, --fields=1 |
+		xargs --no-run-if-empty --replace={} \
+			brightnessctl --device {} --quiet set "$1%"
+
+	for serial in $monitors; do
+		level=$2
+		[ "$serial" != "$main_monitor" ] || level=$1
+		ddc --sn "$serial" --noverify setvcp 10 "$level"
+	done
+}
+
+if [ "$brightness" -lt 100 ]; then
+	set_brightness 100 100
+	notify-send 'night mode off'
+
+else
+	set_brightness 40 5
+	notify-send 'night mode on'
+fi

@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+
+level=$(tool-brightness get)
+echo "$level%"

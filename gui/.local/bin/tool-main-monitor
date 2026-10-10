@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+require wlr-randr
+require jq
+
+wlr-randr --json |
+jq --raw-output '
+	[.[] | select(.enabled)]
+	| max_by(.physical_size | .width * .height)
+	| .serial
+'
