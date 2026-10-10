@@ -16,15 +16,9 @@
 
     <separator />
 
-    <menu id="decorations-menu" label="decorations">
-      <item label="on">
-        <action name="SetDecorations" decorations="full" />
-      </item>
-
-      <item label="off">
-        <action name="SetDecorations" decorations="border" />
-      </item>
-    </menu>
+    <item label="toggle decorations">
+      <action name="ToggleDecorations" />
+    </item>
 
     <separator />
 
@@ -45,86 +39,126 @@
 
   <menu id="root-menu">
     <item label="reconfigure">
-      <action name="execute" command="labwc-reload" />
-    </item>
-
-    <item label="wallpaper">
-      <action name="execute" command="tool-wallpaper" />
+      <action name="Execute" command="labwc-reload" />
     </item>
 
     <separator />
 
-    <!-- <menu id="tools-menu"      label="tools"      execute="menu-tools" /> -->
-    <!-- <menu id="notes-menu"      label="notes"      execute="menu-notes" /> -->
-    <!-- <menu id="stickers-menu"   label="stickers"   execute="menu-stickers" /> -->
-    <!-- <menu id="usb-menu"        label="usb"        execute="menu-usb" /> -->
-    <!-- <menu id="screenshot-menu" label="screenshot" execute="menu-screenshot" /> -->
-
-    <!-- <separator /> -->
-
-    <item label="lock">
-      <action name="execute" command="labwc-lock" />
+    <item label="wallpaper">
+      <action name="Execute" command="tool-wallpaper" />
     </item>
 
-    <item label="suspend">
-      <action name="execute" command="loginctl hybrid-sleep" />
+    <item label="night mode">
+      <action name="Execute" command="tool-nightmode" />
+    </item>
+
+    <separator />
+
+    <item label="keep awake (24h)">
+      <action name="Execute" command="elogind-inhibit --what=idle:sleep --who=labwc-menu --why='keep awake (24h)' sleep 86400" />
     </item>
 
     <item label="hibernate">
-      <action name="execute" command="loginctl hibernate" />
+      <action name="Execute" command="loginctl hibernate" />
     </item>
 
     <separator />
 
-    <item label="reboot">
-      <action name="execute" command="loginctl reboot" />
-    </item>
+    <menu id="screenshot-menu" label="screenshot">
+      <item label="area">
+        <action name="Execute" command="tool-screenshot area" />
+      </item>
 
-    <item label="poweroff">
-      <action name="execute" command="loginctl poweroff" />
-    </item>
+      <item label="monitor">
+        <action name="Execute" command="tool-screenshot output" />
+      </item>
 
-    <separator />
+      <item label="all">
+        <action name="Execute" command="tool-screenshot all" />
+      </item>
 
-    <item label="quit">
-      <action name="execute" command="labwc-quit" />
-    </item>
+      <separator />
+
+      <item label="screenshots directory">
+        <action name="Execute" command="nsxiv -t ~/pictures" />
+      </item>
+    </menu>
+
+    <menu id="terminal-menu" label="terminal">
+      <item label="tmux-attach">
+        <action name="Execute" command="foot tmux-attach" />
+      </item>
+
+      <item label="man-fzf">
+        <action name="Execute" command="foot man-fzf" />
+      </item>
+
+      <item label="man-rand">
+        <action name="Execute" command="foot man-rand" />
+      </item>
+    </menu>
+
+    <menu id="drives-menu" label="drives">
+      <item label="mount">
+        <action name="Execute" command="tool-mount" />
+      </item>
+
+      <item label="unmount">
+        <action name="Execute" command="tool-unmount" />
+      </item>
+    </menu>
+
+    <menu id="power-menu" label="power">
+      <item label="lock">
+        <action name="Execute" command="labwc-lock" />
+      </item>
+
+      <item label="screens off">
+        <action name="Execute" command="wlopm --off '*'" />
+      </item>
+
+      <separator />
+
+      <item label="log out">
+        <action name="Execute" command="labwc-quit" />
+      </item>
+
+      <item label="poweroff">
+        <action name="Execute" command="loginctl poweroff" />
+      </item>
+
+      <item label="reboot">
+        <action name="Execute" command="loginctl reboot" />
+      </item>
+
+      <separator />
+
+      <item label="setup (uefi)">
+        <action name="Execute" command="sh -c 'pkexec bootctl reboot-to-firmware true &amp;&amp; loginctl reboot'" />
+      </item>
+    </menu>
   </menu>
 
   <menu id="launcher-menu">
-      <separator label="graphical" />
+    <item label="web">
+      <action name="Execute" command="firefox-wayland" />
+    </item>
 
-      <item label="web">
-        <action name="execute" command="firefox-wayland" />
-      </item>
+    <item label="files">
+      <action name="Execute" command="nemo" />
+    </item>
 
-      <item label="files">
-        <action name="execute" command="nemo" />
-      </item>
+    <item label="pavucontrol">
+      <action name="Execute" command="pavucontrol" />
+    </item>
 
-      <item label="pavucontrol">
-        <action name="execute" command="pavucontrol" />
-      </item>
+    <item label="qpwgraph">
+      <action name="Execute" command="qpwgraph" />
+    </item>
 
-      <item label="qpwgraph">
-        <action name="execute" command="qpwgraph" />
-      </item>
-
-      <separator label="terminal" />
-
-      <item label="calc">
-        <action name="execute" command="foot tool-calc" />
-      </item>
-
-      <separator label="utils" />
-
-      <item label="wifi">
-        <action name="execute" command="foot iwctl" />
-      </item>
-
-      <item label="bluetooth">
-        <action name="execute" command="foot bluetuith" />
-      </item>
+    <item label="bluetooth">
+      <action name="Execute" command="foot bluetuith" />
+    </item>
   </menu>
 
 </openbox_menu>
