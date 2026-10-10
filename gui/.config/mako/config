@@ -38,12 +38,3 @@ default-timeout=0
 [mode=do-not-disturb]
 invisible=1
 
-[mode=do-not-disturb app-name=tool-brightness]
-invisible=0
-
-[app-name=tool-brightness]
-default-timeout=500
-layer=overlay
-history=0
-anchor=center
-text-alignment=center
