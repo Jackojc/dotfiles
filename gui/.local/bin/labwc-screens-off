@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+
+# Starts a new swayidle daemon that simply handles resuming
+# the displays on keyboard/mouse interaction.
+
+exec swayidle -w timeout 1 "wlopm --off '*'" \
+	resume "wlopm --on '*'; kill \$PPID"
