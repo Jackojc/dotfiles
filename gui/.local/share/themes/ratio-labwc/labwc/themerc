@@ -15,8 +15,8 @@ window.inactive.border.color: #59564e
 window.active.indicator.toggled-keybind.color: #e69f00
 
 # window titlebar background.
-window.active.title.bg.color:   #0e0f1aFA
-window.inactive.title.bg.color: #0e0f1aFA
+window.active.title.bg.color:   #0e0f1aFC
+window.inactive.title.bg.color: #0e0f1aFC
 
 # window titlebar text
 window.active.label.text.color:   #f4f4f4
@@ -25,7 +25,7 @@ window.inactive.label.text.color: #8a8578
 window.label.text.justify: center
 
 # window button width and spacing
-window.button.width:   42
+window.button.width:   33
 window.button.height:  33
 window.button.spacing: 0
 
@@ -58,7 +58,7 @@ menu.width.max: 591
 menu.border.width: 1
 menu.border.color: #59564e
 
-menu.items.bg.color:          #0e0f1aFA
+menu.items.bg.color:          #0e0f1aFC
 menu.items.text.color:        #f4f4f4
 menu.items.active.bg.color:   #56b4e9
 menu.items.active.text.color: #0e0f1a
@@ -72,7 +72,7 @@ menu.separator.color: #59564e
 menu.separator.padding.width: 8
 menu.separator.padding.height: 5
 
-menu.title.bg.color:   #292a34FA
+menu.title.bg.color:   #292a34FC
 menu.title.text.color: #f4f4f4
 
 menu.title.text.justify: center
@@ -84,7 +84,7 @@ menu.title.text.justify: center
 
 osd.border.width: 1
 
-osd.bg.color:         #0e0f1aFA
+osd.bg.color:         #0e0f1aFC
 osd.border.color:     #59564e
 osd.label.text.color: #f4f4f4
 
