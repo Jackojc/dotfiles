@@ -58,8 +58,8 @@ tooltip {
 	border-bottom: 1px solid @content_main;
 }
 
-@define-color bg_main         rgba(14, 15, 26, 0.98);
-@define-color bg_main_tooltip rgba(14, 15, 26, 0.98);
+@define-color bg_main         rgba(14, 15, 26, 0.99);
+@define-color bg_main_tooltip rgba(14, 15, 26, 0.99);
 
 @define-color bg_hover        rgba(86, 180, 233, 0.3);
 @define-color bg_active       #292a34;
