@@ -15,13 +15,4 @@ require stow
 
 [ "$#" -gt 0 ] || set -- common shell gui
 
-host="$(uname -n)"
-
-if [ -d "$host" ]; then
-	set -- "$@" "$host"
-
-else
-	log "unknown host '${host}'!"
-fi
-
 LC_ALL=C stow --restow --no-folding --target "$HOME" "$@"
