@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+# Gives the machine kind: 'desktop', 'laptop', 'tablet', 'unknown'
+
+set -o nounset
+
+# Section 7.4.1 table 17
+# https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.10.0.pdf
+
+chassis=$(cat /sys/class/dmi/id/chassis_type 2> /dev/null)
+
+case "$chassis" in
+	8 | 9 | 10 | 14) printf 'laptop\n' ;;
+	11 | 30 | 31 | 32) printf 'tablet\n' ;;
+	1 | 2 | '') printf 'unknown\n' ;;
+	*) printf 'desktop\n' ;;
+esac

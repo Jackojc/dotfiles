@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+
+runsvdir "$SVDIR" &
+echo "$!" > "$XDG_RUNTIME_DIR/runsvdir.pid"

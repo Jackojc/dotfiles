@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec awww-daemon 2>&1

@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec mako 2>&1

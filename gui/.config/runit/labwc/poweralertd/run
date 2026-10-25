@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec poweralertd 2>&1

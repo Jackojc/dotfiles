@@ -1,37 +1,27 @@
 #!/usr/bin/env sh
 
-. lib-utils
+. "$HOME/.local/lib/lib-utils"
 
-need dbus-update-activation-environment
-need shikane
-need pipewire
-need swayidle
-need awww-daemon
-need awww
-need waybar
-need mako
-need lxqt-policykit-agent
+should dbus-update-activation-environment
+should labwc-sv-start
+should awww
 
-# labwc-daemons &
 dbus-update-activation-environment --all
 
-has shikane && shikane &
-has pipewire && pipewire &
+if is_installed gsettings; then
+	gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+	gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+fi
 
-has swayidle && swayidle -w &
-has awww-daemon && awww-daemon &  # Wallpapers
-has waybar && waybar &
-has mako && mako &  # Notifications
-
-has lxqt-policykit-agent && lxqt-policykit-agent &
-has poweralertd && poweralertd &
+labwc-sv-start
 
 # Wait for wallpaper daemon to start then set a random wallpaper.
 # There was an issue where the daemon wasn't started and we'd skip
 # setting the wallpaper so just had a black desktop.
-if has awww; then
+if is_installed awww; then
 	n=0
-	until [ -n "$(awww query 2>/dev/null)" ] || [ "$n" -ge 50 ]; do
+
+	until [ -n "$(awww query 2> /dev/null)" ] || [ "$n" -ge 50 ]; do
 		n=$((n + 1))
 		sleep 0.1
 	done

@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec swayosd-server 2>&1

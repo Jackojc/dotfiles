@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+set -o nounset
+
+pidfile="$XDG_RUNTIME_DIR/runsvdir.pid"
+[ -f "$pidfile" ] || exit 0
+
+# Request runit to stop user services
+kill -HUP "$(cat "$pidfile")" 2>/dev/null
+
+# Wait for each service, or kill it after a timeout.
+sv -w 3 force-shutdown "$SVDIR"/*
+
+rm "$pidfile"

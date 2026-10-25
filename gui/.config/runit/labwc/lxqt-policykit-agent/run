@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+exec lxqt-policykit-agent 2>&1

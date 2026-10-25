@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+# Desktop can go longer without lock because it's likely
+# at home but my laptop needs to lock sooner if we're out
+# and about.
+case "$(tool-chassis)" in
+	desktop) lock=3600 hibernate=14400 ;;
+	*) lock=1800 hibernate=3600 ;;
+esac
+
+exec swayidle -w \
+	lock 'labwc-lock' \
+	timeout 600 "wlopm --off '*'" resume "wlopm --on '*'" \
+	timeout "$lock" 'loginctl lock-session' \
+	timeout "$hibernate" 'loginctl hibernate' \
+	before-sleep 'labwc-lock' 2>&1

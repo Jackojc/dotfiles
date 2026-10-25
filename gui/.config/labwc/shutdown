@@ -1,8 +1,5 @@
 #!/usr/bin/env sh
 
-# Runs asynchronously
-# Kill daemons on exit
-# pkill -f "${KILLME}"
-# pkill -f "tool-keeprunning"
-
-ps --user "$(id -u -n)" | awk 'NR > 1 {print $1}' | xargs -t kill
+# Note: labwc runs this when it exits asynchronously so it doesn't wait
+# for the script to finish. This causes issues if you want to kill any
+# daemons and such.
