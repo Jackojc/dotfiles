@@ -1,7 +1,7 @@
 window#osd {
 	border-radius: 3px;
 	border: 1px solid #59564e;
-	background: alpha(#0e0f1a, 0.98);
+	background: alpha(#0e0f1a, 0.99);
 }
 
 window#osd #container {
