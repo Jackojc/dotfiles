@@ -7,4 +7,6 @@ require fd
 require fzf
 
 [ -n "${EDITOR:-}" ] || die 'EDITOR is not set'
-fd --hidden --type f | fzf --query "$*" --bind "enter:execute($EDITOR ./{})"
+
+fd --hidden --type f --strip-cwd-prefix=never |
+	fzf --multi --query "$*" --bind "enter:execute($EDITOR {+})+deselect-all"
