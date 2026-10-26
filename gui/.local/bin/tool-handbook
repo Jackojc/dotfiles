@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+src="${XDG_DATA_HOME:-$HOME/.local/share}/handbook/handbook.typ"
+cache="${XDG_CACHE_HOME:-$HOME/.cache}/handbook"
+out="${cache}/handbook.pdf"
+
+require typst
+require foot
+require sioyek
+require hx
+
+mkdir --parents "$cache"
+
+typst compile - "$out" < /dev/null  # Build empty PDF so sioyek doesn't complain
+typst watch "$src" "$out" > "${cache}/watch.log" 2>&1 &
+
+trap 'kill "$!" 2>/dev/null' EXIT INT TERM
+
+setsid --fork sioyek --new-window "$out" > /dev/null 2>&1
+foot --app-id=handbook-editor hx "$src"
