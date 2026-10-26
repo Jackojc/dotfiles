@@ -6,8 +6,6 @@ set -o errexit -o nounset
 [ "$#" -eq 1 ] || die 'usage: tool-img-cp <directory>'
 [ -d "$1" ] || die "no such directory '$1'"
 
-require nsxiv
-
-nsxiv --recursive --stdout --animate . |
-	xargs --no-run-if-empty --delimiter='\n' -I{} -- \
-		cp --archive --no-clobber --verbose "{}" --target-directory="$1"
+tool-img-pick |
+	xargs --delimiter='\n' --no-run-if-empty -- \
+		cp --archive --no-clobber --verbose --target-directory="$1" --

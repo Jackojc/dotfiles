@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+set -o errexit -o nounset
+. "$HOME/.local/lib/lib-utils"
+
+[ "$#" -eq 0 ] || die 'usage: tool-img-pick'
+
+require swayimg
+
+pick='
+swayimg.imagelist.recursive = true
+
+local function list_marked_images()
+	for _, entry in ipairs(swayimg.imagelist.get()) do
+		if entry.mark then
+			print(entry.path)
+		end
+	end
+
+	swayimg.exit()
+end
+
+swayimg.gallery.on_key("q", list_marked_images)
+swayimg.viewer.on_key("q", list_marked_images)
+'
+
+swayimg --gallery --execute="$pick" .

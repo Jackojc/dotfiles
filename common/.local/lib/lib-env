@@ -9,7 +9,7 @@ export TERMINAL="${TERMINAL:-foot}"
 export BROWSER="${BROWSER:-firefox-wayland}"
 export EDITOR="${EDITOR:-hx}"
 export READER="${READER:-sioyek}"
-export VIEWER="${VIEWER:-nsxiv}"
+export VIEWER="${VIEWER:-swayimg}"
 
 export TMUX_TMPDIR="${TMUX_TMPDIR:-${XDG_RUNTIME_DIR:-/tmp}}"
 

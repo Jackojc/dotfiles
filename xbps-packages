@@ -172,7 +172,7 @@ yt-dlp
 ffmpeg6
 
 pqiv          # image viewer
-nsxiv         # image viewer
+swayimg       # image viewer
 
 qrencode
 zbar          # qr reader

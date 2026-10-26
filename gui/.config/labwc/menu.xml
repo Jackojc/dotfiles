@@ -80,7 +80,7 @@
       <separator />
 
       <item label="screenshots directory">
-        <action name="Execute" command="nsxiv -t ~/pictures" />
+        <action name="Execute" command="sh -c 'swayimg --gallery &quot;$XDG_PICTURES_DIR&quot;'" />
       </item>
     </menu>
 
