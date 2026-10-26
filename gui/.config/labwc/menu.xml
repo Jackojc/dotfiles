@@ -114,7 +114,7 @@
       </item>
 
       <item label="screens off">
-        <action name="Execute" command="wlopm --off '*'" />
+        <action name="Execute" command="labwc-screens-off" />
       </item>
 
       <separator />
