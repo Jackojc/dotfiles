@@ -58,6 +58,10 @@
       <action name="Execute" command="elogind-inhibit --what=idle:sleep --who=labwc-menu --why='keep awake (24h)' sleep 86400" />
     </item>
 
+    <item label="screens off">
+      <action name="Execute" command="labwc-screens-off" />
+    </item>
+
     <item label="hibernate">
       <action name="Execute" command="loginctl hibernate" />
     </item>
@@ -111,10 +115,6 @@
     <menu id="power-menu" label="power">
       <item label="lock">
         <action name="Execute" command="labwc-lock" />
-      </item>
-
-      <item label="screens off">
-        <action name="Execute" command="labwc-screens-off" />
       </item>
 
       <separator />
