@@ -13,3 +13,4 @@ id_ed25519
 
 # Cane tree-sitter grammar
 /shell/.config/helix/grammars/cane/src/
+/shell/.config/helix/grammars/cane/test/
